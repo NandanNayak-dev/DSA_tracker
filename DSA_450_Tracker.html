@@ -1,0 +1,3426 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>DSA 450 Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+:root{--bg:#0b1220;--panel:#111c2e;--panel2:#152238;--line:#23334b;--text:#eef3fb;--muted:#8c9bb1;--accent:#a78bfa;--green:#55d6a3;--orange:#ffb86b;--blue:#79b8ff;--shadow:0 18px 60px #0002}
+:root.light{--bg:#f4f6fb;--panel:#fff;--panel2:#f1f4fa;--line:#e4e9f2;--text:#172235;--muted:#748197;--accent:#7555d9;--green:#159b70;--orange:#bd6b17;--blue:#347dcc;--shadow:0 14px 40px #25375a12}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;transition:background .2s,color .2s}.app-shell{max-width:1220px;margin:auto;padding:0 34px}.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--text);font:700 18px 'Space Grotesk',sans-serif;letter-spacing:-.6px}.brand-mark{width:31px;height:31px;border-radius:10px;background:var(--accent);color:#151126;display:grid;place-items:center;font-size:21px}.brand-muted{color:var(--muted)}.top-actions{display:flex;align-items:center;gap:18px}.save-indicator{font-size:12px;color:var(--muted)}.save-indicator i{display:inline-block;width:7px;height:7px;background:var(--green);border-radius:50%;margin-right:7px}.icon-btn{border:1px solid var(--line);background:var(--panel);color:var(--text);width:36px;height:36px;border-radius:10px;font-size:18px;cursor:pointer}
+main{padding:46px 0 20px}.hero{display:flex;justify-content:space-between;align-items:center;padding:10px 5px 38px}.eyebrow{font-size:10px;letter-spacing:2px;color:var(--accent);font-weight:700;display:flex;align-items:center;gap:9px}.eyebrow-line{height:1px;width:23px;background:var(--accent)}h1,h2{font-family:'Space Grotesk',sans-serif;letter-spacing:-1.8px}h1{font-size:clamp(40px,6vw,65px);line-height:1.02;margin:17px 0 13px}h1 span{color:var(--accent)}.hero-copy p{color:var(--muted);font-size:14px;margin:0;max-width:460px;line-height:1.7}.hero-progress{display:flex;align-items:center;gap:20px;margin-right:8%}.progress-ring{width:128px;height:128px;border-radius:50%;background:conic-gradient(var(--accent) 0%,var(--line) 0);display:grid;place-items:center;position:relative}.progress-ring:before{content:"";position:absolute;inset:9px;background:var(--bg);border-radius:50%}.ring-inner{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px}.ring-inner strong{font:700 27px 'Space Grotesk';}.ring-inner span{font-size:8px;letter-spacing:1.3px;color:var(--muted)}.ring-caption{display:flex;flex-direction:column;gap:4px}.ring-caption strong{font:600 17px 'Space Grotesk'}.ring-caption span{font-size:11px;color:var(--muted)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:52px}.stat-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow)}.stat-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;font-size:17px}.purple{background:#a78bfa20;color:var(--accent)}.green{background:#55d6a320;color:var(--green)}.orange{background:#ffb86b20;color:var(--orange)}.blue{background:#79b8ff20;color:var(--blue)}.stat-card div{display:flex;flex-direction:column;gap:4px}.stat-label{font-size:9px;letter-spacing:1.2px;color:var(--muted);font-weight:700}.stat-card strong{font:700 23px 'Space Grotesk'}
+.section-heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:20px}.section-heading h2{font-size:27px;margin:6px 0 0}.heading-actions{display:flex;gap:17px}.text-btn{border:0;background:none;color:var(--muted);font:600 11px 'DM Sans';cursor:pointer;padding:8px 0}.text-btn:hover{color:var(--text)}.danger-text:hover{color:#ff7d87}.toolbar{display:grid;grid-template-columns:1fr 190px 170px;gap:10px;margin-bottom:14px}.search-wrap{height:43px;border:1px solid var(--line);background:var(--panel);border-radius:10px;display:flex;align-items:center;padding:0 13px;gap:9px;color:var(--muted)}.search-wrap span{font-size:22px}.search-wrap input{border:0;outline:0;background:none;color:var(--text);font:13px 'DM Sans';width:100%}.search-wrap input::placeholder{color:var(--muted)}select{height:43px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);padding:0 12px;font:12px 'DM Sans';outline:none}.topic-chips{display:flex;gap:7px;overflow:auto;padding:3px 0 15px;scrollbar-width:thin}.chip{white-space:nowrap;border:1px solid var(--line);border-radius:20px;padding:7px 11px;color:var(--muted);font:600 10px 'DM Sans';background:transparent;cursor:pointer}.chip.active,.chip:hover{background:var(--accent);border-color:var(--accent);color:#17112b}.table-wrap{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;min-height:260px;box-shadow:var(--shadow)}table{width:100%;border-collapse:collapse;text-align:left}thead{background:var(--panel2)}th{font-size:9px;letter-spacing:1.15px;color:var(--muted);font-weight:700;padding:14px 15px}td{padding:13px 15px;border-top:1px solid var(--line);font-size:12px}tbody tr:hover{background:var(--panel2)}.check-col{width:68px;text-align:center}.number-col{width:52px}.topic-col{width:185px}.link-col{width:160px}.problem-check{appearance:none;width:16px;height:16px;border:1.5px solid #64748b;border-radius:5px;vertical-align:middle;cursor:pointer;position:relative;background:transparent}.problem-check:checked{background:var(--green);border-color:var(--green)}.problem-check:checked:after{content:"✓";position:absolute;color:#082319;font-size:12px;font-weight:900;left:2px;top:-1px}.row-number{color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}.problem-title{font-weight:600;line-height:1.45}.is-solved .problem-title{text-decoration:line-through;color:var(--muted)}.topic-tag{display:inline-block;background:var(--panel2);border:1px solid var(--line);padding:5px 8px;border-radius:6px;color:var(--muted);font-size:10px}.practice-links{display:flex;gap:7px}.practice-link{display:inline-flex;align-items:center;gap:5px;text-decoration:none;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);border-radius:6px;padding:6px 8px;font-size:10px;font-weight:700}.practice-link:hover{background:color-mix(in srgb,var(--accent) 12%,transparent)}.practice-link.secondary{color:var(--muted);border-color:var(--line)}.empty-state{padding:65px 15px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px}.empty-state[hidden]{display:none}.empty-state div{font-size:30px;color:var(--muted)}.empty-state strong{font:600 16px 'Space Grotesk'}.empty-state span{font-size:12px;color:var(--muted)}.table-footer{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;padding:12px 3px}footer{border-top:1px solid var(--line);margin-top:42px;padding:19px 0 25px;display:flex;justify-content:space-between;color:var(--muted);font-size:10px}
+@media(max-width:760px){.app-shell{padding:0 17px}.hero{align-items:flex-start;gap:25px}.hero-progress{margin:12px 0 0;flex-direction:column;gap:8px}.progress-ring{width:100px;height:100px}.ring-inner strong{font-size:22px}.ring-caption{text-align:center}.stats-grid{grid-template-columns:repeat(2,1fr);margin-bottom:38px}.stat-card{padding:13px}.toolbar{grid-template-columns:1fr 1fr}.search-wrap{grid-column:1/-1}.topic-col{display:none}th.topic-col,td:nth-child(4){display:none}.table-footer span:last-child{display:none}.heading-actions{gap:10px}.save-indicator{display:none}}
+@media(max-width:470px){.hero{flex-direction:column}.hero-progress{flex-direction:row;align-self:flex-end;margin-top:-8px}.section-heading{align-items:flex-start;flex-direction:column;gap:10px}.toolbar{grid-template-columns:1fr}.search-wrap{grid-column:auto}.table-wrap{overflow-x:auto}table{min-width:570px}footer{gap:12px;flex-direction:column}}
+
+.activity{margin-bottom:52px}
+.streak-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:13px}
+.stat-sub{font-size:10px;color:var(--muted)}
+.heatmap-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+.heatmap-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.heatmap-head strong{font:600 15px 'Space Grotesk',sans-serif;letter-spacing:-.3px}
+.heatmap-head span{font-size:11px;color:var(--muted)}
+.heatmap-scroll{overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.heatmap{display:inline-block;min-width:max-content}
+.hm-months{position:relative;height:16px;margin-left:30px;font-size:10px;color:var(--muted)}
+.hm-months span{position:absolute;top:0}
+.hm-body{display:flex;gap:6px}
+.hm-days{display:grid;grid-template-rows:repeat(7,12px);gap:3px;font-size:9px;color:var(--muted);width:24px;line-height:12px}
+.hm-grid{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,12px);grid-auto-columns:12px;gap:3px}
+.hm-cell{width:12px;height:12px;border-radius:3px;background:var(--panel2);border:1px solid var(--line)}
+.hm-cell.l1{background:color-mix(in srgb,var(--accent) 30%,var(--panel2));border-color:transparent}
+.hm-cell.l2{background:color-mix(in srgb,var(--accent) 55%,var(--panel2));border-color:transparent}
+.hm-cell.l3{background:color-mix(in srgb,var(--accent) 80%,var(--panel2));border-color:transparent}
+.hm-cell.l4{background:var(--accent);border-color:transparent}
+.hm-cell.pop{animation:hmPop .5s ease}
+@keyframes hmPop{0%{transform:scale(1)}40%{transform:scale(1.7)}100%{transform:scale(1)}}
+.hm-legend{display:flex;align-items:center;justify-content:flex-end;gap:5px;margin-top:10px;font-size:10px;color:var(--muted)}
+.hm-legend .hm-cell{cursor:default}
+.icon-link{width:32px;height:32px;display:inline-grid;place-items:center;border:1px solid var(--line);border-radius:8px;background:var(--panel2);transition:transform .12s,border-color .12s}
+.icon-link:hover{transform:translateY(-1px);border-color:var(--accent)}
+.icon-link svg{width:20px;height:20px;display:block}
+.icon-link.gfg svg{width:23px;height:23px}
+.icon-link.lc svg{width:18px;height:18px}
+.link-col{width:110px}
+@media(max-width:760px){.streak-grid{grid-template-columns:repeat(2,1fr)}.heatmap-card{padding:14px}}
+
+/* themed scrollbars */
+*{scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--accent) 45%,var(--panel2)) transparent}
+*::-webkit-scrollbar{height:8px;width:8px}
+*::-webkit-scrollbar-track{background:transparent;border-radius:8px}
+*::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--accent) 45%,var(--panel2));border-radius:8px;border:2px solid transparent;background-clip:padding-box}
+*::-webkit-scrollbar-thumb:hover{background:var(--accent);background-clip:padding-box}
+*::-webkit-scrollbar-corner{background:transparent}
+.heatmap-scroll,.topic-chips{scrollbar-width:thin}
+
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="DSA 450 Tracker home">
+        <span class="brand-mark">⌘</span><span>DSA<span class="brand-muted">/450</span></span>
+      </a>
+      <div class="top-actions">
+        <span class="save-indicator"><i></i> Progress saved on this device</span>
+        <button class="icon-btn" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">☼</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> YOUR PERSONAL DSA WORKSPACE</div>
+          <h1>Make every<br><span>problem count.</span></h1>
+          <p>One place to track your practice, find problems, and see how far you've come.</p>
+        </div>
+        <div class="hero-progress">
+          <div class="progress-ring" id="progressRing">
+            <div class="ring-inner"><strong id="ringPercent">0%</strong><span>COMPLETED</span></div>
+          </div>
+          <div class="ring-caption"><strong id="ringCount">0 / 448</strong><span>problems solved</span></div>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-label="Progress summary">
+        <article class="stat-card"><span class="stat-icon purple">▦</span><div><span class="stat-label">TOTAL PROBLEMS</span><strong id="totalCount">448</strong></div></article>
+        <article class="stat-card"><span class="stat-icon green">✓</span><div><span class="stat-label">SOLVED</span><strong id="solvedCount">0</strong></div></article>
+        <article class="stat-card"><span class="stat-icon orange">◷</span><div><span class="stat-label">REMAINING</span><strong id="remainingCount">448</strong></div></article>
+        <article class="stat-card"><span class="stat-icon blue">▤</span><div><span class="stat-label">TOPICS</span><strong id="topicCount">15</strong></div></article>
+      </section>
+
+      <section class="activity" aria-label="Activity and streaks">
+        <div class="section-heading">
+          <div><div class="eyebrow">YOUR CONSISTENCY</div><h2>Activity &amp; streaks</h2></div>
+        </div>
+        <div class="streak-grid">
+          <article class="stat-card"><span class="stat-icon orange">🔥</span><div><span class="stat-label">CURRENT STREAK</span><strong id="curStreak">0 days</strong><span class="stat-sub" id="curStreakSub">Solve a problem to start</span></div></article>
+          <article class="stat-card"><span class="stat-icon purple">★</span><div><span class="stat-label">LONGEST STREAK</span><strong id="longStreak">0 days</strong><span class="stat-sub">Your personal best</span></div></article>
+          <article class="stat-card"><span class="stat-icon green">▣</span><div><span class="stat-label">ACTIVE DAYS</span><strong id="activeDays">0</strong><span class="stat-sub">In the last year</span></div></article>
+          <article class="stat-card"><span class="stat-icon blue">✓</span><div><span class="stat-label">SOLVED TODAY</span><strong id="todayCount">0</strong><span class="stat-sub" id="yearSub">0 in the last year</span></div></article>
+        </div>
+        <div class="heatmap-card">
+          <div class="heatmap-head"><strong id="hmTitle">0 problems solved in the last year</strong><span>Ticking a problem logs it on today's date</span></div>
+          <div class="heatmap-scroll" id="hmScroll">
+            <div class="heatmap">
+              <div class="hm-months" id="hmMonths"></div>
+              <div class="hm-body">
+                <div class="hm-days"><span></span><span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span><span></span></div>
+                <div class="hm-grid" id="hmGrid"></div>
+              </div>
+            </div>
+          </div>
+          <div class="hm-legend">Less <span class="hm-cell"></span><span class="hm-cell l1"></span><span class="hm-cell l2"></span><span class="hm-cell l3"></span><span class="hm-cell l4"></span> More</div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <div class="section-heading">
+          <div><div class="eyebrow">YOUR CHECKLIST</div><h2>Problem tracker</h2></div>
+          <div class="heading-actions">
+            <button class="text-btn" id="exportBtn">↓ Export progress</button>
+            <button class="text-btn danger-text" id="resetBtn">Reset progress</button>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <label class="search-wrap"><span>⌕</span><input id="searchInput" type="search" placeholder="Search problems or topics..." autocomplete="off"></label>
+          <select id="topicFilter" aria-label="Filter by topic"><option value="all">All topics</option></select>
+          <select id="statusFilter" aria-label="Filter by status">
+            <option value="all">All problems</option><option value="unsolved">Not completed</option><option value="solved">Completed</option>
+          </select>
+        </div>
+
+        <div class="topic-chips" id="topicChips" aria-label="Topic shortcuts"></div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="check-col">DONE</th><th class="number-col">#</th><th>PROBLEM</th><th class="topic-col">TOPIC</th><th class="link-col">PROBLEM LINKS</th></tr></thead>
+            <tbody id="problemRows"></tbody>
+          </table>
+          <div class="empty-state" id="emptyState" hidden><div>⌕</div><strong>No problems found</strong><span>Try another search or change your filters.</span></div>
+        </div>
+        <div class="table-footer"><span id="showingCount">Showing 448 problems</span><span>GFG and LeetCode links search the exact problem title. Progress saves automatically in this browser.</span></div>
+      </section>
+      <footer><span>DSA/450 · Built for consistency.</span><span>Your progress stays in this browser.</span></footer>
+    </main>
+  </div>
+  <script>
+window.DSA_PROBLEMS = [
+  {
+    "id": 1,
+    "topic": "Array",
+    "title": "Reverse the array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Reverse+the+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Reverse+the+array"
+  },
+  {
+    "id": 2,
+    "topic": "Array",
+    "title": "Find the maximum and minimum element in an array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+the+maximum+and+minimum+element+in+an+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+the+maximum+and+minimum+element+in+an+array"
+  },
+  {
+    "id": 3,
+    "topic": "Array",
+    "title": "Find the \"Kth\" max and min element of an array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+the+%22Kth%22+max+and+min+element+of+an+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+the+%22Kth%22+max+and+min+element+of+an+array"
+  },
+  {
+    "id": 4,
+    "topic": "Array",
+    "title": "Given an array which consists of only 0, 1 and 2. Sort the array without using any sorting algo",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Given+an+array+which+consists+of+only+0%2C+1+and+2.+Sort+the+array+without+using+any+sorting+algo",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Given+an+array+which+consists+of+only+0%2C+1+and+2.+Sort+the+array+without+using+any+sorting+algo"
+  },
+  {
+    "id": 5,
+    "topic": "Array",
+    "title": "Move all the negative elements to one side of the array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Move+all+the+negative+elements+to+one+side+of+the+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Move+all+the+negative+elements+to+one+side+of+the+array"
+  },
+  {
+    "id": 6,
+    "topic": "Array",
+    "title": "Find the Union and Intersection of the two sorted arrays.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+the+Union+and+Intersection+of+the+two+sorted+arrays.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+the+Union+and+Intersection+of+the+two+sorted+arrays."
+  },
+  {
+    "id": 7,
+    "topic": "Array",
+    "title": "Write a program to cyclically rotate an array by one.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Write+a+program+to+cyclically+rotate+an+array+by+one.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Write+a+program+to+cyclically+rotate+an+array+by+one."
+  },
+  {
+    "id": 8,
+    "topic": "Array",
+    "title": "find Largest sum contiguous Subarray [V. IMP]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=find+Largest+sum+contiguous+Subarray+%5BV.+IMP%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=find+Largest+sum+contiguous+Subarray+%5BV.+IMP%5D"
+  },
+  {
+    "id": 9,
+    "topic": "Array",
+    "title": "Minimise the maximum difference between heights [V.IMP]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimise+the+maximum+difference+between+heights+%5BV.IMP%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimise+the+maximum+difference+between+heights+%5BV.IMP%5D"
+  },
+  {
+    "id": 10,
+    "topic": "Array",
+    "title": "Minimum no. of Jumps to reach end of an array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimum+no.+of+Jumps+to+reach+end+of+an+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimum+no.+of+Jumps+to+reach+end+of+an+array"
+  },
+  {
+    "id": 11,
+    "topic": "Array",
+    "title": "find duplicate in an array of N+1 Integers",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=find+duplicate+in+an+array+of+N%2B1+Integers",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=find+duplicate+in+an+array+of+N%2B1+Integers"
+  },
+  {
+    "id": 12,
+    "topic": "Array",
+    "title": "Merge 2 sorted arrays without using Extra space.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Merge+2+sorted+arrays+without+using+Extra+space.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Merge+2+sorted+arrays+without+using+Extra+space."
+  },
+  {
+    "id": 13,
+    "topic": "Array",
+    "title": "Kadane's Algo [V.V.V.V.V IMP]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Kadane%27s+Algo+%5BV.V.V.V.V+IMP%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Kadane%27s+Algo+%5BV.V.V.V.V+IMP%5D"
+  },
+  {
+    "id": 14,
+    "topic": "Array",
+    "title": "Merge Intervals",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Merge+Intervals",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Merge+Intervals"
+  },
+  {
+    "id": 15,
+    "topic": "Array",
+    "title": "Next Permutation",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Next+Permutation",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Next+Permutation"
+  },
+  {
+    "id": 16,
+    "topic": "Array",
+    "title": "Count Inversion",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Count+Inversion",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Count+Inversion"
+  },
+  {
+    "id": 17,
+    "topic": "Array",
+    "title": "Best time to buy and Sell stock",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Best+time+to+buy+and+Sell+stock",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Best+time+to+buy+and+Sell+stock"
+  },
+  {
+    "id": 18,
+    "topic": "Array",
+    "title": "find all pairs on integer array whose sum is equal to given number",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=find+all+pairs+on+integer+array+whose+sum+is+equal+to+given+number",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=find+all+pairs+on+integer+array+whose+sum+is+equal+to+given+number"
+  },
+  {
+    "id": 19,
+    "topic": "Array",
+    "title": "find common elements In 3 sorted arrays",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=find+common+elements+In+3+sorted+arrays",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=find+common+elements+In+3+sorted+arrays"
+  },
+  {
+    "id": 20,
+    "topic": "Array",
+    "title": "Rearrange the array in alternating positive and negative items with O(1) extra space",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Rearrange+the+array+in+alternating+positive+and+negative+items+with+O%281%29+extra+space",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Rearrange+the+array+in+alternating+positive+and+negative+items+with+O%281%29+extra+space"
+  },
+  {
+    "id": 21,
+    "topic": "Array",
+    "title": "Find if there is any subarray with sum equal to 0",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+if+there+is+any+subarray+with+sum+equal+to+0",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+if+there+is+any+subarray+with+sum+equal+to+0"
+  },
+  {
+    "id": 22,
+    "topic": "Array",
+    "title": "Find factorial of a large number",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+factorial+of+a+large+number",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+factorial+of+a+large+number"
+  },
+  {
+    "id": 23,
+    "topic": "Array",
+    "title": "find maximum product subarray",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=find+maximum+product+subarray",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=find+maximum+product+subarray"
+  },
+  {
+    "id": 24,
+    "topic": "Array",
+    "title": "Find longest coinsecutive subsequence",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+longest+coinsecutive+subsequence",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+longest+coinsecutive+subsequence"
+  },
+  {
+    "id": 25,
+    "topic": "Array",
+    "title": "Given an array of size n and a number k, fin all elements that appear more than \" n/k \" times.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Given+an+array+of+size+n+and+a+number+k%2C+fin+all+elements+that+appear+more+than+%22+n%2Fk+%22+times.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Given+an+array+of+size+n+and+a+number+k%2C+fin+all+elements+that+appear+more+than+%22+n%2Fk+%22+times."
+  },
+  {
+    "id": 26,
+    "topic": "Array",
+    "title": "Maximum profit by buying and selling a share atmost twice",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximum+profit+by+buying+and+selling+a+share+atmost+twice",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximum+profit+by+buying+and+selling+a+share+atmost+twice"
+  },
+  {
+    "id": 27,
+    "topic": "Array",
+    "title": "Find whether an array is a subset of another array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+whether+an+array+is+a+subset+of+another+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+whether+an+array+is+a+subset+of+another+array"
+  },
+  {
+    "id": 28,
+    "topic": "Array",
+    "title": "Find the triplet that sum to a given value",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+the+triplet+that+sum+to+a+given+value",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+the+triplet+that+sum+to+a+given+value"
+  },
+  {
+    "id": 29,
+    "topic": "Array",
+    "title": "Trapping Rain water problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Trapping+Rain+water+problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Trapping+Rain+water+problem"
+  },
+  {
+    "id": 30,
+    "topic": "Array",
+    "title": "Chocolate Distribution problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Chocolate+Distribution+problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Chocolate+Distribution+problem"
+  },
+  {
+    "id": 31,
+    "topic": "Array",
+    "title": "Smallest Subarray with sum greater than a given value",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Smallest+Subarray+with+sum+greater+than+a+given+value",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Smallest+Subarray+with+sum+greater+than+a+given+value"
+  },
+  {
+    "id": 32,
+    "topic": "Array",
+    "title": "Three way partitioning of an array around a given value",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Three+way+partitioning+of+an+array+around+a+given+value",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Three+way+partitioning+of+an+array+around+a+given+value"
+  },
+  {
+    "id": 33,
+    "topic": "Array",
+    "title": "Minimum swaps required bring elements less equal K together",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimum+swaps+required+bring+elements+less+equal+K+together",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimum+swaps+required+bring+elements+less+equal+K+together"
+  },
+  {
+    "id": 34,
+    "topic": "Array",
+    "title": "Minimum no. of operations required to make an array palindrome",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimum+no.+of+operations+required+to+make+an+array+palindrome",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimum+no.+of+operations+required+to+make+an+array+palindrome"
+  },
+  {
+    "id": 35,
+    "topic": "Array",
+    "title": "Median of 2 sorted arrays of equal size",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Median+of+2+sorted+arrays+of+equal+size",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Median+of+2+sorted+arrays+of+equal+size"
+  },
+  {
+    "id": 36,
+    "topic": "Array",
+    "title": "Median of 2 sorted arrays of different size",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Median+of+2+sorted+arrays+of+different+size",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Median+of+2+sorted+arrays+of+different+size"
+  },
+  {
+    "id": 37,
+    "topic": "Matrix",
+    "title": "Spiral traversal on a Matrix",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Spiral+traversal+on+a+Matrix",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Spiral+traversal+on+a+Matrix"
+  },
+  {
+    "id": 38,
+    "topic": "Matrix",
+    "title": "Search an element in a matriix",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Search+an+element+in+a+matriix",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Search+an+element+in+a+matriix"
+  },
+  {
+    "id": 39,
+    "topic": "Matrix",
+    "title": "Find median in a row wise sorted matrix",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+median+in+a+row+wise+sorted+matrix",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+median+in+a+row+wise+sorted+matrix"
+  },
+  {
+    "id": 40,
+    "topic": "Matrix",
+    "title": "Find row with maximum no. of 1's",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+row+with+maximum+no.+of+1%27s",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+row+with+maximum+no.+of+1%27s"
+  },
+  {
+    "id": 41,
+    "topic": "Matrix",
+    "title": "Print elements in sorted order using row-column wise sorted matrix",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Print+elements+in+sorted+order+using+row-column+wise+sorted+matrix",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Print+elements+in+sorted+order+using+row-column+wise+sorted+matrix"
+  },
+  {
+    "id": 42,
+    "topic": "Matrix",
+    "title": "Maximum size rectangle",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximum+size+rectangle",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximum+size+rectangle"
+  },
+  {
+    "id": 43,
+    "topic": "Matrix",
+    "title": "Find a specific pair in matrix",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+a+specific+pair+in+matrix",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+a+specific+pair+in+matrix"
+  },
+  {
+    "id": 44,
+    "topic": "Matrix",
+    "title": "Rotate matrix by 90 degrees",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Rotate+matrix+by+90+degrees",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Rotate+matrix+by+90+degrees"
+  },
+  {
+    "id": 45,
+    "topic": "Matrix",
+    "title": "Kth smallest element in a row-cpumn wise sorted matrix",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Kth+smallest+element+in+a+row-cpumn+wise+sorted+matrix",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Kth+smallest+element+in+a+row-cpumn+wise+sorted+matrix"
+  },
+  {
+    "id": 46,
+    "topic": "Matrix",
+    "title": "Common elements in all rows of a given matrix",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Common+elements+in+all+rows+of+a+given+matrix",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Common+elements+in+all+rows+of+a+given+matrix"
+  },
+  {
+    "id": 47,
+    "topic": "String",
+    "title": "Reverse a String",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Reverse+a+String",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Reverse+a+String"
+  },
+  {
+    "id": 48,
+    "topic": "String",
+    "title": "Check whether a String is Palindrome or not",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Check+whether+a+String+is+Palindrome+or+not",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Check+whether+a+String+is+Palindrome+or+not"
+  },
+  {
+    "id": 49,
+    "topic": "String",
+    "title": "Find Duplicate characters in a string",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+Duplicate+characters+in+a+string",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+Duplicate+characters+in+a+string"
+  },
+  {
+    "id": 50,
+    "topic": "String",
+    "title": "Why strings are immutable in Java?",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Why+strings+are+immutable+in+Java%3F",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Why+strings+are+immutable+in+Java%3F"
+  },
+  {
+    "id": 51,
+    "topic": "String",
+    "title": "Write a Code to check whether one string is a rotation of another",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Write+a+Code+to+check+whether+one+string+is+a+rotation+of+another",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Write+a+Code+to+check+whether+one+string+is+a+rotation+of+another"
+  },
+  {
+    "id": 52,
+    "topic": "String",
+    "title": "Write a Program to check whether a string is a valid shuffle of two strings or not",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Write+a+Program+to+check+whether+a+string+is+a+valid+shuffle+of+two+strings+or+not",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Write+a+Program+to+check+whether+a+string+is+a+valid+shuffle+of+two+strings+or+not"
+  },
+  {
+    "id": 53,
+    "topic": "String",
+    "title": "Count and Say problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Count+and+Say+problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Count+and+Say+problem"
+  },
+  {
+    "id": 54,
+    "topic": "String",
+    "title": "Write a program to find the longest Palindrome in a string.[ Longest palindromic Substring]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Write+a+program+to+find+the+longest+Palindrome+in+a+string.%5B+Longest+palindromic+Substring%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Write+a+program+to+find+the+longest+Palindrome+in+a+string.%5B+Longest+palindromic+Substring%5D"
+  },
+  {
+    "id": 55,
+    "topic": "String",
+    "title": "Find Longest Recurring Subsequence in String",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+Longest+Recurring+Subsequence+in+String",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+Longest+Recurring+Subsequence+in+String"
+  },
+  {
+    "id": 56,
+    "topic": "String",
+    "title": "Print all Subsequences of a string.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Print+all+Subsequences+of+a+string.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Print+all+Subsequences+of+a+string."
+  },
+  {
+    "id": 57,
+    "topic": "String",
+    "title": "Print all the permutations of the given string",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Print+all+the+permutations+of+the+given+string",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Print+all+the+permutations+of+the+given+string"
+  },
+  {
+    "id": 58,
+    "topic": "String",
+    "title": "Split the Binary string into two substring with equal 0’s and 1’s",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Split+the+Binary+string+into+two+substring+with+equal+0%E2%80%99s+and+1%E2%80%99s",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Split+the+Binary+string+into+two+substring+with+equal+0%E2%80%99s+and+1%E2%80%99s"
+  },
+  {
+    "id": 59,
+    "topic": "String",
+    "title": "Word Wrap Problem [VERY IMP].",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Word+Wrap+Problem+%5BVERY+IMP%5D.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Word+Wrap+Problem+%5BVERY+IMP%5D."
+  },
+  {
+    "id": 60,
+    "topic": "String",
+    "title": "EDIT Distance [Very Imp]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=EDIT+Distance+%5BVery+Imp%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=EDIT+Distance+%5BVery+Imp%5D"
+  },
+  {
+    "id": 61,
+    "topic": "String",
+    "title": "Find next greater number with same set of digits. [Very Very IMP]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+next+greater+number+with+same+set+of+digits.+%5BVery+Very+IMP%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+next+greater+number+with+same+set+of+digits.+%5BVery+Very+IMP%5D"
+  },
+  {
+    "id": 62,
+    "topic": "String",
+    "title": "Balanced Parenthesis problem.[Imp]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Balanced+Parenthesis+problem.%5BImp%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Balanced+Parenthesis+problem.%5BImp%5D"
+  },
+  {
+    "id": 63,
+    "topic": "String",
+    "title": "Word break Problem[ Very Imp]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Word+break+Problem%5B+Very+Imp%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Word+break+Problem%5B+Very+Imp%5D"
+  },
+  {
+    "id": 64,
+    "topic": "String",
+    "title": "Rabin Karp Algo",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Rabin+Karp+Algo",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Rabin+Karp+Algo"
+  },
+  {
+    "id": 65,
+    "topic": "String",
+    "title": "KMP Algo",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=KMP+Algo",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=KMP+Algo"
+  },
+  {
+    "id": 66,
+    "topic": "String",
+    "title": "Convert a Sentence into its equivalent mobile numeric keypad sequence.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Convert+a+Sentence+into+its+equivalent+mobile+numeric+keypad+sequence.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Convert+a+Sentence+into+its+equivalent+mobile+numeric+keypad+sequence."
+  },
+  {
+    "id": 67,
+    "topic": "String",
+    "title": "Minimum number of bracket reversals needed to make an expression balanced.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimum+number+of+bracket+reversals+needed+to+make+an+expression+balanced.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimum+number+of+bracket+reversals+needed+to+make+an+expression+balanced."
+  },
+  {
+    "id": 68,
+    "topic": "String",
+    "title": "Count All Palindromic Subsequence in a given String.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Count+All+Palindromic+Subsequence+in+a+given+String.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Count+All+Palindromic+Subsequence+in+a+given+String."
+  },
+  {
+    "id": 69,
+    "topic": "String",
+    "title": "Count of number of given string in 2D character array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Count+of+number+of+given+string+in+2D+character+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Count+of+number+of+given+string+in+2D+character+array"
+  },
+  {
+    "id": 70,
+    "topic": "String",
+    "title": "Search a Word in a 2D Grid of characters.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Search+a+Word+in+a+2D+Grid+of+characters.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Search+a+Word+in+a+2D+Grid+of+characters."
+  },
+  {
+    "id": 71,
+    "topic": "String",
+    "title": "Boyer Moore Algorithm for Pattern Searching.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Boyer+Moore+Algorithm+for+Pattern+Searching.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Boyer+Moore+Algorithm+for+Pattern+Searching."
+  },
+  {
+    "id": 72,
+    "topic": "String",
+    "title": "Converting Roman Numerals to Decimal",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Converting+Roman+Numerals+to+Decimal",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Converting+Roman+Numerals+to+Decimal"
+  },
+  {
+    "id": 73,
+    "topic": "String",
+    "title": "Longest Common Prefix",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Longest+Common+Prefix",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Longest+Common+Prefix"
+  },
+  {
+    "id": 74,
+    "topic": "String",
+    "title": "Number of flips to make binary string alternate",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Number+of+flips+to+make+binary+string+alternate",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Number+of+flips+to+make+binary+string+alternate"
+  },
+  {
+    "id": 75,
+    "topic": "String",
+    "title": "Find the first repeated word in string.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+the+first+repeated+word+in+string.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+the+first+repeated+word+in+string."
+  },
+  {
+    "id": 76,
+    "topic": "String",
+    "title": "Minimum number of swaps for bracket balancing.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimum+number+of+swaps+for+bracket+balancing.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimum+number+of+swaps+for+bracket+balancing."
+  },
+  {
+    "id": 77,
+    "topic": "String",
+    "title": "Find the longest common subsequence between two strings.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+the+longest+common+subsequence+between+two+strings.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+the+longest+common+subsequence+between+two+strings."
+  },
+  {
+    "id": 78,
+    "topic": "String",
+    "title": "Program to generate all possible valid IP addresses from given string.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Program+to+generate+all+possible+valid+IP+addresses+from+given+string.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Program+to+generate+all+possible+valid+IP+addresses+from+given+string."
+  },
+  {
+    "id": 79,
+    "topic": "String",
+    "title": "Write a program tofind the smallest window that contains all characters of string itself.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Write+a+program+tofind+the+smallest+window+that+contains+all+characters+of+string+itself.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Write+a+program+tofind+the+smallest+window+that+contains+all+characters+of+string+itself."
+  },
+  {
+    "id": 80,
+    "topic": "String",
+    "title": "Rearrange characters in a string such that no two adjacent are same",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Rearrange+characters+in+a+string+such+that+no+two+adjacent+are+same",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Rearrange+characters+in+a+string+such+that+no+two+adjacent+are+same"
+  },
+  {
+    "id": 81,
+    "topic": "String",
+    "title": "Minimum characters to be added at front to make string palindrome",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimum+characters+to+be+added+at+front+to+make+string+palindrome",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimum+characters+to+be+added+at+front+to+make+string+palindrome"
+  },
+  {
+    "id": 82,
+    "topic": "String",
+    "title": "Given a sequence of words, print all anagrams together",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Given+a+sequence+of+words%2C+print+all+anagrams+together",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Given+a+sequence+of+words%2C+print+all+anagrams+together"
+  },
+  {
+    "id": 83,
+    "topic": "String",
+    "title": "Find the smallest window in a string containing all characters of another string",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+the+smallest+window+in+a+string+containing+all+characters+of+another+string",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+the+smallest+window+in+a+string+containing+all+characters+of+another+string"
+  },
+  {
+    "id": 84,
+    "topic": "String",
+    "title": "Recursively remove all adjacent duplicates",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Recursively+remove+all+adjacent+duplicates",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Recursively+remove+all+adjacent+duplicates"
+  },
+  {
+    "id": 85,
+    "topic": "String",
+    "title": "String matching where one string contains wildcard characters",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=String+matching+where+one+string+contains+wildcard+characters",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=String+matching+where+one+string+contains+wildcard+characters"
+  },
+  {
+    "id": 86,
+    "topic": "String",
+    "title": "Function to find Number of customers who could not get a computer",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Function+to+find+Number+of+customers+who+could+not+get+a+computer",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Function+to+find+Number+of+customers+who+could+not+get+a+computer"
+  },
+  {
+    "id": 87,
+    "topic": "String",
+    "title": "Transform One String to Another using Minimum Number of Given Operation",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Transform+One+String+to+Another+using+Minimum+Number+of+Given+Operation",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Transform+One+String+to+Another+using+Minimum+Number+of+Given+Operation"
+  },
+  {
+    "id": 88,
+    "topic": "String",
+    "title": "Check if two given strings are isomorphic to each other",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Check+if+two+given+strings+are+isomorphic+to+each+other",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Check+if+two+given+strings+are+isomorphic+to+each+other"
+  },
+  {
+    "id": 89,
+    "topic": "String",
+    "title": "Recursively print all sentences that can be formed from list of word lists",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Recursively+print+all+sentences+that+can+be+formed+from+list+of+word+lists",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Recursively+print+all+sentences+that+can+be+formed+from+list+of+word+lists"
+  },
+  {
+    "id": 90,
+    "topic": "Searching & Sorting",
+    "title": "Find first and last positions of an element in a sorted array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+first+and+last+positions+of+an+element+in+a+sorted+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+first+and+last+positions+of+an+element+in+a+sorted+array"
+  },
+  {
+    "id": 91,
+    "topic": "Searching & Sorting",
+    "title": "Find a Fixed Point (Value equal to index) in a given array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+a+Fixed+Point+%28Value+equal+to+index%29+in+a+given+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+a+Fixed+Point+%28Value+equal+to+index%29+in+a+given+array"
+  },
+  {
+    "id": 92,
+    "topic": "Searching & Sorting",
+    "title": "Search in a rotated sorted array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Search+in+a+rotated+sorted+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Search+in+a+rotated+sorted+array"
+  },
+  {
+    "id": 93,
+    "topic": "Searching & Sorting",
+    "title": "square root of an integer",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=square+root+of+an+integer",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=square+root+of+an+integer"
+  },
+  {
+    "id": 94,
+    "topic": "Searching & Sorting",
+    "title": "Maximum and minimum of an array using minimum number of comparisons",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximum+and+minimum+of+an+array+using+minimum+number+of+comparisons",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximum+and+minimum+of+an+array+using+minimum+number+of+comparisons"
+  },
+  {
+    "id": 95,
+    "topic": "Searching & Sorting",
+    "title": "Optimum location of point to minimize total distance",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Optimum+location+of+point+to+minimize+total+distance",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Optimum+location+of+point+to+minimize+total+distance"
+  },
+  {
+    "id": 96,
+    "topic": "Searching & Sorting",
+    "title": "Find the repeating and the missing",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+the+repeating+and+the+missing",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+the+repeating+and+the+missing"
+  },
+  {
+    "id": 97,
+    "topic": "Searching & Sorting",
+    "title": "find majority element",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=find+majority+element",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=find+majority+element"
+  },
+  {
+    "id": 98,
+    "topic": "Searching & Sorting",
+    "title": "Searching in an array where adjacent differ by at most k",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Searching+in+an+array+where+adjacent+differ+by+at+most+k",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Searching+in+an+array+where+adjacent+differ+by+at+most+k"
+  },
+  {
+    "id": 99,
+    "topic": "Searching & Sorting",
+    "title": "find a pair with a given difference",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=find+a+pair+with+a+given+difference",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=find+a+pair+with+a+given+difference"
+  },
+  {
+    "id": 100,
+    "topic": "Searching & Sorting",
+    "title": "find four elements that sum to a given value",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=find+four+elements+that+sum+to+a+given+value",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=find+four+elements+that+sum+to+a+given+value"
+  },
+  {
+    "id": 101,
+    "topic": "Searching & Sorting",
+    "title": "maximum sum such that no 2 elements are adjacent",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=maximum+sum+such+that+no+2+elements+are+adjacent",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=maximum+sum+such+that+no+2+elements+are+adjacent"
+  },
+  {
+    "id": 102,
+    "topic": "Searching & Sorting",
+    "title": "Count triplet with sum smaller than a given value",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Count+triplet+with+sum+smaller+than+a+given+value",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Count+triplet+with+sum+smaller+than+a+given+value"
+  },
+  {
+    "id": 103,
+    "topic": "Searching & Sorting",
+    "title": "merge 2 sorted arrays",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=merge+2+sorted+arrays",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=merge+2+sorted+arrays"
+  },
+  {
+    "id": 104,
+    "topic": "Searching & Sorting",
+    "title": "print all subarrays with 0 sum",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=print+all+subarrays+with+0+sum",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=print+all+subarrays+with+0+sum"
+  },
+  {
+    "id": 105,
+    "topic": "Searching & Sorting",
+    "title": "Product array Puzzle",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Product+array+Puzzle",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Product+array+Puzzle"
+  },
+  {
+    "id": 106,
+    "topic": "Searching & Sorting",
+    "title": "Sort array according to count of set bits",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Sort+array+according+to+count+of+set+bits",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Sort+array+according+to+count+of+set+bits"
+  },
+  {
+    "id": 107,
+    "topic": "Searching & Sorting",
+    "title": "minimum no. of swaps required to sort the array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=minimum+no.+of+swaps+required+to+sort+the+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=minimum+no.+of+swaps+required+to+sort+the+array"
+  },
+  {
+    "id": 108,
+    "topic": "Searching & Sorting",
+    "title": "Bishu and Soldiers",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Bishu+and+Soldiers",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Bishu+and+Soldiers"
+  },
+  {
+    "id": 109,
+    "topic": "Searching & Sorting",
+    "title": "Rasta and Kheshtak",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Rasta+and+Kheshtak",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Rasta+and+Kheshtak"
+  },
+  {
+    "id": 110,
+    "topic": "Searching & Sorting",
+    "title": "Kth smallest number again",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Kth+smallest+number+again",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Kth+smallest+number+again"
+  },
+  {
+    "id": 111,
+    "topic": "Searching & Sorting",
+    "title": "Find pivot element in a sorted array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+pivot+element+in+a+sorted+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+pivot+element+in+a+sorted+array"
+  },
+  {
+    "id": 112,
+    "topic": "Searching & Sorting",
+    "title": "K-th Element of Two Sorted Arrays",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=K-th+Element+of+Two+Sorted+Arrays",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=K-th+Element+of+Two+Sorted+Arrays"
+  },
+  {
+    "id": 113,
+    "topic": "Searching & Sorting",
+    "title": "Aggressive cows",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Aggressive+cows",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Aggressive+cows"
+  },
+  {
+    "id": 114,
+    "topic": "Searching & Sorting",
+    "title": "Book Allocation Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Book+Allocation+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Book+Allocation+Problem"
+  },
+  {
+    "id": 115,
+    "topic": "Searching & Sorting",
+    "title": "EKOSPOJ:",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=EKOSPOJ%3A",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=EKOSPOJ%3A"
+  },
+  {
+    "id": 116,
+    "topic": "Searching & Sorting",
+    "title": "Job Scheduling Algo",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Job+Scheduling+Algo",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Job+Scheduling+Algo"
+  },
+  {
+    "id": 117,
+    "topic": "Searching & Sorting",
+    "title": "Missing Number in AP",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Missing+Number+in+AP",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Missing+Number+in+AP"
+  },
+  {
+    "id": 118,
+    "topic": "Searching & Sorting",
+    "title": "Smallest number with atleastn trailing zeroes infactorial",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Smallest+number+with+atleastn+trailing+zeroes+infactorial",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Smallest+number+with+atleastn+trailing+zeroes+infactorial"
+  },
+  {
+    "id": 119,
+    "topic": "Searching & Sorting",
+    "title": "Painters Partition Problem:",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Painters+Partition+Problem%3A",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Painters+Partition+Problem%3A"
+  },
+  {
+    "id": 120,
+    "topic": "Searching & Sorting",
+    "title": "ROTI-Prata SPOJ",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=ROTI-Prata+SPOJ",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=ROTI-Prata+SPOJ"
+  },
+  {
+    "id": 121,
+    "topic": "Searching & Sorting",
+    "title": "DoubleHelix SPOJ",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=DoubleHelix+SPOJ",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=DoubleHelix+SPOJ"
+  },
+  {
+    "id": 122,
+    "topic": "Searching & Sorting",
+    "title": "Subset Sums",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Subset+Sums",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Subset+Sums"
+  },
+  {
+    "id": 123,
+    "topic": "Searching & Sorting",
+    "title": "Findthe inversion count",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Findthe+inversion+count",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Findthe+inversion+count"
+  },
+  {
+    "id": 124,
+    "topic": "Searching & Sorting",
+    "title": "Implement Merge-sort in-place",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+Merge-sort+in-place",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+Merge-sort+in-place"
+  },
+  {
+    "id": 125,
+    "topic": "Searching & Sorting",
+    "title": "Partitioning and Sorting Arrays with Many Repeated Entries",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Partitioning+and+Sorting+Arrays+with+Many+Repeated+Entries",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Partitioning+and+Sorting+Arrays+with+Many+Repeated+Entries"
+  },
+  {
+    "id": 126,
+    "topic": "LinkedList",
+    "title": "Write a Program to reverse the Linked List. (Both Iterative and recursive)",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Write+a+Program+to+reverse+the+Linked+List.+%28Both+Iterative+and+recursive%29",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Write+a+Program+to+reverse+the+Linked+List.+%28Both+Iterative+and+recursive%29"
+  },
+  {
+    "id": 127,
+    "topic": "LinkedList",
+    "title": "Reverse a Linked List in group of Given Size. [Very Imp]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Reverse+a+Linked+List+in+group+of+Given+Size.+%5BVery+Imp%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Reverse+a+Linked+List+in+group+of+Given+Size.+%5BVery+Imp%5D"
+  },
+  {
+    "id": 128,
+    "topic": "LinkedList",
+    "title": "Write a program to Detect loop in a linked list.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Write+a+program+to+Detect+loop+in+a+linked+list.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Write+a+program+to+Detect+loop+in+a+linked+list."
+  },
+  {
+    "id": 129,
+    "topic": "LinkedList",
+    "title": "Write a program to Delete loop in a linked list.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Write+a+program+to+Delete+loop+in+a+linked+list.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Write+a+program+to+Delete+loop+in+a+linked+list."
+  },
+  {
+    "id": 130,
+    "topic": "LinkedList",
+    "title": "Find the starting point of the loop.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+the+starting+point+of+the+loop.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+the+starting+point+of+the+loop."
+  },
+  {
+    "id": 131,
+    "topic": "LinkedList",
+    "title": "Remove Duplicates in a sorted Linked List.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Remove+Duplicates+in+a+sorted+Linked+List.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Remove+Duplicates+in+a+sorted+Linked+List."
+  },
+  {
+    "id": 132,
+    "topic": "LinkedList",
+    "title": "Remove Duplicates in a Un-sorted Linked List.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Remove+Duplicates+in+a+Un-sorted+Linked+List.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Remove+Duplicates+in+a+Un-sorted+Linked+List."
+  },
+  {
+    "id": 133,
+    "topic": "LinkedList",
+    "title": "Write a Program to Move the last element to Front in a Linked List.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Write+a+Program+to+Move+the+last+element+to+Front+in+a+Linked+List.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Write+a+Program+to+Move+the+last+element+to+Front+in+a+Linked+List."
+  },
+  {
+    "id": 134,
+    "topic": "LinkedList",
+    "title": "Add “1” to a number represented as a Linked List.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Add+%E2%80%9C1%E2%80%9D+to+a+number+represented+as+a+Linked+List.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Add+%E2%80%9C1%E2%80%9D+to+a+number+represented+as+a+Linked+List."
+  },
+  {
+    "id": 135,
+    "topic": "LinkedList",
+    "title": "Add two numbers represented by linked lists.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Add+two+numbers+represented+by+linked+lists.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Add+two+numbers+represented+by+linked+lists."
+  },
+  {
+    "id": 136,
+    "topic": "LinkedList",
+    "title": "Intersection of two Sorted Linked List.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Intersection+of+two+Sorted+Linked+List.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Intersection+of+two+Sorted+Linked+List."
+  },
+  {
+    "id": 137,
+    "topic": "LinkedList",
+    "title": "Intersection Point of two Linked Lists.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Intersection+Point+of+two+Linked+Lists.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Intersection+Point+of+two+Linked+Lists."
+  },
+  {
+    "id": 138,
+    "topic": "LinkedList",
+    "title": "Merge Sort For Linked lists.[Very Important]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Merge+Sort+For+Linked+lists.%5BVery+Important%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Merge+Sort+For+Linked+lists.%5BVery+Important%5D"
+  },
+  {
+    "id": 139,
+    "topic": "LinkedList",
+    "title": "Quicksort for Linked Lists.[Very Important]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Quicksort+for+Linked+Lists.%5BVery+Important%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Quicksort+for+Linked+Lists.%5BVery+Important%5D"
+  },
+  {
+    "id": 140,
+    "topic": "LinkedList",
+    "title": "Find the middle Element of a linked list.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+the+middle+Element+of+a+linked+list.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+the+middle+Element+of+a+linked+list."
+  },
+  {
+    "id": 141,
+    "topic": "LinkedList",
+    "title": "Check if a linked list is a circular linked list.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Check+if+a+linked+list+is+a+circular+linked+list.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Check+if+a+linked+list+is+a+circular+linked+list."
+  },
+  {
+    "id": 142,
+    "topic": "LinkedList",
+    "title": "Split a Circular linked list into two halves.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Split+a+Circular+linked+list+into+two+halves.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Split+a+Circular+linked+list+into+two+halves."
+  },
+  {
+    "id": 143,
+    "topic": "LinkedList",
+    "title": "Write a Program to check whether the Singly Linked list is a palindrome or not.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Write+a+Program+to+check+whether+the+Singly+Linked+list+is+a+palindrome+or+not.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Write+a+Program+to+check+whether+the+Singly+Linked+list+is+a+palindrome+or+not."
+  },
+  {
+    "id": 144,
+    "topic": "LinkedList",
+    "title": "Deletion from a Circular Linked List.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Deletion+from+a+Circular+Linked+List.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Deletion+from+a+Circular+Linked+List."
+  },
+  {
+    "id": 145,
+    "topic": "LinkedList",
+    "title": "Reverse a Doubly Linked list.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Reverse+a+Doubly+Linked+list.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Reverse+a+Doubly+Linked+list."
+  },
+  {
+    "id": 146,
+    "topic": "LinkedList",
+    "title": "Find pairs with a given sum in a DLL.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+pairs+with+a+given+sum+in+a+DLL.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+pairs+with+a+given+sum+in+a+DLL."
+  },
+  {
+    "id": 147,
+    "topic": "LinkedList",
+    "title": "Count triplets in a sorted DLL whose sum is equal to given value “X”.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Count+triplets+in+a+sorted+DLL+whose+sum+is+equal+to+given+value+%E2%80%9CX%E2%80%9D.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Count+triplets+in+a+sorted+DLL+whose+sum+is+equal+to+given+value+%E2%80%9CX%E2%80%9D."
+  },
+  {
+    "id": 148,
+    "topic": "LinkedList",
+    "title": "Sort a “k”sorted Doubly Linked list.[Very IMP]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Sort+a+%E2%80%9Ck%E2%80%9Dsorted+Doubly+Linked+list.%5BVery+IMP%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Sort+a+%E2%80%9Ck%E2%80%9Dsorted+Doubly+Linked+list.%5BVery+IMP%5D"
+  },
+  {
+    "id": 149,
+    "topic": "LinkedList",
+    "title": "Rotate DoublyLinked list by N nodes.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Rotate+DoublyLinked+list+by+N+nodes.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Rotate+DoublyLinked+list+by+N+nodes."
+  },
+  {
+    "id": 150,
+    "topic": "LinkedList",
+    "title": "Rotate a Doubly Linked list in group of Given Size.[Very IMP]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Rotate+a+Doubly+Linked+list+in+group+of+Given+Size.%5BVery+IMP%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Rotate+a+Doubly+Linked+list+in+group+of+Given+Size.%5BVery+IMP%5D"
+  },
+  {
+    "id": 151,
+    "topic": "LinkedList",
+    "title": "Can we reverse a linked list in less than O(n) ?",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Can+we+reverse+a+linked+list+in+less+than+O%28n%29+%3F",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Can+we+reverse+a+linked+list+in+less+than+O%28n%29+%3F"
+  },
+  {
+    "id": 152,
+    "topic": "LinkedList",
+    "title": "Why Quicksort is preferred for. Arrays and Merge Sort for LinkedLists ?",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Why+Quicksort+is+preferred+for.+Arrays+and+Merge+Sort+for+LinkedLists+%3F",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Why+Quicksort+is+preferred+for.+Arrays+and+Merge+Sort+for+LinkedLists+%3F"
+  },
+  {
+    "id": 153,
+    "topic": "LinkedList",
+    "title": "Flatten a Linked List",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Flatten+a+Linked+List",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Flatten+a+Linked+List"
+  },
+  {
+    "id": 154,
+    "topic": "LinkedList",
+    "title": "Sort a LL of 0's, 1's and 2's",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Sort+a+LL+of+0%27s%2C+1%27s+and+2%27s",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Sort+a+LL+of+0%27s%2C+1%27s+and+2%27s"
+  },
+  {
+    "id": 155,
+    "topic": "LinkedList",
+    "title": "Clone a linked list with next and random pointer",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Clone+a+linked+list+with+next+and+random+pointer",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Clone+a+linked+list+with+next+and+random+pointer"
+  },
+  {
+    "id": 156,
+    "topic": "LinkedList",
+    "title": "Merge K sorted Linked list",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Merge+K+sorted+Linked+list",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Merge+K+sorted+Linked+list"
+  },
+  {
+    "id": 157,
+    "topic": "LinkedList",
+    "title": "Multiply 2 no. represented by LL",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Multiply+2+no.+represented+by+LL",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Multiply+2+no.+represented+by+LL"
+  },
+  {
+    "id": 158,
+    "topic": "LinkedList",
+    "title": "Delete nodes which have a greater value on right side",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Delete+nodes+which+have+a+greater+value+on+right+side",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Delete+nodes+which+have+a+greater+value+on+right+side"
+  },
+  {
+    "id": 159,
+    "topic": "LinkedList",
+    "title": "Segregate even and odd nodes in a Linked List",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Segregate+even+and+odd+nodes+in+a+Linked+List",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Segregate+even+and+odd+nodes+in+a+Linked+List"
+  },
+  {
+    "id": 160,
+    "topic": "LinkedList",
+    "title": "Program for n’th node from the end of a Linked List",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Program+for+n%E2%80%99th+node+from+the+end+of+a+Linked+List",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Program+for+n%E2%80%99th+node+from+the+end+of+a+Linked+List"
+  },
+  {
+    "id": 161,
+    "topic": "LinkedList",
+    "title": "Find the first non-repeating character from a stream of characters",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+the+first+non-repeating+character+from+a+stream+of+characters",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+the+first+non-repeating+character+from+a+stream+of+characters"
+  },
+  {
+    "id": 162,
+    "topic": "Binary Trees",
+    "title": "level order traversal",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=level+order+traversal",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=level+order+traversal"
+  },
+  {
+    "id": 163,
+    "topic": "Binary Trees",
+    "title": "Reverse Level Order traversal",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Reverse+Level+Order+traversal",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Reverse+Level+Order+traversal"
+  },
+  {
+    "id": 164,
+    "topic": "Binary Trees",
+    "title": "Height of a tree",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Height+of+a+tree",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Height+of+a+tree"
+  },
+  {
+    "id": 165,
+    "topic": "Binary Trees",
+    "title": "Diameter of a tree",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Diameter+of+a+tree",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Diameter+of+a+tree"
+  },
+  {
+    "id": 166,
+    "topic": "Binary Trees",
+    "title": "Mirror of a tree",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Mirror+of+a+tree",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Mirror+of+a+tree"
+  },
+  {
+    "id": 167,
+    "topic": "Binary Trees",
+    "title": "Inorder Traversal of a tree both using recursion and Iteration",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Inorder+Traversal+of+a+tree+both+using+recursion+and+Iteration",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Inorder+Traversal+of+a+tree+both+using+recursion+and+Iteration"
+  },
+  {
+    "id": 168,
+    "topic": "Binary Trees",
+    "title": "Preorder Traversal of a tree both using recursion and Iteration",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Preorder+Traversal+of+a+tree+both+using+recursion+and+Iteration",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Preorder+Traversal+of+a+tree+both+using+recursion+and+Iteration"
+  },
+  {
+    "id": 169,
+    "topic": "Binary Trees",
+    "title": "Postorder Traversal of a tree both using recursion and Iteration",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Postorder+Traversal+of+a+tree+both+using+recursion+and+Iteration",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Postorder+Traversal+of+a+tree+both+using+recursion+and+Iteration"
+  },
+  {
+    "id": 170,
+    "topic": "Binary Trees",
+    "title": "Left View of a tree",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Left+View+of+a+tree",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Left+View+of+a+tree"
+  },
+  {
+    "id": 171,
+    "topic": "Binary Trees",
+    "title": "Right View of Tree",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Right+View+of+Tree",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Right+View+of+Tree"
+  },
+  {
+    "id": 172,
+    "topic": "Binary Trees",
+    "title": "Top View of a tree",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Top+View+of+a+tree",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Top+View+of+a+tree"
+  },
+  {
+    "id": 173,
+    "topic": "Binary Trees",
+    "title": "Bottom View of a tree",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Bottom+View+of+a+tree",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Bottom+View+of+a+tree"
+  },
+  {
+    "id": 174,
+    "topic": "Binary Trees",
+    "title": "Zig-Zag traversal of a binary tree",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Zig-Zag+traversal+of+a+binary+tree",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Zig-Zag+traversal+of+a+binary+tree"
+  },
+  {
+    "id": 175,
+    "topic": "Binary Trees",
+    "title": "Check if a tree is balanced or not",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Check+if+a+tree+is+balanced+or+not",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Check+if+a+tree+is+balanced+or+not"
+  },
+  {
+    "id": 176,
+    "topic": "Binary Trees",
+    "title": "Diagnol Traversal of a Binary tree",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Diagnol+Traversal+of+a+Binary+tree",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Diagnol+Traversal+of+a+Binary+tree"
+  },
+  {
+    "id": 177,
+    "topic": "Binary Trees",
+    "title": "Boundary traversal of a Binary tree",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Boundary+traversal+of+a+Binary+tree",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Boundary+traversal+of+a+Binary+tree"
+  },
+  {
+    "id": 178,
+    "topic": "Binary Trees",
+    "title": "Construct Binary Tree from String with Bracket Representation",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Construct+Binary+Tree+from+String+with+Bracket+Representation",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Construct+Binary+Tree+from+String+with+Bracket+Representation"
+  },
+  {
+    "id": 179,
+    "topic": "Binary Trees",
+    "title": "Convert Binary tree into Doubly Linked List",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Convert+Binary+tree+into+Doubly+Linked+List",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Convert+Binary+tree+into+Doubly+Linked+List"
+  },
+  {
+    "id": 180,
+    "topic": "Binary Trees",
+    "title": "Convert Binary tree into Sum tree",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Convert+Binary+tree+into+Sum+tree",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Convert+Binary+tree+into+Sum+tree"
+  },
+  {
+    "id": 181,
+    "topic": "Binary Trees",
+    "title": "Construct Binary tree from Inorder and preorder traversal",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Construct+Binary+tree+from+Inorder+and+preorder+traversal",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Construct+Binary+tree+from+Inorder+and+preorder+traversal"
+  },
+  {
+    "id": 182,
+    "topic": "Binary Trees",
+    "title": "Find minimum swaps required to convert a Binary tree into BST",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+minimum+swaps+required+to+convert+a+Binary+tree+into+BST",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+minimum+swaps+required+to+convert+a+Binary+tree+into+BST"
+  },
+  {
+    "id": 183,
+    "topic": "Binary Trees",
+    "title": "Check if Binary tree is Sum tree or not",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Check+if+Binary+tree+is+Sum+tree+or+not",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Check+if+Binary+tree+is+Sum+tree+or+not"
+  },
+  {
+    "id": 184,
+    "topic": "Binary Trees",
+    "title": "Check if all leaf nodes are at same level or not",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Check+if+all+leaf+nodes+are+at+same+level+or+not",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Check+if+all+leaf+nodes+are+at+same+level+or+not"
+  },
+  {
+    "id": 185,
+    "topic": "Binary Trees",
+    "title": "Check if a Binary Tree contains duplicate subtrees of size 2 or more [ IMP ]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Check+if+a+Binary+Tree+contains+duplicate+subtrees+of+size+2+or+more+%5B+IMP+%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Check+if+a+Binary+Tree+contains+duplicate+subtrees+of+size+2+or+more+%5B+IMP+%5D"
+  },
+  {
+    "id": 186,
+    "topic": "Binary Trees",
+    "title": "Check if 2 trees are mirror or not",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Check+if+2+trees+are+mirror+or+not",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Check+if+2+trees+are+mirror+or+not"
+  },
+  {
+    "id": 187,
+    "topic": "Binary Trees",
+    "title": "Sum of Nodes on the Longest path from root to leaf node",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Sum+of+Nodes+on+the+Longest+path+from+root+to+leaf+node",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Sum+of+Nodes+on+the+Longest+path+from+root+to+leaf+node"
+  },
+  {
+    "id": 188,
+    "topic": "Binary Trees",
+    "title": "Check if given graph is tree or not. [ IMP ]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Check+if+given+graph+is+tree+or+not.+%5B+IMP+%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Check+if+given+graph+is+tree+or+not.+%5B+IMP+%5D"
+  },
+  {
+    "id": 189,
+    "topic": "Binary Trees",
+    "title": "Find Largest subtree sum in a tree",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+Largest+subtree+sum+in+a+tree",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+Largest+subtree+sum+in+a+tree"
+  },
+  {
+    "id": 190,
+    "topic": "Binary Trees",
+    "title": "Maximum Sum of nodes in Binary tree such that no two are adjacent",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximum+Sum+of+nodes+in+Binary+tree+such+that+no+two+are+adjacent",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximum+Sum+of+nodes+in+Binary+tree+such+that+no+two+are+adjacent"
+  },
+  {
+    "id": 191,
+    "topic": "Binary Trees",
+    "title": "Print all \"K\" Sum paths in a Binary tree",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Print+all+%22K%22+Sum+paths+in+a+Binary+tree",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Print+all+%22K%22+Sum+paths+in+a+Binary+tree"
+  },
+  {
+    "id": 192,
+    "topic": "Binary Trees",
+    "title": "Find LCA in a Binary tree",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+LCA+in+a+Binary+tree",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+LCA+in+a+Binary+tree"
+  },
+  {
+    "id": 193,
+    "topic": "Binary Trees",
+    "title": "Find distance between 2 nodes in a Binary tree",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+distance+between+2+nodes+in+a+Binary+tree",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+distance+between+2+nodes+in+a+Binary+tree"
+  },
+  {
+    "id": 194,
+    "topic": "Binary Trees",
+    "title": "Kth Ancestor of node in a Binary tree",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Kth+Ancestor+of+node+in+a+Binary+tree",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Kth+Ancestor+of+node+in+a+Binary+tree"
+  },
+  {
+    "id": 195,
+    "topic": "Binary Trees",
+    "title": "Find all Duplicate subtrees in a Binary tree [ IMP ]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+all+Duplicate+subtrees+in+a+Binary+tree+%5B+IMP+%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+all+Duplicate+subtrees+in+a+Binary+tree+%5B+IMP+%5D"
+  },
+  {
+    "id": 196,
+    "topic": "Binary Trees",
+    "title": "Tree Isomorphism Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Tree+Isomorphism+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Tree+Isomorphism+Problem"
+  },
+  {
+    "id": 197,
+    "topic": "Binary Search Trees",
+    "title": "Fina a value in a BST",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Fina+a+value+in+a+BST",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Fina+a+value+in+a+BST"
+  },
+  {
+    "id": 198,
+    "topic": "Binary Search Trees",
+    "title": "Deletion of a node in a BST",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Deletion+of+a+node+in+a+BST",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Deletion+of+a+node+in+a+BST"
+  },
+  {
+    "id": 199,
+    "topic": "Binary Search Trees",
+    "title": "Find min and max value in a BST",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+min+and+max+value+in+a+BST",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+min+and+max+value+in+a+BST"
+  },
+  {
+    "id": 200,
+    "topic": "Binary Search Trees",
+    "title": "Find inorder successor and inorder predecessor in a BST",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+inorder+successor+and+inorder+predecessor+in+a+BST",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+inorder+successor+and+inorder+predecessor+in+a+BST"
+  },
+  {
+    "id": 201,
+    "topic": "Binary Search Trees",
+    "title": "Check if a tree is a BST or not",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Check+if+a+tree+is+a+BST+or+not",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Check+if+a+tree+is+a+BST+or+not"
+  },
+  {
+    "id": 202,
+    "topic": "Binary Search Trees",
+    "title": "Populate Inorder successor of all nodes",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Populate+Inorder+successor+of+all+nodes",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Populate+Inorder+successor+of+all+nodes"
+  },
+  {
+    "id": 203,
+    "topic": "Binary Search Trees",
+    "title": "Find LCA of 2 nodes in a BST",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+LCA+of+2+nodes+in+a+BST",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+LCA+of+2+nodes+in+a+BST"
+  },
+  {
+    "id": 204,
+    "topic": "Binary Search Trees",
+    "title": "Construct BST from preorder traversal",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Construct+BST+from+preorder+traversal",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Construct+BST+from+preorder+traversal"
+  },
+  {
+    "id": 205,
+    "topic": "Binary Search Trees",
+    "title": "Convert Binary tree into BST",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Convert+Binary+tree+into+BST",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Convert+Binary+tree+into+BST"
+  },
+  {
+    "id": 206,
+    "topic": "Binary Search Trees",
+    "title": "Convert a normal BST into a Balanced BST",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Convert+a+normal+BST+into+a+Balanced+BST",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Convert+a+normal+BST+into+a+Balanced+BST"
+  },
+  {
+    "id": 207,
+    "topic": "Binary Search Trees",
+    "title": "Merge two BST [ V.V.V>IMP ]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Merge+two+BST+%5B+V.V.V%3EIMP+%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Merge+two+BST+%5B+V.V.V%3EIMP+%5D"
+  },
+  {
+    "id": 208,
+    "topic": "Binary Search Trees",
+    "title": "Find Kth largest element in a BST",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+Kth+largest+element+in+a+BST",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+Kth+largest+element+in+a+BST"
+  },
+  {
+    "id": 209,
+    "topic": "Binary Search Trees",
+    "title": "Find Kth smallest element in a BST",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+Kth+smallest+element+in+a+BST",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+Kth+smallest+element+in+a+BST"
+  },
+  {
+    "id": 210,
+    "topic": "Binary Search Trees",
+    "title": "Count pairs from 2 BST whose sum is equal to given value \"X\"",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Count+pairs+from+2+BST+whose+sum+is+equal+to+given+value+%22X%22",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Count+pairs+from+2+BST+whose+sum+is+equal+to+given+value+%22X%22"
+  },
+  {
+    "id": 211,
+    "topic": "Binary Search Trees",
+    "title": "Find the median of BST in O(n) time and O(1) space",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+the+median+of+BST+in+O%28n%29+time+and+O%281%29+space",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+the+median+of+BST+in+O%28n%29+time+and+O%281%29+space"
+  },
+  {
+    "id": 212,
+    "topic": "Binary Search Trees",
+    "title": "Count BST ndoes that lie in a given range",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Count+BST+ndoes+that+lie+in+a+given+range",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Count+BST+ndoes+that+lie+in+a+given+range"
+  },
+  {
+    "id": 213,
+    "topic": "Binary Search Trees",
+    "title": "Replace every element with the least greater element on its right",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Replace+every+element+with+the+least+greater+element+on+its+right",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Replace+every+element+with+the+least+greater+element+on+its+right"
+  },
+  {
+    "id": 214,
+    "topic": "Binary Search Trees",
+    "title": "Given \"n\" appointments, find the conflicting appointments",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Given+%22n%22+appointments%2C+find+the+conflicting+appointments",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Given+%22n%22+appointments%2C+find+the+conflicting+appointments"
+  },
+  {
+    "id": 215,
+    "topic": "Binary Search Trees",
+    "title": "Check preorder is valid or not",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Check+preorder+is+valid+or+not",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Check+preorder+is+valid+or+not"
+  },
+  {
+    "id": 216,
+    "topic": "Binary Search Trees",
+    "title": "Check whether BST contains Dead end",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Check+whether+BST+contains+Dead+end",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Check+whether+BST+contains+Dead+end"
+  },
+  {
+    "id": 217,
+    "topic": "Binary Search Trees",
+    "title": "Largest BST in a Binary Tree [ V.V.V.V.V IMP ]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Largest+BST+in+a+Binary+Tree+%5B+V.V.V.V.V+IMP+%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Largest+BST+in+a+Binary+Tree+%5B+V.V.V.V.V+IMP+%5D"
+  },
+  {
+    "id": 218,
+    "topic": "Binary Search Trees",
+    "title": "Flatten BST to sorted list",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Flatten+BST+to+sorted+list",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Flatten+BST+to+sorted+list"
+  },
+  {
+    "id": 219,
+    "topic": "Greedy",
+    "title": "Activity Selection Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Activity+Selection+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Activity+Selection+Problem"
+  },
+  {
+    "id": 220,
+    "topic": "Greedy",
+    "title": "Job SequencingProblem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Job+SequencingProblem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Job+SequencingProblem"
+  },
+  {
+    "id": 221,
+    "topic": "Greedy",
+    "title": "Huffman Coding",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Huffman+Coding",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Huffman+Coding"
+  },
+  {
+    "id": 222,
+    "topic": "Greedy",
+    "title": "Water Connection Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Water+Connection+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Water+Connection+Problem"
+  },
+  {
+    "id": 223,
+    "topic": "Greedy",
+    "title": "Fractional Knapsack Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Fractional+Knapsack+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Fractional+Knapsack+Problem"
+  },
+  {
+    "id": 224,
+    "topic": "Greedy",
+    "title": "Greedy Algorithm to find Minimum number of Coins",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Greedy+Algorithm+to+find+Minimum+number+of+Coins",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Greedy+Algorithm+to+find+Minimum+number+of+Coins"
+  },
+  {
+    "id": 225,
+    "topic": "Greedy",
+    "title": "Maximum trains for which stoppage can be provided",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximum+trains+for+which+stoppage+can+be+provided",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximum+trains+for+which+stoppage+can+be+provided"
+  },
+  {
+    "id": 226,
+    "topic": "Greedy",
+    "title": "Minimum Platforms Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimum+Platforms+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimum+Platforms+Problem"
+  },
+  {
+    "id": 227,
+    "topic": "Greedy",
+    "title": "Buy Maximum Stocks if i stocks can be bought on i-th day",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Buy+Maximum+Stocks+if+i+stocks+can+be+bought+on+i-th+day",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Buy+Maximum+Stocks+if+i+stocks+can+be+bought+on+i-th+day"
+  },
+  {
+    "id": 228,
+    "topic": "Greedy",
+    "title": "Find the minimum and maximum amount to buy all N candies",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+the+minimum+and+maximum+amount+to+buy+all+N+candies",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+the+minimum+and+maximum+amount+to+buy+all+N+candies"
+  },
+  {
+    "id": 229,
+    "topic": "Greedy",
+    "title": "Minimize Cash Flow among a given set of friends who have borrowed money from each other",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimize+Cash+Flow+among+a+given+set+of+friends+who+have+borrowed+money+from+each+other",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimize+Cash+Flow+among+a+given+set+of+friends+who+have+borrowed+money+from+each+other"
+  },
+  {
+    "id": 230,
+    "topic": "Greedy",
+    "title": "Minimum Cost to cut a board into squares",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimum+Cost+to+cut+a+board+into+squares",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimum+Cost+to+cut+a+board+into+squares"
+  },
+  {
+    "id": 231,
+    "topic": "Greedy",
+    "title": "Check if it is possible to survive on Island",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Check+if+it+is+possible+to+survive+on+Island",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Check+if+it+is+possible+to+survive+on+Island"
+  },
+  {
+    "id": 232,
+    "topic": "Greedy",
+    "title": "Find maximum meetings in one room",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+maximum+meetings+in+one+room",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+maximum+meetings+in+one+room"
+  },
+  {
+    "id": 233,
+    "topic": "Greedy",
+    "title": "Maximum product subset of an array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximum+product+subset+of+an+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximum+product+subset+of+an+array"
+  },
+  {
+    "id": 234,
+    "topic": "Greedy",
+    "title": "Maximize array sum after K negations",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximize+array+sum+after+K+negations",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximize+array+sum+after+K+negations"
+  },
+  {
+    "id": 235,
+    "topic": "Greedy",
+    "title": "Maximize the sum of arr[i]*i",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximize+the+sum+of+arr%5Bi%5D%2Ai",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximize+the+sum+of+arr%5Bi%5D%2Ai"
+  },
+  {
+    "id": 236,
+    "topic": "Greedy",
+    "title": "Maximum sum of absolute difference of an array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximum+sum+of+absolute+difference+of+an+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximum+sum+of+absolute+difference+of+an+array"
+  },
+  {
+    "id": 237,
+    "topic": "Greedy",
+    "title": "Maximize sum of consecutive differences in a circular array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximize+sum+of+consecutive+differences+in+a+circular+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximize+sum+of+consecutive+differences+in+a+circular+array"
+  },
+  {
+    "id": 238,
+    "topic": "Greedy",
+    "title": "Minimum sum of absolute difference of pairs of two arrays",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimum+sum+of+absolute+difference+of+pairs+of+two+arrays",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimum+sum+of+absolute+difference+of+pairs+of+two+arrays"
+  },
+  {
+    "id": 239,
+    "topic": "Greedy",
+    "title": "Program for Shortest Job First (or SJF) CPU Scheduling",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Program+for+Shortest+Job+First+%28or+SJF%29+CPU+Scheduling",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Program+for+Shortest+Job+First+%28or+SJF%29+CPU+Scheduling"
+  },
+  {
+    "id": 240,
+    "topic": "Greedy",
+    "title": "Program for Least Recently Used (LRU) Page Replacement algorithm",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Program+for+Least+Recently+Used+%28LRU%29+Page+Replacement+algorithm",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Program+for+Least+Recently+Used+%28LRU%29+Page+Replacement+algorithm"
+  },
+  {
+    "id": 241,
+    "topic": "Greedy",
+    "title": "Smallest subset with sum greater than all other elements",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Smallest+subset+with+sum+greater+than+all+other+elements",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Smallest+subset+with+sum+greater+than+all+other+elements"
+  },
+  {
+    "id": 242,
+    "topic": "Greedy",
+    "title": "Chocolate Distribution Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Chocolate+Distribution+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Chocolate+Distribution+Problem"
+  },
+  {
+    "id": 243,
+    "topic": "Greedy",
+    "title": "DEFKIN -Defense of a Kingdom",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=DEFKIN+-Defense+of+a+Kingdom",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=DEFKIN+-Defense+of+a+Kingdom"
+  },
+  {
+    "id": 244,
+    "topic": "Greedy",
+    "title": "DIEHARD -DIE HARD",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=DIEHARD+-DIE+HARD",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=DIEHARD+-DIE+HARD"
+  },
+  {
+    "id": 245,
+    "topic": "Greedy",
+    "title": "GERGOVIA -Wine trading in Gergovia",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=GERGOVIA+-Wine+trading+in+Gergovia",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=GERGOVIA+-Wine+trading+in+Gergovia"
+  },
+  {
+    "id": 246,
+    "topic": "Greedy",
+    "title": "Picking Up Chicks",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Picking+Up+Chicks",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Picking+Up+Chicks"
+  },
+  {
+    "id": 247,
+    "topic": "Greedy",
+    "title": "CHOCOLA –Chocolate",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=CHOCOLA+%E2%80%93Chocolate",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=CHOCOLA+%E2%80%93Chocolate"
+  },
+  {
+    "id": 248,
+    "topic": "Greedy",
+    "title": "ARRANGE -Arranging Amplifiers",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=ARRANGE+-Arranging+Amplifiers",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=ARRANGE+-Arranging+Amplifiers"
+  },
+  {
+    "id": 249,
+    "topic": "Greedy",
+    "title": "K Centers Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=K+Centers+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=K+Centers+Problem"
+  },
+  {
+    "id": 250,
+    "topic": "Greedy",
+    "title": "Minimum Cost of ropes",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimum+Cost+of+ropes",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimum+Cost+of+ropes"
+  },
+  {
+    "id": 251,
+    "topic": "Greedy",
+    "title": "Find smallest number with given number of digits and sum of digits",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+smallest+number+with+given+number+of+digits+and+sum+of+digits",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+smallest+number+with+given+number+of+digits+and+sum+of+digits"
+  },
+  {
+    "id": 252,
+    "topic": "Greedy",
+    "title": "Rearrange characters in a string such that no two adjacent are same",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Rearrange+characters+in+a+string+such+that+no+two+adjacent+are+same",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Rearrange+characters+in+a+string+such+that+no+two+adjacent+are+same"
+  },
+  {
+    "id": 253,
+    "topic": "Greedy",
+    "title": "Find maximum sum possible equal sum of three stacks",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+maximum+sum+possible+equal+sum+of+three+stacks",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+maximum+sum+possible+equal+sum+of+three+stacks"
+  },
+  {
+    "id": 254,
+    "topic": "BackTracking",
+    "title": "Rat in a maze Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Rat+in+a+maze+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Rat+in+a+maze+Problem"
+  },
+  {
+    "id": 255,
+    "topic": "BackTracking",
+    "title": "Printing all solutions in N-Queen Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Printing+all+solutions+in+N-Queen+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Printing+all+solutions+in+N-Queen+Problem"
+  },
+  {
+    "id": 256,
+    "topic": "BackTracking",
+    "title": "Word Break Problem using Backtracking",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Word+Break+Problem+using+Backtracking",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Word+Break+Problem+using+Backtracking"
+  },
+  {
+    "id": 257,
+    "topic": "BackTracking",
+    "title": "Remove Invalid Parentheses",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Remove+Invalid+Parentheses",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Remove+Invalid+Parentheses"
+  },
+  {
+    "id": 258,
+    "topic": "BackTracking",
+    "title": "Sudoku Solver",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Sudoku+Solver",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Sudoku+Solver"
+  },
+  {
+    "id": 259,
+    "topic": "BackTracking",
+    "title": "m Coloring Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=m+Coloring+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=m+Coloring+Problem"
+  },
+  {
+    "id": 260,
+    "topic": "BackTracking",
+    "title": "Print all palindromic partitions of a string",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Print+all+palindromic+partitions+of+a+string",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Print+all+palindromic+partitions+of+a+string"
+  },
+  {
+    "id": 261,
+    "topic": "BackTracking",
+    "title": "Subset Sum Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Subset+Sum+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Subset+Sum+Problem"
+  },
+  {
+    "id": 262,
+    "topic": "BackTracking",
+    "title": "The Knight’s tour problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=The+Knight%E2%80%99s+tour+problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=The+Knight%E2%80%99s+tour+problem"
+  },
+  {
+    "id": 263,
+    "topic": "BackTracking",
+    "title": "Tug of War",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Tug+of+War",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Tug+of+War"
+  },
+  {
+    "id": 264,
+    "topic": "BackTracking",
+    "title": "Find shortest safe route in a path with landmines",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+shortest+safe+route+in+a+path+with+landmines",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+shortest+safe+route+in+a+path+with+landmines"
+  },
+  {
+    "id": 265,
+    "topic": "BackTracking",
+    "title": "Combinational Sum",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Combinational+Sum",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Combinational+Sum"
+  },
+  {
+    "id": 266,
+    "topic": "BackTracking",
+    "title": "Find Maximum number possible by doing at-most K swaps",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+Maximum+number+possible+by+doing+at-most+K+swaps",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+Maximum+number+possible+by+doing+at-most+K+swaps"
+  },
+  {
+    "id": 267,
+    "topic": "BackTracking",
+    "title": "Print all permutations of a string",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Print+all+permutations+of+a+string",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Print+all+permutations+of+a+string"
+  },
+  {
+    "id": 268,
+    "topic": "BackTracking",
+    "title": "Find if there is a path of more than k length from a source",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+if+there+is+a+path+of+more+than+k+length+from+a+source",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+if+there+is+a+path+of+more+than+k+length+from+a+source"
+  },
+  {
+    "id": 269,
+    "topic": "BackTracking",
+    "title": "Longest Possible Route in a Matrix with Hurdles",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Longest+Possible+Route+in+a+Matrix+with+Hurdles",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Longest+Possible+Route+in+a+Matrix+with+Hurdles"
+  },
+  {
+    "id": 270,
+    "topic": "BackTracking",
+    "title": "Print all possible paths from top left to bottom right of a mXn matrix",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Print+all+possible+paths+from+top+left+to+bottom+right+of+a+mXn+matrix",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Print+all+possible+paths+from+top+left+to+bottom+right+of+a+mXn+matrix"
+  },
+  {
+    "id": 271,
+    "topic": "BackTracking",
+    "title": "Partition of a set intoK subsets with equal sum",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Partition+of+a+set+intoK+subsets+with+equal+sum",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Partition+of+a+set+intoK+subsets+with+equal+sum"
+  },
+  {
+    "id": 272,
+    "topic": "BackTracking",
+    "title": "Find the K-th Permutation Sequence of first N natural numbers",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+the+K-th+Permutation+Sequence+of+first+N+natural+numbers",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+the+K-th+Permutation+Sequence+of+first+N+natural+numbers"
+  },
+  {
+    "id": 273,
+    "topic": "Stacks & Queues",
+    "title": "Implement Stack from Scratch",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+Stack+from+Scratch",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+Stack+from+Scratch"
+  },
+  {
+    "id": 274,
+    "topic": "Stacks & Queues",
+    "title": "Implement Queue from Scratch",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+Queue+from+Scratch",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+Queue+from+Scratch"
+  },
+  {
+    "id": 275,
+    "topic": "Stacks & Queues",
+    "title": "Implement 2 stack in an array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+2+stack+in+an+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+2+stack+in+an+array"
+  },
+  {
+    "id": 276,
+    "topic": "Stacks & Queues",
+    "title": "find the middle element of a stack",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=find+the+middle+element+of+a+stack",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=find+the+middle+element+of+a+stack"
+  },
+  {
+    "id": 277,
+    "topic": "Stacks & Queues",
+    "title": "Implement \"N\" stacks in an Array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+%22N%22+stacks+in+an+Array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+%22N%22+stacks+in+an+Array"
+  },
+  {
+    "id": 278,
+    "topic": "Stacks & Queues",
+    "title": "Check the expression has valid or Balanced parenthesis or not.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Check+the+expression+has+valid+or+Balanced+parenthesis+or+not.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Check+the+expression+has+valid+or+Balanced+parenthesis+or+not."
+  },
+  {
+    "id": 279,
+    "topic": "Stacks & Queues",
+    "title": "Reverse a String using Stack",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Reverse+a+String+using+Stack",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Reverse+a+String+using+Stack"
+  },
+  {
+    "id": 280,
+    "topic": "Stacks & Queues",
+    "title": "Design a Stack that supports getMin() in O(1) time and O(1) extra space.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Design+a+Stack+that+supports+getMin%28%29+in+O%281%29+time+and+O%281%29+extra+space.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Design+a+Stack+that+supports+getMin%28%29+in+O%281%29+time+and+O%281%29+extra+space."
+  },
+  {
+    "id": 281,
+    "topic": "Stacks & Queues",
+    "title": "Find the next Greater element",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+the+next+Greater+element",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+the+next+Greater+element"
+  },
+  {
+    "id": 282,
+    "topic": "Stacks & Queues",
+    "title": "The celebrity Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=The+celebrity+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=The+celebrity+Problem"
+  },
+  {
+    "id": 283,
+    "topic": "Stacks & Queues",
+    "title": "Arithmetic Expression evaluation",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Arithmetic+Expression+evaluation",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Arithmetic+Expression+evaluation"
+  },
+  {
+    "id": 284,
+    "topic": "Stacks & Queues",
+    "title": "Evaluation of Postfix expression",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Evaluation+of+Postfix+expression",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Evaluation+of+Postfix+expression"
+  },
+  {
+    "id": 285,
+    "topic": "Stacks & Queues",
+    "title": "Implement a method to insert an element at its bottom without using any other data structure.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+a+method+to+insert+an+element+at+its+bottom+without+using+any+other+data+structure.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+a+method+to+insert+an+element+at+its+bottom+without+using+any+other+data+structure."
+  },
+  {
+    "id": 286,
+    "topic": "Stacks & Queues",
+    "title": "Reverse a stack using recursion",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Reverse+a+stack+using+recursion",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Reverse+a+stack+using+recursion"
+  },
+  {
+    "id": 287,
+    "topic": "Stacks & Queues",
+    "title": "Sort a Stack using recursion",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Sort+a+Stack+using+recursion",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Sort+a+Stack+using+recursion"
+  },
+  {
+    "id": 288,
+    "topic": "Stacks & Queues",
+    "title": "Merge Overlapping Intervals",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Merge+Overlapping+Intervals",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Merge+Overlapping+Intervals"
+  },
+  {
+    "id": 289,
+    "topic": "Stacks & Queues",
+    "title": "Largest rectangular Area in Histogram",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Largest+rectangular+Area+in+Histogram",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Largest+rectangular+Area+in+Histogram"
+  },
+  {
+    "id": 290,
+    "topic": "Stacks & Queues",
+    "title": "Length of the Longest Valid Substring",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Length+of+the+Longest+Valid+Substring",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Length+of+the+Longest+Valid+Substring"
+  },
+  {
+    "id": 291,
+    "topic": "Stacks & Queues",
+    "title": "Expression contains redundant bracket or not",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Expression+contains+redundant+bracket+or+not",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Expression+contains+redundant+bracket+or+not"
+  },
+  {
+    "id": 292,
+    "topic": "Stacks & Queues",
+    "title": "Implement Stack using Queue",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+Stack+using+Queue",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+Stack+using+Queue"
+  },
+  {
+    "id": 293,
+    "topic": "Stacks & Queues",
+    "title": "Implement Stack using Deque",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+Stack+using+Deque",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+Stack+using+Deque"
+  },
+  {
+    "id": 294,
+    "topic": "Stacks & Queues",
+    "title": "Stack Permutations (Check if an array is stack permutation of other)",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Stack+Permutations+%28Check+if+an+array+is+stack+permutation+of+other%29",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Stack+Permutations+%28Check+if+an+array+is+stack+permutation+of+other%29"
+  },
+  {
+    "id": 295,
+    "topic": "Stacks & Queues",
+    "title": "Implement Queue using Stack",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+Queue+using+Stack",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+Queue+using+Stack"
+  },
+  {
+    "id": 296,
+    "topic": "Stacks & Queues",
+    "title": "Implement \"n\" queue in an array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+%22n%22+queue+in+an+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+%22n%22+queue+in+an+array"
+  },
+  {
+    "id": 297,
+    "topic": "Stacks & Queues",
+    "title": "Implement a Circular queue",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+a+Circular+queue",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+a+Circular+queue"
+  },
+  {
+    "id": 298,
+    "topic": "Stacks & Queues",
+    "title": "LRU Cache Implementationa",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=LRU+Cache+Implementationa",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=LRU+Cache+Implementationa"
+  },
+  {
+    "id": 299,
+    "topic": "Stacks & Queues",
+    "title": "Reverse a Queue using recursion",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Reverse+a+Queue+using+recursion",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Reverse+a+Queue+using+recursion"
+  },
+  {
+    "id": 300,
+    "topic": "Stacks & Queues",
+    "title": "Reverse the first “K” elements of a queue",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Reverse+the+first+%E2%80%9CK%E2%80%9D+elements+of+a+queue",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Reverse+the+first+%E2%80%9CK%E2%80%9D+elements+of+a+queue"
+  },
+  {
+    "id": 301,
+    "topic": "Stacks & Queues",
+    "title": "Interleave the first half of the queue with second half",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Interleave+the+first+half+of+the+queue+with+second+half",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Interleave+the+first+half+of+the+queue+with+second+half"
+  },
+  {
+    "id": 302,
+    "topic": "Stacks & Queues",
+    "title": "Find the first circular tour that visits all Petrol Pumps",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+the+first+circular+tour+that+visits+all+Petrol+Pumps",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+the+first+circular+tour+that+visits+all+Petrol+Pumps"
+  },
+  {
+    "id": 303,
+    "topic": "Stacks & Queues",
+    "title": "Minimum time required to rot all oranges",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimum+time+required+to+rot+all+oranges",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimum+time+required+to+rot+all+oranges"
+  },
+  {
+    "id": 304,
+    "topic": "Stacks & Queues",
+    "title": "Distance of nearest cell having 1 in a binary matrix",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Distance+of+nearest+cell+having+1+in+a+binary+matrix",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Distance+of+nearest+cell+having+1+in+a+binary+matrix"
+  },
+  {
+    "id": 305,
+    "topic": "Stacks & Queues",
+    "title": "First negative integer in every window of size “k”",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=First+negative+integer+in+every+window+of+size+%E2%80%9Ck%E2%80%9D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=First+negative+integer+in+every+window+of+size+%E2%80%9Ck%E2%80%9D"
+  },
+  {
+    "id": 306,
+    "topic": "Stacks & Queues",
+    "title": "Check if all levels of two trees are anagrams or not.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Check+if+all+levels+of+two+trees+are+anagrams+or+not.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Check+if+all+levels+of+two+trees+are+anagrams+or+not."
+  },
+  {
+    "id": 307,
+    "topic": "Stacks & Queues",
+    "title": "Sum of minimum and maximum elements of all subarrays of size “k”.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Sum+of+minimum+and+maximum+elements+of+all+subarrays+of+size+%E2%80%9Ck%E2%80%9D.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Sum+of+minimum+and+maximum+elements+of+all+subarrays+of+size+%E2%80%9Ck%E2%80%9D."
+  },
+  {
+    "id": 308,
+    "topic": "Stacks & Queues",
+    "title": "Minimum sum of squares of character counts in a given string after removing “k” characters.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimum+sum+of+squares+of+character+counts+in+a+given+string+after+removing+%E2%80%9Ck%E2%80%9D+characters.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimum+sum+of+squares+of+character+counts+in+a+given+string+after+removing+%E2%80%9Ck%E2%80%9D+characters."
+  },
+  {
+    "id": 309,
+    "topic": "Stacks & Queues",
+    "title": "Queue based approach or first non-repeating character in a stream.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Queue+based+approach+or+first+non-repeating+character+in+a+stream.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Queue+based+approach+or+first+non-repeating+character+in+a+stream."
+  },
+  {
+    "id": 310,
+    "topic": "Stacks & Queues",
+    "title": "Next Smaller Element",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Next+Smaller+Element",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Next+Smaller+Element"
+  },
+  {
+    "id": 311,
+    "topic": "Heap",
+    "title": "Implement a Maxheap/MinHeap using arrays and recursion.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+a+Maxheap%2FMinHeap+using+arrays+and+recursion.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+a+Maxheap%2FMinHeap+using+arrays+and+recursion."
+  },
+  {
+    "id": 312,
+    "topic": "Heap",
+    "title": "Sort an Array using heap. (HeapSort)",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Sort+an+Array+using+heap.+%28HeapSort%29",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Sort+an+Array+using+heap.+%28HeapSort%29"
+  },
+  {
+    "id": 313,
+    "topic": "Heap",
+    "title": "Maximum of all subarrays of size k.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximum+of+all+subarrays+of+size+k.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximum+of+all+subarrays+of+size+k."
+  },
+  {
+    "id": 314,
+    "topic": "Heap",
+    "title": "“k” largest element in an array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=%E2%80%9Ck%E2%80%9D+largest+element+in+an+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=%E2%80%9Ck%E2%80%9D+largest+element+in+an+array"
+  },
+  {
+    "id": 315,
+    "topic": "Heap",
+    "title": "Kth smallest and largest element in an unsorted array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Kth+smallest+and+largest+element+in+an+unsorted+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Kth+smallest+and+largest+element+in+an+unsorted+array"
+  },
+  {
+    "id": 316,
+    "topic": "Heap",
+    "title": "Merge “K” sorted arrays. [ IMP ]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Merge+%E2%80%9CK%E2%80%9D+sorted+arrays.+%5B+IMP+%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Merge+%E2%80%9CK%E2%80%9D+sorted+arrays.+%5B+IMP+%5D"
+  },
+  {
+    "id": 317,
+    "topic": "Heap",
+    "title": "Merge 2 Binary Max Heaps",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Merge+2+Binary+Max+Heaps",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Merge+2+Binary+Max+Heaps"
+  },
+  {
+    "id": 318,
+    "topic": "Heap",
+    "title": "Kth largest sum continuous subarrays",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Kth+largest+sum+continuous+subarrays",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Kth+largest+sum+continuous+subarrays"
+  },
+  {
+    "id": 319,
+    "topic": "Heap",
+    "title": "Leetcode- reorganize strings",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Leetcode-+reorganize+strings",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Leetcode-+reorganize+strings"
+  },
+  {
+    "id": 320,
+    "topic": "Heap",
+    "title": "Merge “K” Sorted Linked Lists [V.IMP]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Merge+%E2%80%9CK%E2%80%9D+Sorted+Linked+Lists+%5BV.IMP%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Merge+%E2%80%9CK%E2%80%9D+Sorted+Linked+Lists+%5BV.IMP%5D"
+  },
+  {
+    "id": 321,
+    "topic": "Heap",
+    "title": "Smallest range in “K” Lists",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Smallest+range+in+%E2%80%9CK%E2%80%9D+Lists",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Smallest+range+in+%E2%80%9CK%E2%80%9D+Lists"
+  },
+  {
+    "id": 322,
+    "topic": "Heap",
+    "title": "Median in a stream of Integers",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Median+in+a+stream+of+Integers",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Median+in+a+stream+of+Integers"
+  },
+  {
+    "id": 323,
+    "topic": "Heap",
+    "title": "Check if a Binary Tree is Heap",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Check+if+a+Binary+Tree+is+Heap",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Check+if+a+Binary+Tree+is+Heap"
+  },
+  {
+    "id": 324,
+    "topic": "Heap",
+    "title": "Connect “n” ropes with minimum cost",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Connect+%E2%80%9Cn%E2%80%9D+ropes+with+minimum+cost",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Connect+%E2%80%9Cn%E2%80%9D+ropes+with+minimum+cost"
+  },
+  {
+    "id": 325,
+    "topic": "Heap",
+    "title": "Convert BST to Min Heap",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Convert+BST+to+Min+Heap",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Convert+BST+to+Min+Heap"
+  },
+  {
+    "id": 326,
+    "topic": "Heap",
+    "title": "Convert min heap to max heap",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Convert+min+heap+to+max+heap",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Convert+min+heap+to+max+heap"
+  },
+  {
+    "id": 327,
+    "topic": "Heap",
+    "title": "Rearrange characters in a string such that no two adjacent are same.",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Rearrange+characters+in+a+string+such+that+no+two+adjacent+are+same.",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Rearrange+characters+in+a+string+such+that+no+two+adjacent+are+same."
+  },
+  {
+    "id": 328,
+    "topic": "Heap",
+    "title": "Minimum sum of two numbers formed from digits of an array",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimum+sum+of+two+numbers+formed+from+digits+of+an+array",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimum+sum+of+two+numbers+formed+from+digits+of+an+array"
+  },
+  {
+    "id": 329,
+    "topic": "Graph",
+    "title": "Create a Graph, print it",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Create+a+Graph%2C+print+it",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Create+a+Graph%2C+print+it"
+  },
+  {
+    "id": 330,
+    "topic": "Graph",
+    "title": "Implement BFS algorithm",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+BFS+algorithm",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+BFS+algorithm"
+  },
+  {
+    "id": 331,
+    "topic": "Graph",
+    "title": "Implement DFS Algo",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+DFS+Algo",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+DFS+Algo"
+  },
+  {
+    "id": 332,
+    "topic": "Graph",
+    "title": "Detect Cycle in Directed Graph using BFS/DFS Algo",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Detect+Cycle+in+Directed+Graph+using+BFS%2FDFS+Algo",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Detect+Cycle+in+Directed+Graph+using+BFS%2FDFS+Algo"
+  },
+  {
+    "id": 333,
+    "topic": "Graph",
+    "title": "Detect Cycle in UnDirected Graph using BFS/DFS Algo",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Detect+Cycle+in+UnDirected+Graph+using+BFS%2FDFS+Algo",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Detect+Cycle+in+UnDirected+Graph+using+BFS%2FDFS+Algo"
+  },
+  {
+    "id": 334,
+    "topic": "Graph",
+    "title": "Search in a Maze",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Search+in+a+Maze",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Search+in+a+Maze"
+  },
+  {
+    "id": 335,
+    "topic": "Graph",
+    "title": "Minimum Step by Knight",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimum+Step+by+Knight",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimum+Step+by+Knight"
+  },
+  {
+    "id": 336,
+    "topic": "Graph",
+    "title": "flood fill algo",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=flood+fill+algo",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=flood+fill+algo"
+  },
+  {
+    "id": 337,
+    "topic": "Graph",
+    "title": "Clone a graph",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Clone+a+graph",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Clone+a+graph"
+  },
+  {
+    "id": 338,
+    "topic": "Graph",
+    "title": "Making wired Connections",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Making+wired+Connections",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Making+wired+Connections"
+  },
+  {
+    "id": 339,
+    "topic": "Graph",
+    "title": "word Ladder",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=word+Ladder",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=word+Ladder"
+  },
+  {
+    "id": 340,
+    "topic": "Graph",
+    "title": "Dijkstra algo",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Dijkstra+algo",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Dijkstra+algo"
+  },
+  {
+    "id": 341,
+    "topic": "Graph",
+    "title": "Implement Topological Sort",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+Topological+Sort",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+Topological+Sort"
+  },
+  {
+    "id": 342,
+    "topic": "Graph",
+    "title": "Minimum time taken by each job to be completed given by a Directed Acyclic Graph",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimum+time+taken+by+each+job+to+be+completed+given+by+a+Directed+Acyclic+Graph",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimum+time+taken+by+each+job+to+be+completed+given+by+a+Directed+Acyclic+Graph"
+  },
+  {
+    "id": 343,
+    "topic": "Graph",
+    "title": "Find whether it is possible to finish all tasks or not from given dependencies",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+whether+it+is+possible+to+finish+all+tasks+or+not+from+given+dependencies",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+whether+it+is+possible+to+finish+all+tasks+or+not+from+given+dependencies"
+  },
+  {
+    "id": 344,
+    "topic": "Graph",
+    "title": "Find the no. of Isalnds",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+the+no.+of+Isalnds",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+the+no.+of+Isalnds"
+  },
+  {
+    "id": 345,
+    "topic": "Graph",
+    "title": "Given a sorted Dictionary of an Alien Language, find order of characters",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Given+a+sorted+Dictionary+of+an+Alien+Language%2C+find+order+of+characters",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Given+a+sorted+Dictionary+of+an+Alien+Language%2C+find+order+of+characters"
+  },
+  {
+    "id": 346,
+    "topic": "Graph",
+    "title": "Implement Kruksal’sAlgorithm",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+Kruksal%E2%80%99sAlgorithm",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+Kruksal%E2%80%99sAlgorithm"
+  },
+  {
+    "id": 347,
+    "topic": "Graph",
+    "title": "Implement Prim’s Algorithm",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+Prim%E2%80%99s+Algorithm",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+Prim%E2%80%99s+Algorithm"
+  },
+  {
+    "id": 348,
+    "topic": "Graph",
+    "title": "Total no. of Spanning tree in a graph",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Total+no.+of+Spanning+tree+in+a+graph",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Total+no.+of+Spanning+tree+in+a+graph"
+  },
+  {
+    "id": 349,
+    "topic": "Graph",
+    "title": "Implement Bellman Ford Algorithm",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+Bellman+Ford+Algorithm",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+Bellman+Ford+Algorithm"
+  },
+  {
+    "id": 350,
+    "topic": "Graph",
+    "title": "Implement Floyd warshallAlgorithm",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+Floyd+warshallAlgorithm",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+Floyd+warshallAlgorithm"
+  },
+  {
+    "id": 351,
+    "topic": "Graph",
+    "title": "Travelling Salesman Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Travelling+Salesman+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Travelling+Salesman+Problem"
+  },
+  {
+    "id": 352,
+    "topic": "Graph",
+    "title": "Graph ColouringProblem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Graph+ColouringProblem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Graph+ColouringProblem"
+  },
+  {
+    "id": 353,
+    "topic": "Graph",
+    "title": "Snake and Ladders Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Snake+and+Ladders+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Snake+and+Ladders+Problem"
+  },
+  {
+    "id": 354,
+    "topic": "Graph",
+    "title": "Find bridge in a graph",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+bridge+in+a+graph",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+bridge+in+a+graph"
+  },
+  {
+    "id": 355,
+    "topic": "Graph",
+    "title": "Count Strongly connected Components(Kosaraju Algo)",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Count+Strongly+connected+Components%28Kosaraju+Algo%29",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Count+Strongly+connected+Components%28Kosaraju+Algo%29"
+  },
+  {
+    "id": 356,
+    "topic": "Graph",
+    "title": "Check whether a graph is Bipartite or Not",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Check+whether+a+graph+is+Bipartite+or+Not",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Check+whether+a+graph+is+Bipartite+or+Not"
+  },
+  {
+    "id": 357,
+    "topic": "Graph",
+    "title": "Detect Negative cycle in a graph",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Detect+Negative+cycle+in+a+graph",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Detect+Negative+cycle+in+a+graph"
+  },
+  {
+    "id": 358,
+    "topic": "Graph",
+    "title": "Longest path in a Directed Acyclic Graph",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Longest+path+in+a+Directed+Acyclic+Graph",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Longest+path+in+a+Directed+Acyclic+Graph"
+  },
+  {
+    "id": 359,
+    "topic": "Graph",
+    "title": "Journey to the Moon",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Journey+to+the+Moon",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Journey+to+the+Moon"
+  },
+  {
+    "id": 360,
+    "topic": "Graph",
+    "title": "Cheapest Flights Within K Stops",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Cheapest+Flights+Within+K+Stops",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Cheapest+Flights+Within+K+Stops"
+  },
+  {
+    "id": 361,
+    "topic": "Graph",
+    "title": "Oliver and the Game",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Oliver+and+the+Game",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Oliver+and+the+Game"
+  },
+  {
+    "id": 362,
+    "topic": "Graph",
+    "title": "Water Jug problem using BFS",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Water+Jug+problem+using+BFS",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Water+Jug+problem+using+BFS"
+  },
+  {
+    "id": 363,
+    "topic": "Graph",
+    "title": "Water Jug problem using BFS",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Water+Jug+problem+using+BFS",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Water+Jug+problem+using+BFS"
+  },
+  {
+    "id": 364,
+    "topic": "Graph",
+    "title": "Find if there is a path of more thank length from a source",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+if+there+is+a+path+of+more+thank+length+from+a+source",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+if+there+is+a+path+of+more+thank+length+from+a+source"
+  },
+  {
+    "id": 365,
+    "topic": "Graph",
+    "title": "M-ColouringProblem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=M-ColouringProblem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=M-ColouringProblem"
+  },
+  {
+    "id": 366,
+    "topic": "Graph",
+    "title": "Minimum edges to reverse o make path from source to destination",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimum+edges+to+reverse+o+make+path+from+source+to+destination",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimum+edges+to+reverse+o+make+path+from+source+to+destination"
+  },
+  {
+    "id": 367,
+    "topic": "Graph",
+    "title": "Paths to travel each nodes using each edge(Seven Bridges)",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Paths+to+travel+each+nodes+using+each+edge%28Seven+Bridges%29",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Paths+to+travel+each+nodes+using+each+edge%28Seven+Bridges%29"
+  },
+  {
+    "id": 368,
+    "topic": "Graph",
+    "title": "Vertex Cover Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Vertex+Cover+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Vertex+Cover+Problem"
+  },
+  {
+    "id": 369,
+    "topic": "Graph",
+    "title": "Chinese Postman or Route Inspection",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Chinese+Postman+or+Route+Inspection",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Chinese+Postman+or+Route+Inspection"
+  },
+  {
+    "id": 370,
+    "topic": "Graph",
+    "title": "Number of Triangles in a Directed and Undirected Graph",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Number+of+Triangles+in+a+Directed+and+Undirected+Graph",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Number+of+Triangles+in+a+Directed+and+Undirected+Graph"
+  },
+  {
+    "id": 371,
+    "topic": "Graph",
+    "title": "Minimise the cashflow among a given set of friends who have borrowed money from each other",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimise+the+cashflow+among+a+given+set+of+friends+who+have+borrowed+money+from+each+other",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimise+the+cashflow+among+a+given+set+of+friends+who+have+borrowed+money+from+each+other"
+  },
+  {
+    "id": 372,
+    "topic": "Graph",
+    "title": "Two Clique Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Two+Clique+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Two+Clique+Problem"
+  },
+  {
+    "id": 373,
+    "topic": "Trie",
+    "title": "Construct a trie from scratch",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Construct+a+trie+from+scratch",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Construct+a+trie+from+scratch"
+  },
+  {
+    "id": 374,
+    "topic": "Trie",
+    "title": "Find shortest unique prefix for every word in a given list",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+shortest+unique+prefix+for+every+word+in+a+given+list",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+shortest+unique+prefix+for+every+word+in+a+given+list"
+  },
+  {
+    "id": 375,
+    "topic": "Trie",
+    "title": "Word Break Problem | (Trie solution)",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Word+Break+Problem+%7C+%28Trie+solution%29",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Word+Break+Problem+%7C+%28Trie+solution%29"
+  },
+  {
+    "id": 376,
+    "topic": "Trie",
+    "title": "Given a sequence of words, print all anagrams together",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Given+a+sequence+of+words%2C+print+all+anagrams+together",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Given+a+sequence+of+words%2C+print+all+anagrams+together"
+  },
+  {
+    "id": 377,
+    "topic": "Trie",
+    "title": "Implement a Phone Directory",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Implement+a+Phone+Directory",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Implement+a+Phone+Directory"
+  },
+  {
+    "id": 378,
+    "topic": "Trie",
+    "title": "Print unique rows in a given boolean matrix",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Print+unique+rows+in+a+given+boolean+matrix",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Print+unique+rows+in+a+given+boolean+matrix"
+  },
+  {
+    "id": 379,
+    "topic": "Dynamic Programming",
+    "title": "Coin ChangeProblem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Coin+ChangeProblem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Coin+ChangeProblem"
+  },
+  {
+    "id": 380,
+    "topic": "Dynamic Programming",
+    "title": "Knapsack Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Knapsack+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Knapsack+Problem"
+  },
+  {
+    "id": 381,
+    "topic": "Dynamic Programming",
+    "title": "Binomial CoefficientProblem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Binomial+CoefficientProblem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Binomial+CoefficientProblem"
+  },
+  {
+    "id": 382,
+    "topic": "Dynamic Programming",
+    "title": "Permutation CoefficientProblem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Permutation+CoefficientProblem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Permutation+CoefficientProblem"
+  },
+  {
+    "id": 383,
+    "topic": "Dynamic Programming",
+    "title": "Program for nth Catalan Number",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Program+for+nth+Catalan+Number",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Program+for+nth+Catalan+Number"
+  },
+  {
+    "id": 384,
+    "topic": "Dynamic Programming",
+    "title": "Matrix Chain Multiplication",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Matrix+Chain+Multiplication",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Matrix+Chain+Multiplication"
+  },
+  {
+    "id": 385,
+    "topic": "Dynamic Programming",
+    "title": "Edit Distance",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Edit+Distance",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Edit+Distance"
+  },
+  {
+    "id": 386,
+    "topic": "Dynamic Programming",
+    "title": "Subset Sum Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Subset+Sum+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Subset+Sum+Problem"
+  },
+  {
+    "id": 387,
+    "topic": "Dynamic Programming",
+    "title": "Friends Pairing Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Friends+Pairing+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Friends+Pairing+Problem"
+  },
+  {
+    "id": 388,
+    "topic": "Dynamic Programming",
+    "title": "Gold Mine Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Gold+Mine+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Gold+Mine+Problem"
+  },
+  {
+    "id": 389,
+    "topic": "Dynamic Programming",
+    "title": "Assembly Line SchedulingProblem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Assembly+Line+SchedulingProblem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Assembly+Line+SchedulingProblem"
+  },
+  {
+    "id": 390,
+    "topic": "Dynamic Programming",
+    "title": "Painting the Fenceproblem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Painting+the+Fenceproblem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Painting+the+Fenceproblem"
+  },
+  {
+    "id": 391,
+    "topic": "Dynamic Programming",
+    "title": "Maximize The Cut Segments",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximize+The+Cut+Segments",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximize+The+Cut+Segments"
+  },
+  {
+    "id": 392,
+    "topic": "Dynamic Programming",
+    "title": "Longest Common Subsequence",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Longest+Common+Subsequence",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Longest+Common+Subsequence"
+  },
+  {
+    "id": 393,
+    "topic": "Dynamic Programming",
+    "title": "Longest Repeated Subsequence",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Longest+Repeated+Subsequence",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Longest+Repeated+Subsequence"
+  },
+  {
+    "id": 394,
+    "topic": "Dynamic Programming",
+    "title": "Longest Increasing Subsequence",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Longest+Increasing+Subsequence",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Longest+Increasing+Subsequence"
+  },
+  {
+    "id": 395,
+    "topic": "Dynamic Programming",
+    "title": "Space Optimized Solution of LCS",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Space+Optimized+Solution+of+LCS",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Space+Optimized+Solution+of+LCS"
+  },
+  {
+    "id": 396,
+    "topic": "Dynamic Programming",
+    "title": "LCS (Longest Common Subsequence) of three strings",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=LCS+%28Longest+Common+Subsequence%29+of+three+strings",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=LCS+%28Longest+Common+Subsequence%29+of+three+strings"
+  },
+  {
+    "id": 397,
+    "topic": "Dynamic Programming",
+    "title": "Maximum Sum Increasing Subsequence",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximum+Sum+Increasing+Subsequence",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximum+Sum+Increasing+Subsequence"
+  },
+  {
+    "id": 398,
+    "topic": "Dynamic Programming",
+    "title": "Count all subsequences having product less than K",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Count+all+subsequences+having+product+less+than+K",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Count+all+subsequences+having+product+less+than+K"
+  },
+  {
+    "id": 399,
+    "topic": "Dynamic Programming",
+    "title": "Longest subsequence such that difference between adjacent is one",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Longest+subsequence+such+that+difference+between+adjacent+is+one",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Longest+subsequence+such+that+difference+between+adjacent+is+one"
+  },
+  {
+    "id": 400,
+    "topic": "Dynamic Programming",
+    "title": "Maximum subsequence sum such that no three are consecutive",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximum+subsequence+sum+such+that+no+three+are+consecutive",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximum+subsequence+sum+such+that+no+three+are+consecutive"
+  },
+  {
+    "id": 401,
+    "topic": "Dynamic Programming",
+    "title": "Egg Dropping Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Egg+Dropping+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Egg+Dropping+Problem"
+  },
+  {
+    "id": 402,
+    "topic": "Dynamic Programming",
+    "title": "Maximum Length Chain of Pairs",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximum+Length+Chain+of+Pairs",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximum+Length+Chain+of+Pairs"
+  },
+  {
+    "id": 403,
+    "topic": "Dynamic Programming",
+    "title": "Maximum size square sub-matrix with all 1s",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximum+size+square+sub-matrix+with+all+1s",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximum+size+square+sub-matrix+with+all+1s"
+  },
+  {
+    "id": 404,
+    "topic": "Dynamic Programming",
+    "title": "Maximum sum of pairs with specific difference",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximum+sum+of+pairs+with+specific+difference",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximum+sum+of+pairs+with+specific+difference"
+  },
+  {
+    "id": 405,
+    "topic": "Dynamic Programming",
+    "title": "Min Cost PathProblem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Min+Cost+PathProblem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Min+Cost+PathProblem"
+  },
+  {
+    "id": 406,
+    "topic": "Dynamic Programming",
+    "title": "Maximum difference of zeros and ones in binary string",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximum+difference+of+zeros+and+ones+in+binary+string",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximum+difference+of+zeros+and+ones+in+binary+string"
+  },
+  {
+    "id": 407,
+    "topic": "Dynamic Programming",
+    "title": "Minimum number of jumps to reach end",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimum+number+of+jumps+to+reach+end",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimum+number+of+jumps+to+reach+end"
+  },
+  {
+    "id": 408,
+    "topic": "Dynamic Programming",
+    "title": "Minimum cost to fill given weight in a bag",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimum+cost+to+fill+given+weight+in+a+bag",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimum+cost+to+fill+given+weight+in+a+bag"
+  },
+  {
+    "id": 409,
+    "topic": "Dynamic Programming",
+    "title": "Minimum removals from array to make max –min <= K",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Minimum+removals+from+array+to+make+max+%E2%80%93min+%3C%3D+K",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Minimum+removals+from+array+to+make+max+%E2%80%93min+%3C%3D+K"
+  },
+  {
+    "id": 410,
+    "topic": "Dynamic Programming",
+    "title": "Longest Common Substring",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Longest+Common+Substring",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Longest+Common+Substring"
+  },
+  {
+    "id": 411,
+    "topic": "Dynamic Programming",
+    "title": "Count number of ways to reacha given score in a game",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Count+number+of+ways+to+reacha+given+score+in+a+game",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Count+number+of+ways+to+reacha+given+score+in+a+game"
+  },
+  {
+    "id": 412,
+    "topic": "Dynamic Programming",
+    "title": "Count Balanced Binary Trees of Height h",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Count+Balanced+Binary+Trees+of+Height+h",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Count+Balanced+Binary+Trees+of+Height+h"
+  },
+  {
+    "id": 413,
+    "topic": "Dynamic Programming",
+    "title": "LargestSum Contiguous Subarray [V>V>V>V IMP ]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=LargestSum+Contiguous+Subarray+%5BV%3EV%3EV%3EV+IMP+%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=LargestSum+Contiguous+Subarray+%5BV%3EV%3EV%3EV+IMP+%5D"
+  },
+  {
+    "id": 414,
+    "topic": "Dynamic Programming",
+    "title": "Smallest sum contiguous subarray",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Smallest+sum+contiguous+subarray",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Smallest+sum+contiguous+subarray"
+  },
+  {
+    "id": 415,
+    "topic": "Dynamic Programming",
+    "title": "Unbounded Knapsack (Repetition of items allowed)",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Unbounded+Knapsack+%28Repetition+of+items+allowed%29",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Unbounded+Knapsack+%28Repetition+of+items+allowed%29"
+  },
+  {
+    "id": 416,
+    "topic": "Dynamic Programming",
+    "title": "Word Break Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Word+Break+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Word+Break+Problem"
+  },
+  {
+    "id": 417,
+    "topic": "Dynamic Programming",
+    "title": "Largest Independent Set Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Largest+Independent+Set+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Largest+Independent+Set+Problem"
+  },
+  {
+    "id": 418,
+    "topic": "Dynamic Programming",
+    "title": "Partition problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Partition+problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Partition+problem"
+  },
+  {
+    "id": 419,
+    "topic": "Dynamic Programming",
+    "title": "Longest Palindromic Subsequence",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Longest+Palindromic+Subsequence",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Longest+Palindromic+Subsequence"
+  },
+  {
+    "id": 420,
+    "topic": "Dynamic Programming",
+    "title": "Count All Palindromic Subsequence in a given String",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Count+All+Palindromic+Subsequence+in+a+given+String",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Count+All+Palindromic+Subsequence+in+a+given+String"
+  },
+  {
+    "id": 421,
+    "topic": "Dynamic Programming",
+    "title": "Longest Palindromic Substring",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Longest+Palindromic+Substring",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Longest+Palindromic+Substring"
+  },
+  {
+    "id": 422,
+    "topic": "Dynamic Programming",
+    "title": "Longest alternating subsequence",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Longest+alternating+subsequence",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Longest+alternating+subsequence"
+  },
+  {
+    "id": 423,
+    "topic": "Dynamic Programming",
+    "title": "Weighted Job Scheduling",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Weighted+Job+Scheduling",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Weighted+Job+Scheduling"
+  },
+  {
+    "id": 424,
+    "topic": "Dynamic Programming",
+    "title": "Coin game winner where every player has three choices",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Coin+game+winner+where+every+player+has+three+choices",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Coin+game+winner+where+every+player+has+three+choices"
+  },
+  {
+    "id": 425,
+    "topic": "Dynamic Programming",
+    "title": "Count Derangements (Permutation such that no element appears in its original position) [ IMPORTANT ]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Count+Derangements+%28Permutation+such+that+no+element+appears+in+its+original+position%29+%5B+IMPORTANT+%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Count+Derangements+%28Permutation+such+that+no+element+appears+in+its+original+position%29+%5B+IMPORTANT+%5D"
+  },
+  {
+    "id": 426,
+    "topic": "Dynamic Programming",
+    "title": "Maximum profit by buying and selling a share at most twice [ IMP ]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximum+profit+by+buying+and+selling+a+share+at+most+twice+%5B+IMP+%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximum+profit+by+buying+and+selling+a+share+at+most+twice+%5B+IMP+%5D"
+  },
+  {
+    "id": 427,
+    "topic": "Dynamic Programming",
+    "title": "Optimal Strategy for a Game",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Optimal+Strategy+for+a+Game",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Optimal+Strategy+for+a+Game"
+  },
+  {
+    "id": 428,
+    "topic": "Dynamic Programming",
+    "title": "Optimal Binary Search Tree",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Optimal+Binary+Search+Tree",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Optimal+Binary+Search+Tree"
+  },
+  {
+    "id": 429,
+    "topic": "Dynamic Programming",
+    "title": "Palindrome PartitioningProblem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Palindrome+PartitioningProblem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Palindrome+PartitioningProblem"
+  },
+  {
+    "id": 430,
+    "topic": "Dynamic Programming",
+    "title": "Word Wrap Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Word+Wrap+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Word+Wrap+Problem"
+  },
+  {
+    "id": 431,
+    "topic": "Dynamic Programming",
+    "title": "Mobile Numeric Keypad Problem [ IMP ]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Mobile+Numeric+Keypad+Problem+%5B+IMP+%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Mobile+Numeric+Keypad+Problem+%5B+IMP+%5D"
+  },
+  {
+    "id": 432,
+    "topic": "Dynamic Programming",
+    "title": "Boolean Parenthesization Problem",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Boolean+Parenthesization+Problem",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Boolean+Parenthesization+Problem"
+  },
+  {
+    "id": 433,
+    "topic": "Dynamic Programming",
+    "title": "Largest rectangular sub-matrix whose sum is 0",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Largest+rectangular+sub-matrix+whose+sum+is+0",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Largest+rectangular+sub-matrix+whose+sum+is+0"
+  },
+  {
+    "id": 434,
+    "topic": "Dynamic Programming",
+    "title": "Largest area rectangular sub-matrix with equal number of 1’s and 0’s [ IMP ]",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Largest+area+rectangular+sub-matrix+with+equal+number+of+1%E2%80%99s+and+0%E2%80%99s+%5B+IMP+%5D",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Largest+area+rectangular+sub-matrix+with+equal+number+of+1%E2%80%99s+and+0%E2%80%99s+%5B+IMP+%5D"
+  },
+  {
+    "id": 435,
+    "topic": "Dynamic Programming",
+    "title": "Maximum sum rectangle in a 2D matrix",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximum+sum+rectangle+in+a+2D+matrix",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximum+sum+rectangle+in+a+2D+matrix"
+  },
+  {
+    "id": 436,
+    "topic": "Dynamic Programming",
+    "title": "Maximum profit by buying and selling a share at most k times",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximum+profit+by+buying+and+selling+a+share+at+most+k+times",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximum+profit+by+buying+and+selling+a+share+at+most+k+times"
+  },
+  {
+    "id": 437,
+    "topic": "Dynamic Programming",
+    "title": "Find if a string is interleaved of two other strings",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+if+a+string+is+interleaved+of+two+other+strings",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+if+a+string+is+interleaved+of+two+other+strings"
+  },
+  {
+    "id": 438,
+    "topic": "Dynamic Programming",
+    "title": "Maximum Length of Pair Chain",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Maximum+Length+of+Pair+Chain",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Maximum+Length+of+Pair+Chain"
+  },
+  {
+    "id": 439,
+    "topic": "Bit Manipulation",
+    "title": "Count set bits in an integer",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Count+set+bits+in+an+integer",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Count+set+bits+in+an+integer"
+  },
+  {
+    "id": 440,
+    "topic": "Bit Manipulation",
+    "title": "Find the two non-repeating elements in an array of repeating elements",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+the+two+non-repeating+elements+in+an+array+of+repeating+elements",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+the+two+non-repeating+elements+in+an+array+of+repeating+elements"
+  },
+  {
+    "id": 441,
+    "topic": "Bit Manipulation",
+    "title": "Count number of bits to be flipped to convert A to B",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Count+number+of+bits+to+be+flipped+to+convert+A+to+B",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Count+number+of+bits+to+be+flipped+to+convert+A+to+B"
+  },
+  {
+    "id": 442,
+    "topic": "Bit Manipulation",
+    "title": "Count total set bits in all numbers from 1 to n",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Count+total+set+bits+in+all+numbers+from+1+to+n",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Count+total+set+bits+in+all+numbers+from+1+to+n"
+  },
+  {
+    "id": 443,
+    "topic": "Bit Manipulation",
+    "title": "Program to find whether a no is power of two",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Program+to+find+whether+a+no+is+power+of+two",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Program+to+find+whether+a+no+is+power+of+two"
+  },
+  {
+    "id": 444,
+    "topic": "Bit Manipulation",
+    "title": "Find position of the only set bit",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Find+position+of+the+only+set+bit",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Find+position+of+the+only+set+bit"
+  },
+  {
+    "id": 445,
+    "topic": "Bit Manipulation",
+    "title": "Copy set bits in a range",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Copy+set+bits+in+a+range",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Copy+set+bits+in+a+range"
+  },
+  {
+    "id": 446,
+    "topic": "Bit Manipulation",
+    "title": "Divide two integers without using multiplication, division and mod operator",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Divide+two+integers+without+using+multiplication%2C+division+and+mod+operator",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Divide+two+integers+without+using+multiplication%2C+division+and+mod+operator"
+  },
+  {
+    "id": 447,
+    "topic": "Bit Manipulation",
+    "title": "Calculate square of a number without using *, / and pow()",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Calculate+square+of+a+number+without+using+%2A%2C+%2F+and+pow%28%29",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Calculate+square+of+a+number+without+using+%2A%2C+%2F+and+pow%28%29"
+  },
+  {
+    "id": 448,
+    "topic": "Bit Manipulation",
+    "title": "Power Set",
+    "gfgUrl": "https://www.geeksforgeeks.org/?s=Power+Set",
+    "leetcodeUrl": "https://leetcode.com/problemset/?search=Power+Set"
+  }
+];
+
+  </script>
+  <script>
+(() => {
+  const STORAGE_KEY = "dsa450-progress-v1";
+  const THEME_KEY = "dsa450-theme-v1";
+  const problems = window.DSA_PROBLEMS || [];
+  const $ = (id) => document.getElementById(id);
+  const DATES_KEY = "dsa450-solved-dates-v1";
+  let solved = new Set();
+  let solvedAt = {}; // problem id -> "YYYY-MM-DD" (local date it was checked in)
+  try { solved = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]")); } catch (_) {}
+  try { solvedAt = JSON.parse(localStorage.getItem(DATES_KEY) || "{}") || {}; } catch (_) { solvedAt = {}; }
+  const dayKey = (d) => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+  const dayNum = (k) => { const [y,m,d] = k.split("-").map(Number); return Math.round(Date.UTC(y,m-1,d)/86400000); };
+  const plural = (n, w) => `${n} ${w}${n === 1 ? "" : "s"}`;
+  const topics = [...new Set(problems.map(p => p.topic))];
+  const topicFilter = $("topicFilter"), statusFilter = $("statusFilter"), searchInput = $("searchInput");
+  const escapeHtml = (value) => String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const save = () => { try { localStorage.setItem(STORAGE_KEY, JSON.stringify([...solved])); localStorage.setItem(DATES_KEY, JSON.stringify(solvedAt)); } catch (_) {} };
+
+  const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  let lastPopKey = null;
+  const renderActivity = () => {
+    // per-day counts (only for problems that are still ticked)
+    const counts = {};
+    Object.keys(solvedAt).forEach(id => { if (solved.has(Number(id))) counts[solvedAt[id]] = (counts[solvedAt[id]] || 0) + 1; });
+
+    const now = new Date();
+    const todayKey = dayKey(now), todayN = dayNum(todayKey);
+
+    // streaks
+    const nums = [...new Set(Object.keys(counts).map(dayNum))].sort((a,b) => a-b);
+    const numSet = new Set(nums);
+    let longest = 0, run = 0, prev = null;
+    nums.forEach(n => { run = (prev !== null && n === prev + 1) ? run + 1 : 1; if (run > longest) longest = run; prev = n; });
+    let cur = 0, cursor = numSet.has(todayN) ? todayN : todayN - 1;
+    while (numSet.has(cursor)) { cur++; cursor--; }
+    const doneToday = counts[todayKey] || 0;
+
+    // heatmap: 52 full weeks + current week, Sunday-first
+    const startOffset = 52 * 7 + now.getDay();
+    const base = new Date(now.getFullYear(), now.getMonth(), now.getDate() - startOffset);
+    let cells = "", months = "", lastMonth = -1, lastLabelCol = -10, yearTotal = 0, activeDays = 0;
+    for (let i = 0; i <= startOffset; i++) {
+      const d = new Date(base.getFullYear(), base.getMonth(), base.getDate() + i);
+      const k = dayKey(d), c = counts[k] || 0, col = Math.floor(i / 7);
+      if (c) { yearTotal += c; activeDays++; }
+      if (i % 7 === 0 && d.getMonth() !== lastMonth) {
+        if (col - lastLabelCol >= 3) { months += `<span style="left:${col * 15}px">${MONTHS[d.getMonth()]}</span>`; lastLabelCol = col; }
+        lastMonth = d.getMonth();
+      }
+      const lvl = c === 0 ? 0 : c === 1 ? 1 : c <= 3 ? 2 : c <= 5 ? 3 : 4;
+      const label = `${c === 0 ? "No problems" : plural(c, "problem")} on ${d.toLocaleDateString(undefined,{weekday:"short",day:"numeric",month:"short",year:"numeric"})}`;
+      cells += `<span class="hm-cell${lvl ? " l" + lvl : ""}" data-date="${k}" title="${label}"></span>`;
+    }
+    $("hmGrid").innerHTML = cells;
+    $("hmMonths").innerHTML = months;
+
+    $("curStreak").textContent = plural(cur, "day");
+    $("curStreakSub").textContent = cur === 0 ? "Solve a problem to start" : (doneToday ? "Keep it going tomorrow!" : "Solve one today to keep it alive");
+    $("longStreak").textContent = plural(longest, "day");
+    $("activeDays").textContent = activeDays;
+    $("todayCount").textContent = doneToday;
+    $("yearSub").textContent = `${yearTotal} in the last year`;
+    $("hmTitle").textContent = `${plural(yearTotal, "problem")} solved in the last year`;
+
+    if (lastPopKey) { const cell = $("hmGrid").querySelector(`[data-date="${lastPopKey}"]`); if (cell) cell.classList.add("pop"); lastPopKey = null; }
+    const sc = $("hmScroll"); sc.scrollLeft = sc.scrollWidth;
+  };
+  const updateStats = () => {
+    const count = solved.size, total = problems.length, remaining = Math.max(0,total-count), pct = total ? Math.round(count/total*100) : 0;
+    $("totalCount").textContent = total; $("solvedCount").textContent = count;
+    $("remainingCount").textContent = remaining; $("topicCount").textContent = topics.length;
+    $("ringCount").textContent = `${count} / ${total}`; $("ringPercent").textContent = `${pct}%`;
+    $("progressRing").style.background = `conic-gradient(var(--accent) ${pct}%,var(--line) ${pct}%)`;
+    renderActivity();
+  };
+  const render = () => {
+    const query = searchInput.value.trim().toLowerCase();
+    const topic = topicFilter.value, status = statusFilter.value;
+    const filtered = problems.filter(p => {
+      const matchText = !query || p.title.toLowerCase().includes(query) || p.topic.toLowerCase().includes(query);
+      const matchTopic = topic === "all" || p.topic === topic;
+      const isDone = solved.has(p.id);
+      const matchStatus = status === "all" || (status === "solved" ? isDone : !isDone);
+      return matchText && matchTopic && matchStatus;
+    });
+    $("problemRows").innerHTML = filtered.map(p => {
+      const done = solved.has(p.id);
+      return `<tr class="${done ? "is-solved" : ""}">
+        <td class="check-col"><input class="problem-check" type="checkbox" data-id="${p.id}" aria-label="Mark ${escapeHtml(p.title)} as completed" ${done ? "checked" : ""}></td>
+        <td><span class="row-number">${String(p.id).padStart(3,"0")}</span></td>
+        <td><span class="problem-title">${escapeHtml(p.title)}</span></td>
+        <td><span class="topic-tag">${escapeHtml(p.topic)}</span></td>
+        <td><div class="practice-links"><a class="icon-link gfg" href="${p.gfgUrl}" target="_blank" rel="noopener noreferrer" title="Search this problem on GeeksforGeeks" aria-label="GeeksforGeeks"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#2F8D46" d="M5.665 5.823c-.667 0-1.247.08-1.741.241-.495.161-.93.356-1.308.583l-.342-.566h-.666l-.075 4.132h.683a11.2 11.2 0 0 1 .433-1.341c.172-.445.394-.842.666-1.192a3.02 3.02 0 0 1 1-.833c.389-.21.855-.316 1.4-.316.594 0 1.124.122 1.59.366.467.24.873.597 1.217 1.075.339.461.6 1.036.783 1.724.184.69.275 1.458.275 2.308 0 .192-.006.38-.017.567H0v.608c.133.016.314.044.541.083.222.033.403.083.542.15a.748.748 0 0 1 .358.358c.067.15.1.328.1.534v.916c0 .666-.003 1.116-.008 1.35a22.14 22.14 0 0 1-.033.574 12.57 12.57 0 0 0 2.207.767 9.138 9.138 0 0 0 2.158.266c.755 0 1.483-.141 2.183-.425a5.46 5.46 0 0 0 1.832-1.208 5.815 5.815 0 0 0 1.258-1.924 6.09 6.09 0 0 0 .389-1.441h.946c.075.511.204.992.389 1.44.31.756.73 1.398 1.258 1.925a5.46 5.46 0 0 0 1.833 1.208c.7.284 1.427.425 2.182.425.705 0 1.425-.089 2.158-.266a12.57 12.57 0 0 0 2.208-.767c-.012-.15-.023-.341-.034-.575a66.751 66.751 0 0 1-.008-1.35v-.915c0-.206.033-.384.1-.534a.748.748 0 0 1 .358-.358c.14-.067.32-.117.542-.15.228-.039.408-.067.541-.083v-.608h-9.563a9.108 9.108 0 0 1-.017-.567c0-.85.092-1.619.275-2.308.183-.688.444-1.263.783-1.724.344-.478.75-.836 1.216-1.075.467-.244.997-.366 1.592-.366.544 0 1.01.105 1.399.316a3.02 3.02 0 0 1 1 .833c.272.35.494.747.666 1.192.172.439.317.886.433 1.341h.684l-.075-4.132h-.667l-.342.566a6.317 6.317 0 0 0-1.307-.583c-.495-.16-1.075-.241-1.742-.241a5.95 5.95 0 0 0-2.349.466 5.503 5.503 0 0 0-1.883 1.291 5.996 5.996 0 0 0-1.266 2.008 6.913 6.913 0 0 0-.442 2.5c0 .164.007.324.017.483h-.823c.01-.159.016-.32.016-.484 0-.9-.147-1.732-.441-2.499A5.996 5.996 0 0 0 9.897 7.58a5.503 5.503 0 0 0-1.882-1.29 5.953 5.953 0 0 0-2.35-.467zm-.483 7.356h4.32a7.714 7.714 0 0 1-.188.95 5.43 5.43 0 0 1-.792 1.716 3.76 3.76 0 0 1-1.291 1.166c-.517.283-1.103.425-1.758.425a3.77 3.77 0 0 1-1.333-.225c-.405-.15-.691-.308-.858-.475a5.749 5.749 0 0 1-.066-.875 36.8 36.8 0 0 1-.008-.75v-.65c0-.232.033-.438.1-.616a.648.648 0 0 1 .391-.4c.183-.083.433-.144.75-.183a9.87 9.87 0 0 1 .733-.083zm9.316 0h4.32c.178.01.422.039.733.083.317.039.567.1.75.183.2.084.33.217.392.4.066.178.1.384.1.617v.65c0 .205-.004.455-.009.75 0 .294-.022.585-.066.874-.167.167-.453.325-.858.475-.4.15-.845.225-1.333.225-.656 0-1.242-.142-1.758-.425a3.76 3.76 0 0 1-1.291-1.166 5.43 5.43 0 0 1-.792-1.717 7.712 7.712 0 0 1-.188-.95z"/></svg></a><a class="icon-link lc" href="${p.leetcodeUrl}" target="_blank" rel="noopener noreferrer" title="Search this problem on LeetCode" aria-label="LeetCode"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#FFA116" d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg></a></div></td>
+      </tr>`;
+    }).join("");
+    $("emptyState").hidden = filtered.length !== 0;
+    $("showingCount").textContent = `Showing ${filtered.length} of ${problems.length} problems`;
+    updateStats();
+  };
+  topics.forEach(t => { const option=document.createElement("option"); option.value=t; option.textContent=t; topicFilter.append(option); });
+  $("topicChips").innerHTML = `<button class="chip active" data-topic="all">All topics</button>` + topics.map(t=>`<button class="chip" data-topic="${escapeHtml(t)}">${escapeHtml(t)}</button>`).join("");
+  $("topicChips").addEventListener("click", e => {
+    const chip=e.target.closest("[data-topic]"); if(!chip)return;
+    topicFilter.value=chip.dataset.topic; $("topicChips").querySelectorAll(".chip").forEach(c=>c.classList.toggle("active",c===chip)); render();
+  });
+  topicFilter.addEventListener("change",()=>{ $("topicChips").querySelectorAll(".chip").forEach(c=>c.classList.toggle("active",c.dataset.topic===topicFilter.value)); render(); });
+  statusFilter.addEventListener("change",render); searchInput.addEventListener("input",render);
+  $("problemRows").addEventListener("change",e=>{
+    const checkbox=e.target.closest(".problem-check"); if(!checkbox)return;
+    const id=Number(checkbox.dataset.id);
+    if(checkbox.checked){ solved.add(id); const k = dayKey(new Date()); solvedAt[id] = k; lastPopKey = k; }
+    else { solved.delete(id); delete solvedAt[id]; }
+    save(); render();
+  });
+  $("exportBtn").addEventListener("click",()=>{
+    const rows=[["ID","Topic","Problem","Status","GFG search URL","LeetCode search URL","Solved on"],...problems.map(p=>[p.id,p.topic,p.title,solved.has(p.id)?"Solved":"Not completed",p.gfgUrl,p.leetcodeUrl,solvedAt[p.id]||""])];
+    const csv=rows.map(row=>row.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(",")).join("\r\n");
+    const blob=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"}), url=URL.createObjectURL(blob);
+    const a=document.createElement("a");a.href=url;a.download="dsa-450-progress.csv";a.click();URL.revokeObjectURL(url);
+  });
+  $("resetBtn").addEventListener("click",()=>{
+    if(!confirm("Reset all completed checkboxes? This cannot be undone."))return;
+    solved.clear();solvedAt={};save();render();
+  });
+  const setTheme = theme => { document.documentElement.classList.toggle("light",theme==="light"); $("themeToggle").textContent=theme==="light"?"☾":"☼"; };
+  setTheme(localStorage.getItem(THEME_KEY)||"dark");
+  $("themeToggle").addEventListener("click",()=>{const next=document.documentElement.classList.contains("light")?"dark":"light";localStorage.setItem(THEME_KEY,next);setTheme(next);});
+  render();
+})();
+  </script>
+</body>
+</html>
