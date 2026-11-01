@@ -3,40 +3,267 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101827">
-  <title>DSA Tracker</title>
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0b1220">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b1220'/%3E%3Cpath d='M18 19h9v28h-9zm13 0h15v8H31zm0 12h15v8H31zm0 12h15v8H31z' fill='%23a78bfa'/%3E%3Cpath d='M22 36.5l5 5 11-14' fill='none' stroke='%23ffffff' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b1220'/%3E%3Cpath d='M18 19h9v28h-9zm13 0h15v8H31zm0 12h15v8H31zm0 12h15v8H31z' fill='%23a78bfa'/%3E%3Cpath d='M22 36.5l5 5 11-14' fill='none' stroke='%23ffffff' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <title>DSA Tracker · Placement Prep</title>
+  <script>
+    /* Apply saved light/dark mode before first paint to avoid a flash. */
+    try { if (localStorage.getItem('dsaTrackerModeV1') === 'light') document.documentElement.classList.add('light'); } catch (e) {}
+  </script>
   <style>
-  :root{--bg:#0b1220;--panel:#111c2e;--panel2:#152238;--line:#23334b;--text:#eef3fb;--muted:#8c9bb1;--accent:#a78bfa;--green:#55d6a3;--orange:#ffb86b;--blue:#79b8ff;--shadow:0 18px 60px #0002}
-  :root.light{--bg:#f4f6fb;--panel:#fff;--panel2:#f1f4fa;--line:#e4e9f2;--text:#172235;--muted:#748197;--accent:#7555d9;--green:#159b70;--orange:#bd6b17;--blue:#347dcc;--shadow:0 14px 40px #25375a12}
-  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif;transition:background .2s,color .2s} .app-shell{max-width:1200px;margin:0 auto;padding:0 28px} .topbar{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)} .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);font-weight:700} .brand-mark{width:32px;height:32px;border-radius:10px;background:var(--accent);color:#171126;display:grid;place-items:center;font-size:18px;font-weight:800}.brand-muted{color:var(--muted);font-weight:600}.top-actions{display:flex;align-items:center;gap:18px}.save-indicator{font-size:12px;color:var(--muted)}.save-indicator i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:8px} .color-picker-wrap{width:40px;height:40px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;overflow:hidden;background:var(--panel)} .color-picker{border:0;background:transparent;width:100%;height:100%;padding:0;cursor:pointer}
-  main{padding:40px 0 20px}.hero{display:flex;justify-content:space-between;align-items:center;padding:10px 0 30px}.hero-copy h1{font-size:clamp(38px,5vw,60px);line-height:1.02;margin:12px 0 14px;letter-spacing:-1.4px}.hero-copy h1 span{color:var(--accent)}.eyebrow{display:flex;align-items:center;gap:10px;color:var(--accent);font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700}.eyebrow-line{width:22px;height:1px;background:var(--accent)}.hero-copy p{color:var(--muted);margin:0;max-width:470px;line-height:1.7}.hero-progress{display:flex;align-items:center;gap:18px}.progress-ring{width:124px;height:124px;border-radius:50%;background:conic-gradient(var(--accent) 0deg,var(--line) 0deg);display:grid;place-items:center;position:relative}.progress-ring:before{content:'';position:absolute;inset:10px;background:var(--bg);border-radius:50%}.ring-inner{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px}.ring-inner strong{font-size:25px}.ring-inner span{font-size:8px;color:var(--muted);letter-spacing:1.4px;text-transform:uppercase}.ring-caption{display:flex;flex-direction:column;gap:4px}.ring-caption strong{font-size:18px}.ring-caption span{font-size:11px;color:var(--muted)}
-  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:42px}.stat-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;align-items:center;gap:12px}.stat-icon{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-weight:800}.purple{background:#a78bfa20;color:var(--accent)}.green{background:#55d6a320;color:var(--green)}.orange{background:#ffb86b20;color:var(--orange)}.blue{background:#79b8ff20;color:var(--blue)}.stat-label{font-size:9px;letter-spacing:1.15px;color:var(--muted);font-weight:700}.stat-card strong{font-size:24px}.section-heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:20px}.section-heading h2{margin:0;font-size:27px;letter-spacing:-0.8px}.heading-actions{display:flex;gap:16px}.text-btn{background:none;border:0;color:var(--muted);font-weight:700;cursor:pointer;padding:6px 0}.danger-text:hover{color:#ff7d86}.toolbar{display:grid;grid-template-columns:1fr 180px 170px;gap:10px;margin-bottom:14px}.search-wrap{display:flex;align-items:center;gap:10px;height:43px;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:0 12px}.search-wrap span{font-size:24px;color:var(--muted)}.search-wrap input{border:0;outline:none;background:transparent;color:var(--text);width:100%;font-size:13px}.search-wrap input::placeholder{color:var(--muted)}select{height:43px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);padding:0 12px;font-size:12px;outline:none}.topic-chips{display:flex;gap:7px;overflow:auto;padding:4px 0 16px}.chip{border:1px solid var(--line);color:var(--muted);background:transparent;border-radius:20px;padding:7px 12px;cursor:pointer;white-space:nowrap;font-size:10px;font-weight:700}.chip.active,.chip:hover{background:var(--accent);border-color:var(--accent);color:#17112b}.table-wrap{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}table{width:100%;border-collapse:collapse}.thead th{background:var(--panel2)}th,td{padding:13px 14px;border-top:1px solid var(--line);text-align:left}th{font-size:9px;letter-spacing:1.15px;color:var(--muted);text-transform:uppercase}.td-number{color:var(--muted);font-size:11px}.topic-tag{display:inline-block;background:var(--panel2);border:1px solid var(--line);padding:5px 8px;border-radius:6px;font-size:10px;color:var(--muted)}.problem-title{font-weight:600;line-height:1.45}.is-solved .problem-title{text-decoration:line-through;color:var(--muted)}.check-col{width:72px;text-align:center}.number-col{width:56px}.topic-col{width:180px}.problem-check{appearance:none;width:16px;height:16px;border:1.5px solid #64748b;border-radius:5px;position:relative;cursor:pointer;background:transparent}.problem-check:checked{background:var(--green);border-color:var(--green)}.problem-check:checked:after{content:'✓';position:absolute;color:#05291d;left:2px;top:-1px;font-weight:900;font-size:12px}.empty-state{padding:60px 15px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px}.empty-state[hidden]{display:none}.empty-state div{font-size:32px;color:var(--muted)}.empty-state strong{font-size:17px}.empty-state span{color:var(--muted);font-size:12px}.table-footer{display:flex;justify-content:space-between;padding:12px 10px;color:var(--muted);font-size:10px}footer{display:flex;justify-content:space-between;padding:18px 0 28px;color:var(--muted);font-size:10px;border-top:1px solid var(--line);margin-top:34px}@media (max-width: 760px){.app-shell{padding:0 18px}.hero{flex-direction:column;align-items:flex-start}.hero-progress{margin-top:18px}.stats-grid{grid-template-columns:repeat(2,1fr)}.toolbar{grid-template-columns:1fr}}
-</style>
+    :root{
+      --bg:#0b1220;--panel:#111c2e;--panel2:#16243a;--line:#243550;--text:#eef3fb;--muted:#92a1b7;
+      --accent:#b7beca;--on-accent:#111827;--green:#55d6a3;--orange:#ffb86b;--blue:#79b8ff;--danger:#ff8a93;
+      --cell-empty:#2a3446;--shadow:0 18px 50px rgba(0,0,0,.28);--topbar-h:68px;
+      color-scheme:dark;
+    }
+    :root.light{
+      --bg:#f4f6fb;--panel:#ffffff;--panel2:#eff2f9;--line:#dfe5f0;--text:#172235;--muted:#5d6b82;
+      --accent:#7a838f;--on-accent:#ffffff;--green:#118a62;--orange:#b4600f;--blue:#2f72bd;--danger:#d6414d;
+      --cell-empty:#e6ebf4;--shadow:0 14px 36px rgba(37,55,90,.09);
+      color-scheme:light;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scrollbar-color:var(--accent) var(--panel2);scrollbar-width:thin}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;transition:background .2s,color .2s}
+    body::-webkit-scrollbar{width:10px;height:10px}
+    body::-webkit-scrollbar-track{background:var(--panel2)}
+    body::-webkit-scrollbar-thumb{background:var(--accent);border-radius:8px;border:2px solid var(--panel2)}
+    button,input,select{font:inherit;color:inherit}
+    :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+    .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .app-shell{max-width:1200px;margin:0 auto;padding:0 28px}
+
+    /* ---------- top bar ---------- */
+    .topbar{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .topbar-inner{height:var(--topbar-h);display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);font-weight:700;min-width:0}
+    .brand-mark{flex:none;width:34px;height:34px;border-radius:10px;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+    .brand-mark svg{display:block;width:100%;height:100%}
+    .brand-muted{color:var(--muted);font-weight:500;margin-left:4px}
+    .top-actions{display:flex;align-items:center;gap:12px}
+    .save-indicator{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);white-space:nowrap}
+    .save-indicator i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px color-mix(in srgb,var(--green) 22%,transparent)}
+    .save-indicator.warn i{background:var(--orange);box-shadow:0 0 0 3px color-mix(in srgb,var(--orange) 22%,transparent)}
+    .icon-btn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--muted);display:grid;place-items:center;cursor:pointer;transition:border-color .15s,color .15s}
+    .icon-btn:hover{border-color:var(--accent);color:var(--text)}
+    .icon-btn svg{width:18px;height:18px}
+    .icon-btn .i-sun{display:none}
+    :root.light .icon-btn .i-sun{display:block}
+    :root.light .icon-btn .i-moon{display:none}
+    .color-picker-wrap{width:40px;height:40px;border:1px solid var(--line);border-radius:12px;display:grid;place-items:center;overflow:hidden;background:var(--panel);padding:5px;cursor:pointer;transition:border-color .15s}
+    .color-picker-wrap:hover,.color-picker-wrap:focus-within{border-color:var(--accent)}
+    .color-picker{appearance:none;-webkit-appearance:none;border:0;background:transparent;width:100%;height:100%;padding:0;cursor:pointer;border-radius:8px}
+    .color-picker::-webkit-color-swatch-wrapper{padding:0}
+    .color-picker::-webkit-color-swatch{border:0;border-radius:8px}
+    .color-picker::-moz-color-swatch{border:0;border-radius:8px}
+
+    /* ---------- hero ---------- */
+    main{padding:36px 0 20px}
+    .hero{display:flex;justify-content:space-between;align-items:center;gap:32px;padding:6px 0 32px}
+    .hero-copy h1{font-size:clamp(36px,5vw,58px);line-height:1.04;margin:0 0 14px;letter-spacing:-1.4px;font-weight:800;color:var(--accent)}
+    .hero-copy p{color:var(--muted);margin:0;max-width:480px;line-height:1.7;font-size:15px}
+    .hero-progress{display:flex;align-items:center;gap:20px;flex:none}
+    .ring{position:relative;width:132px;height:132px}
+    .ring svg{width:100%;height:100%;display:block}
+    .ring-track{fill:none;stroke:var(--line);stroke-width:9}
+    .ring-fill{fill:none;stroke:var(--accent);stroke-width:9;stroke-linecap:round;transition:stroke-dashoffset .6s cubic-bezier(.2,.8,.2,1)}
+    .ring-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+    .ring-inner strong{font-size:26px;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+    .ring-inner span{font-size:12px;color:var(--muted)}
+    .ring-caption{display:flex;flex-direction:column;gap:2px}
+    .ring-caption strong{font-size:20px;font-variant-numeric:tabular-nums}
+    .ring-caption span{font-size:13px;color:var(--muted)}
+
+    /* ---------- stat cards ---------- */
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
+    .stat-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;align-items:center;gap:14px;min-width:0}
+    .stat-icon{flex:none;width:40px;height:40px;border-radius:11px;display:grid;place-items:center}
+    .stat-icon svg{width:19px;height:19px}
+    .stat-icon.purple{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent)}
+    .stat-icon.green{background:color-mix(in srgb,var(--green) 16%,transparent);color:var(--green)}
+    .stat-icon.orange{background:color-mix(in srgb,var(--orange) 16%,transparent);color:var(--orange)}
+    .stat-icon.blue{background:color-mix(in srgb,var(--blue) 16%,transparent);color:var(--blue)}
+    .stat-label{font-size:12px;color:var(--muted);font-weight:600}
+    .stat-card strong{display:block;font-size:24px;line-height:1.2;font-variant-numeric:tabular-nums;letter-spacing:-.4px}
+
+    /* ---------- section frame ---------- */
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+    .section-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:18px}
+    .section-heading h2{margin:0;font-size:26px;letter-spacing:-.7px;line-height:1.15}
+    .section-sub{margin:4px 0 0;color:var(--muted);font-size:13px}
+
+    /* ---------- activity grid ---------- */
+    .activity{padding:22px 24px 18px;margin-bottom:44px}
+    .activity .section-heading{margin-bottom:20px}
+    .activity-stats{display:flex;gap:28px;flex-wrap:wrap}
+    .a-stat{display:flex;flex-direction:column;gap:1px}
+    .a-stat strong{font-size:20px;line-height:1.2;font-variant-numeric:tabular-nums;letter-spacing:-.3px}
+    .a-stat span{font-size:12px;color:var(--muted)}
+    .heatmap-scroll{overflow-x:auto;padding-bottom:6px;scrollbar-width:thin;scrollbar-color:var(--accent) var(--panel2)}
+    .heatmap-scroll::-webkit-scrollbar{height:8px}
+    .heatmap-scroll::-webkit-scrollbar-track{background:var(--panel2);border-radius:8px}
+    .heatmap-scroll::-webkit-scrollbar-thumb{background:var(--accent);border-radius:8px}
+    .heatmap{display:grid;grid-template-columns:30px repeat(53,minmax(11px,1fr));grid-template-rows:auto repeat(7,auto);gap:3px}
+    .m-label{grid-row:1;font-size:12px;color:var(--muted);line-height:1;padding-bottom:6px;white-space:nowrap}
+    .d-label{grid-column:1;align-self:center;font-size:11px;color:var(--muted);line-height:1;white-space:nowrap}
+    .cell{aspect-ratio:1/1;min-width:0;border-radius:4px;background:var(--cell-empty);cursor:default;transition:transform .12s ease,filter .12s ease,background .12s ease}
+    .cell.lvl1{background:color-mix(in srgb,var(--accent) 18%,var(--cell-empty))}
+    .cell.lvl2{background:color-mix(in srgb,var(--accent) 30%,var(--cell-empty))}
+    .cell.lvl3{background:color-mix(in srgb,var(--accent) 46%,var(--cell-empty))}
+    .cell.lvl4{background:color-mix(in srgb,var(--accent) 68%,var(--cell-empty))}
+    .cell.lvl5{background:var(--accent)}
+    @supports not (background:color-mix(in srgb,red 50%,blue)){
+      .cell.lvl1{background:var(--accent);opacity:.18}.cell.lvl2{background:var(--accent);opacity:.30}.cell.lvl3{background:var(--accent);opacity:.46}.cell.lvl4{background:var(--accent);opacity:.68}.cell.lvl5{background:var(--accent)}
+    }
+    .heatmap .cell:hover{outline:2px solid var(--text);outline-offset:0}
+    .heatmap .cell.today{outline:none;box-shadow:none;filter:brightness(1.08)}
+    .heatmap .cell.today:hover{outline:none;box-shadow:none;filter:brightness(1.12)}
+    .heat-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:12px;font-size:12px;color:var(--muted)}
+    .legend{display:flex;align-items:center;gap:4px;flex:none}
+    .legend .cell{width:13px;height:13px;aspect-ratio:auto;border-radius:3px}
+    .legend span{margin:0 4px}
+    .tip{position:fixed;z-index:80;left:0;top:0;pointer-events:none;background:var(--text);color:var(--bg);font-size:12px;font-weight:600;padding:7px 10px;border-radius:8px;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+    .tip[hidden]{display:none}
+    .tip small{display:block;font-weight:500;opacity:.75;font-size:11px}
+
+    /* ---------- toolbar + chips ---------- */
+    .heading-actions{display:flex;gap:16px}
+    .text-btn{background:none;border:0;color:var(--muted);font-weight:600;cursor:pointer;padding:6px 0;font-size:13px}
+    .text-btn:hover{color:var(--text)}
+    .danger-text:hover,.danger-text.confirming{color:var(--danger)}
+    .toolbar{display:grid;grid-template-columns:1fr 180px 220px;gap:10px;margin-bottom:14px}
+    .search-wrap{display:flex;align-items:center;gap:10px;height:44px;border:1px solid var(--line);border-radius:11px;background:var(--panel);padding:0 14px;transition:border-color .15s}
+    .search-wrap:focus-within{border-color:var(--accent)}
+    .search-wrap svg{flex:none;width:17px;height:17px;color:var(--muted)}
+    .search-wrap input{border:0;outline:none;background:transparent;width:100%;font-size:14px}
+    .search-wrap input::placeholder{color:var(--muted)}
+    select{height:44px;border:1px solid var(--line);border-radius:11px;background:var(--panel) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5l3 3 3-3' fill='none' stroke='%2392a1b7' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center/12px;appearance:none;-webkit-appearance:none;padding:0 34px 0 14px;font-size:14px;cursor:pointer;transition:border-color .15s}
+    select:hover,select:focus{border-color:var(--accent)}
+    .topic-chips{display:flex;gap:8px;overflow-x:auto;padding:4px 0 16px;scrollbar-width:thin;scrollbar-color:var(--accent) var(--panel2)}
+    .topic-chips::-webkit-scrollbar{height:8px}
+    .topic-chips::-webkit-scrollbar-track{background:var(--panel2);border-radius:8px}
+    .topic-chips::-webkit-scrollbar-thumb{background:var(--accent);border-radius:8px}
+    .chip{flex:none;border:1px solid var(--line);color:var(--muted);background:var(--panel);border-radius:999px;padding:7px 13px;cursor:pointer;white-space:nowrap;font-size:13px;font-weight:600;transition:border-color .15s,color .15s,background .15s}
+    .chip .count{margin-left:7px;font-size:12px;font-weight:500;opacity:.75;font-variant-numeric:tabular-nums}
+    .chip:hover{border-color:var(--accent);color:var(--text)}
+    .chip.active{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+    .chip.active .count{opacity:.85}
+
+    /* ---------- table ---------- */
+    .table-wrap{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;overflow:clip;box-shadow:var(--shadow)}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:0 16px;text-align:left}
+    th{position:sticky;top:var(--topbar-h);z-index:5;background:var(--panel2);height:44px;font-size:12px;font-weight:600;color:var(--muted);box-shadow:inset 0 -1px 0 var(--line)}
+    td{height:50px;border-top:1px solid var(--line)}
+    tbody tr:first-child td{border-top:0}
+    tbody tr:hover td{background:color-mix(in srgb,var(--panel2) 70%,transparent)}
+    .check-col{width:76px;text-align:center}
+    td.check-col{padding:0}
+    .number-col{width:64px}
+    .topic-col{width:230px}
+    .td-number{color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}
+    .is-solved .td-number{color:var(--green)}
+    .topic-tag{display:inline-block;background:var(--panel2);border:1px solid var(--line);padding:3px 9px;border-radius:7px;font-size:12px;color:var(--muted);white-space:nowrap}
+    .problem-title{font-weight:600;line-height:1.4;padding-top:9px;padding-bottom:9px}
+    .row-topic{display:none;margin-top:3px;font-size:12px;font-weight:500;color:var(--muted)}
+    .is-solved .title-text{text-decoration:line-through;text-decoration-color:var(--muted);color:var(--muted)}
+    .check-hit{display:flex;align-items:center;justify-content:center;width:100%;height:50px;cursor:pointer}
+    .problem-check{appearance:none;-webkit-appearance:none;width:19px;height:19px;border:1.5px solid var(--muted);border-radius:6px;margin:0;cursor:pointer;background:transparent center/12px no-repeat;transition:background-color .12s,border-color .12s}
+    .problem-check:hover{border-color:var(--green)}
+    .problem-check:checked{background-color:var(--green);border-color:var(--green);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.4l2.3 2.3 4.7-5' fill='none' stroke='%2305291d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+    .empty-state{padding:64px 16px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px}
+    .empty-state[hidden]{display:none}
+    .empty-state svg{width:34px;height:34px;color:var(--muted)}
+    .empty-state strong{font-size:17px}
+    .empty-state span{color:var(--muted);font-size:13px}
+    .empty-state button{margin-top:8px;border:1px solid var(--line);background:var(--panel2);border-radius:10px;padding:8px 14px;cursor:pointer;font-weight:600;font-size:13px}
+    .empty-state button:hover{border-color:var(--accent)}
+    .table-footer{display:flex;justify-content:space-between;gap:12px;padding:13px 16px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+    footer{display:flex;justify-content:space-between;gap:12px;padding:18px 0 30px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);margin-top:36px}
+
+    /* ---------- confetti ---------- */
+    .confetti-layer{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:9999}
+    .confetti-piece{position:absolute;width:8px;height:14px;border-radius:3px;opacity:.95;animation:confetti-fall .9s ease-out forwards;transform-origin:center}
+    @keyframes confetti-fall{0%{opacity:1;transform:translate(0,0) rotate(0deg) scale(1)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(220deg) scale(.8)}}
+
+    /* ---------- responsive ---------- */
+    @media (max-width:900px){
+      .toolbar{grid-template-columns:1fr 1fr}
+      .search-wrap{grid-column:1/-1}
+      .topic-col{width:190px}
+    }
+    @media (max-width:760px){
+      .app-shell{padding:0 18px}
+      .hero{flex-direction:column;align-items:flex-start;gap:22px}
+      .stats-grid{grid-template-columns:repeat(2,1fr)}
+      .save-indicator span{display:none}
+      .brand-muted{display:none}
+      .activity{padding:18px 16px 14px}
+      .activity .section-heading{flex-direction:column;align-items:flex-start}
+      .activity-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 24px;width:100%}
+    }
+    @media (max-width:640px){
+      .topic-col,th.topic-col{display:none}
+      .row-topic{display:block}
+      th,td{padding:0 12px}
+      .check-col{width:56px}
+      .number-col{width:44px}
+      .toolbar{grid-template-columns:1fr}
+      .heat-foot{flex-direction:column;align-items:flex-start}
+      .table-footer{flex-direction:column;gap:2px}
+    }
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *{transition:none!important}
+      .confetti-layer{display:none}
+    }
+  </style>
 </head>
 <body>
-  <div class="app-shell">
-    <header class="topbar">
-      <a href="#" class="brand">
-        <div class="brand-mark">D</div>
+  <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
+  <div id="tip" class="tip" role="tooltip" hidden></div>
+
+  <header class="topbar">
+    <div class="app-shell topbar-inner">
+      <a href="#top" class="brand">
+        <div class="brand-mark" aria-label="DSA Tracker brand icon">
+          <svg viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="52" height="52" rx="16" fill="#0b1220"/>
+            <path d="M18 21h8v22h-8zm12 8h18v6H30zm0 10h13v6H30z" fill="var(--on-accent)"/>
+            <path d="M18 39.5l5.5 5.5L35 29" fill="none" stroke="var(--on-accent)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <div>DSA Tracker <span class="brand-muted">Placement Prep</span></div>
       </a>
       <div class="top-actions">
-        <div class="save-indicator"><i></i>Saved locally</div>
-        <label class="color-picker-wrap" aria-label="Pick accent color">
-          <input class="color-picker" id="themePicker" type="color" value="#a78bfa" aria-label="Theme color" />
+        <div class="save-indicator" id="saveIndicator" role="status"><i></i><span id="saveText">Saved locally</span></div>
+        <button class="icon-btn" id="modeToggle" type="button" aria-label="Switch to light mode" title="Toggle light / dark">
+          <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <label class="color-picker-wrap" title="Pick accent color">
+          <input class="color-picker" id="themePicker" type="color" value="#a78bfa" aria-label="Accent color" />
         </label>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <main>
+  <div class="app-shell">
+    <main id="top">
       <section class="hero">
         <div class="hero-copy">
-          <div class="eyebrow"><span class="eyebrow-line"></span> 1000-question roadmap</div>
-          <h1>Practice <span>DSA</span> with intent.</h1>
-          <p>From basics to advanced patterns, this deck is ordered by concept so you can move cleanly from fundamentals to interview-level problem solving.</p>
+          <h1>Practice DSA with intent.</h1>
+          <p id="heroText">A <span id="heroTotal">1000</span>-question roadmap, ordered by concept so you move cleanly from fundamentals to interview-level problem solving.</p>
         </div>
         <div class="hero-progress">
-          <div id="progressRing" class="progress-ring" aria-label="Progress ring">
+          <div class="ring" role="img" id="ringWrap" aria-label="Overall progress">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="ring-track" cx="60" cy="60" r="52"></circle>
+              <circle id="ringFill" class="ring-fill" cx="60" cy="60" r="52" transform="rotate(-90 60 60)"></circle>
+            </svg>
             <div class="ring-inner">
               <strong id="percentValue">0%</strong>
               <span>done</span>
@@ -49,50 +276,64 @@
         </div>
       </section>
 
-      <section class="stats-grid">
+      <section class="stats-grid" aria-label="Summary">
         <div class="stat-card">
-          <div class="stat-icon purple">#</div>
-          <div>
-            <div class="stat-label">TOTAL</div>
-            <strong id="totalCount">1000</strong>
-          </div>
+          <div class="stat-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></div>
+          <div><div class="stat-label">Total</div><strong id="totalCount">1000</strong></div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon green">✓</div>
-          <div>
-            <div class="stat-label">SOLVED</div>
-            <strong id="solvedStat">0</strong>
-          </div>
+          <div class="stat-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+          <div><div class="stat-label">Solved</div><strong id="solvedStat">0</strong></div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon orange">%</div>
-          <div>
-            <div class="stat-label">PROGRESS</div>
-            <strong id="progressStat">0%</strong>
-          </div>
+          <div class="stat-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2.2"/><circle cx="17" cy="17" r="2.2"/></svg></div>
+          <div><div class="stat-label">Progress</div><strong id="progressStat">0%</strong></div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon blue">★</div>
+          <div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></div>
+          <div><div class="stat-label">Topics</div><strong id="topicCount">15</strong></div>
+        </div>
+      </section>
+
+      <section class="activity card" aria-labelledby="activityTitle">
+        <div class="section-heading">
           <div>
-            <div class="stat-label">TOPICS</div>
-            <strong id="topicCount">15</strong>
+            <h2 id="activityTitle">Activity</h2>
+            <p class="section-sub">Problems you solved each day over the past year</p>
+          </div>
+          <div class="activity-stats">
+            <div class="a-stat"><strong id="aYear">0</strong><span>solved this year</span></div>
+            <div class="a-stat"><strong id="aDays">0</strong><span>active days</span></div>
+            <div class="a-stat"><strong id="aCurrent">0</strong><span>current streak</span></div>
+            <div class="a-stat"><strong id="aLongest">0</strong><span>longest streak</span></div>
+          </div>
+        </div>
+        <div class="heatmap-scroll" id="heatScroll">
+          <div class="heatmap" id="heatmap" role="img" aria-label="Activity grid"></div>
+        </div>
+        <div class="heat-foot">
+          <span id="heatNote">Tick a problem as solved and today's square lights up.</span>
+          <div class="legend" aria-hidden="true">
+            <span>Less</span>
+            <i class="cell"></i><i class="cell lvl1"></i><i class="cell lvl2"></i><i class="cell lvl3"></i><i class="cell lvl4"></i>
+            <span>More</span>
           </div>
         </div>
       </section>
 
-      <section>
+      <section aria-labelledby="bankTitle">
         <div class="section-heading">
-          <h2>Question bank</h2>
+          <h2 id="bankTitle">Question bank</h2>
           <div class="heading-actions">
-            <button id="markAllDone" class="text-btn" type="button">Mark all done</button>
-            <button id="clearAll" class="text-btn danger-text" type="button">Clear all</button>
+            <button class="text-btn danger-text" id="resetBtn" type="button">Reset progress</button>
           </div>
         </div>
 
         <div class="toolbar">
-          <label class="search-wrap" aria-label="Search">
-            <span>⌕</span>
-            <input id="searchInput" type="search" placeholder="Search by topic or question..." autocomplete="off" />
+          <label class="search-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <span class="sr-only">Search</span>
+            <input id="searchInput" type="search" placeholder="Search by number, topic or question…" autocomplete="off" />
           </label>
           <select id="statusFilter" aria-label="Filter by status">
             <option value="all">All status</option>
@@ -104,28 +345,29 @@
           </select>
         </div>
 
-        <div id="topicChips" class="topic-chips" aria-label="Topic chips"></div>
+        <div id="topicChips" class="topic-chips" aria-label="Topics"></div>
 
         <div class="table-wrap">
           <table>
             <thead>
               <tr>
-                <th class="check-col">Done</th>
-                <th class="number-col">#</th>
-                <th class="topic-col">Topic</th>
-                <th>Problem</th>
+                <th class="check-col" scope="col">Done</th>
+                <th class="number-col" scope="col">#</th>
+                <th class="topic-col" scope="col">Topic</th>
+                <th scope="col">Problem</th>
               </tr>
             </thead>
             <tbody id="problemTableBody"></tbody>
           </table>
           <div id="emptyState" class="empty-state" hidden>
-            <div>⌁</div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M8.5 11h5"/></svg>
             <strong>No matching questions</strong>
             <span>Try a different search or topic filter.</span>
+            <button id="clearFilters" type="button">Clear filters</button>
           </div>
           <div class="table-footer">
-            <span id="visibleCount">0 visible</span>
-            <span id="lastUpdated">Fresh start</span>
+            <span id="visibleCount" aria-live="polite">0 shown</span>
+            <span id="lastUpdated">Progress is saved in this browser</span>
           </div>
         </div>
       </section>
@@ -133,170 +375,458 @@
 
     <footer>
       <span>Built for consistent daily practice</span>
-      <span>1000-question progression</span>
+      <span id="footerCount">1000-question progression</span>
     </footer>
   </div>
 
   <script>
+  (() => {
+    'use strict';
+
     const STORAGE_KEY = 'dsaTrackerSolvedV2';
+    const DATES_KEY = 'dsaTrackerSolvedDatesV1';
     const THEME_KEY = 'dsaTrackerThemeV2';
+    const MODE_KEY = 'dsaTrackerModeV1';
+    const DEFAULT_ACCENT = '#a78bfa';
+
     const problems = [{"id":1,"topic":"Arrays","title":"Reverse an array"},{"id":2,"topic":"Arrays","title":"Maximum and minimum in an array"},{"id":3,"topic":"Arrays","title":"Kth smallest element"},{"id":4,"topic":"Arrays","title":"Sort 0s, 1s, and 2s"},{"id":5,"topic":"Arrays","title":"Move negatives to one side"},{"id":6,"topic":"Arrays","title":"Union and intersection of sorted arrays"},{"id":7,"topic":"Arrays","title":"Rotate array by k"},{"id":8,"topic":"Arrays","title":"Maximum subarray sum"},{"id":9,"topic":"Arrays","title":"Minimum jumps to reach end"},{"id":10,"topic":"Arrays","title":"Best time to buy and sell stock"},{"id":11,"topic":"Arrays","title":"Two sum"},{"id":12,"topic":"Arrays","title":"Subarray sum equals k"},{"id":13,"topic":"Arrays","title":"Product of array except self"},{"id":14,"topic":"Arrays","title":"Container with most water"},{"id":15,"topic":"Arrays","title":"Three sum"},{"id":16,"topic":"Arrays","title":"Four sum"},{"id":17,"topic":"Arrays","title":"Merge intervals"},{"id":18,"topic":"Arrays","title":"Insert interval"},{"id":19,"topic":"Arrays","title":"Largest rectangle in histogram"},{"id":20,"topic":"Arrays","title":"Trapping rain water"},{"id":21,"topic":"Arrays","title":"Next permutation"},{"id":22,"topic":"Arrays","title":"Longest consecutive sequence"},{"id":23,"topic":"Arrays","title":"Majority element"},{"id":24,"topic":"Arrays","title":"Maximum product subarray"},{"id":25,"topic":"Arrays","title":"Meeting rooms"},{"id":26,"topic":"Arrays","title":"Merge two sorted arrays"},{"id":27,"topic":"Arrays","title":"Sort colors"},{"id":28,"topic":"Arrays","title":"First missing positive"},{"id":29,"topic":"Arrays","title":"Smallest subarray with sum greater than k"},{"id":30,"topic":"Arrays","title":"Count pairs with given sum"},{"id":31,"topic":"Arrays","title":"Minimum swaps to bring elements together"},{"id":32,"topic":"Arrays","title":"Median of two sorted arrays"},{"id":33,"topic":"Arrays","title":"Find duplicate numbers"},{"id":34,"topic":"Arrays","title":"Maximum sum of subarray of size k"},{"id":35,"topic":"Arrays","title":"Count inversions"},{"id":36,"topic":"Arrays","title":"Largest sum contiguous subarray"},{"id":37,"topic":"Arrays","title":"Minimum operations to reduce to zero"},{"id":38,"topic":"Arrays","title":"Triplets with sum zero"},{"id":39,"topic":"Arrays","title":"Maximum profit with at most two transactions"},{"id":40,"topic":"Arrays","title":"Check for unique elements"},{"id":41,"topic":"Arrays","title":"Largest number formed from array"},{"id":42,"topic":"Arrays","title":"Subarrays with sum zero"},{"id":43,"topic":"Arrays","title":"Max consecutive ones"},{"id":44,"topic":"Arrays","title":"Find left rotation index"},{"id":45,"topic":"Arrays","title":"Minimum difference between elements"},{"id":46,"topic":"Arrays","title":"Stock span problem"},{"id":47,"topic":"Arrays","title":"Reverse an array — Variant 2"},{"id":48,"topic":"Arrays","title":"Maximum and minimum in an array — Variant 3"},{"id":49,"topic":"Arrays","title":"Kth smallest element — Variant 4"},{"id":50,"topic":"Arrays","title":"Sort 0s, 1s, and 2s — Variant 5"},{"id":51,"topic":"Arrays","title":"Move negatives to one side — Variant 6"},{"id":52,"topic":"Arrays","title":"Union and intersection of sorted arrays — Variant 7"},{"id":53,"topic":"Arrays","title":"Rotate array by k — Variant 8"},{"id":54,"topic":"Arrays","title":"Maximum subarray sum — Variant 9"},{"id":55,"topic":"Arrays","title":"Minimum jumps to reach end — Variant 10"},{"id":56,"topic":"Arrays","title":"Best time to buy and sell stock — Variant 11"},{"id":57,"topic":"Arrays","title":"Two sum — Variant 12"},{"id":58,"topic":"Arrays","title":"Subarray sum equals k — Variant 13"},{"id":59,"topic":"Arrays","title":"Product of array except self — Variant 14"},{"id":60,"topic":"Arrays","title":"Container with most water — Variant 15"},{"id":61,"topic":"Arrays","title":"Three sum — Variant 16"},{"id":62,"topic":"Arrays","title":"Four sum — Variant 17"},{"id":63,"topic":"Arrays","title":"Merge intervals — Variant 18"},{"id":64,"topic":"Arrays","title":"Insert interval — Variant 19"},{"id":65,"topic":"Arrays","title":"Largest rectangle in histogram — Variant 20"},{"id":66,"topic":"Arrays","title":"Trapping rain water — Variant 21"},{"id":67,"topic":"Arrays","title":"Next permutation — Variant 22"},{"id":68,"topic":"Arrays","title":"Longest consecutive sequence — Variant 23"},{"id":69,"topic":"Arrays","title":"Majority element — Variant 24"},{"id":70,"topic":"Arrays","title":"Maximum product subarray — Variant 25"},{"id":71,"topic":"Arrays","title":"Meeting rooms — Variant 26"},{"id":72,"topic":"Arrays","title":"Merge two sorted arrays — Variant 27"},{"id":73,"topic":"Arrays","title":"Sort colors — Variant 28"},{"id":74,"topic":"Arrays","title":"First missing positive — Variant 29"},{"id":75,"topic":"Arrays","title":"Smallest subarray with sum greater than k — Variant 30"},{"id":76,"topic":"Arrays","title":"Count pairs with given sum — Variant 31"},{"id":77,"topic":"Arrays","title":"Minimum swaps to bring elements together — Variant 32"},{"id":78,"topic":"Arrays","title":"Median of two sorted arrays — Variant 33"},{"id":79,"topic":"Arrays","title":"Find duplicate numbers — Variant 34"},{"id":80,"topic":"Arrays","title":"Maximum sum of subarray of size k — Variant 35"},{"id":81,"topic":"Arrays","title":"Count inversions — Variant 36"},{"id":82,"topic":"Arrays","title":"Largest sum contiguous subarray — Variant 37"},{"id":83,"topic":"Arrays","title":"Minimum operations to reduce to zero — Variant 38"},{"id":84,"topic":"Arrays","title":"Triplets with sum zero — Variant 39"},{"id":85,"topic":"Arrays","title":"Maximum profit with at most two transactions — Variant 40"},{"id":86,"topic":"Arrays","title":"Check for unique elements — Variant 41"},{"id":87,"topic":"Arrays","title":"Largest number formed from array — Variant 42"},{"id":88,"topic":"Arrays","title":"Subarrays with sum zero — Variant 43"},{"id":89,"topic":"Arrays","title":"Max consecutive ones — Variant 44"},{"id":90,"topic":"Arrays","title":"Find left rotation index — Variant 45"},{"id":91,"topic":"Strings","title":"Reverse a string"},{"id":92,"topic":"Strings","title":"Palindrome check"},{"id":93,"topic":"Strings","title":"Duplicate characters"},{"id":94,"topic":"Strings","title":"Anagram check"},{"id":95,"topic":"Strings","title":"Longest common prefix"},{"id":96,"topic":"Strings","title":"Longest palindromic substring"},{"id":97,"topic":"Strings","title":"Longest substring without repeating chars"},{"id":98,"topic":"Strings","title":"Group anagrams"},{"id":99,"topic":"Strings","title":"Isomorphic strings"},{"id":100,"topic":"Strings","title":"Valid parentheses"},{"id":101,"topic":"Strings","title":"Word break"},{"id":102,"topic":"Strings","title":"Minimum window substring"},{"id":103,"topic":"Strings","title":"Edit distance"},{"id":104,"topic":"Strings","title":"Regular expression matching"},{"id":105,"topic":"Strings","title":"Count and say"},{"id":106,"topic":"Strings","title":"Zigzag conversion"},{"id":107,"topic":"Strings","title":"String matching with wildcards"},{"id":108,"topic":"Strings","title":"Rotation check"},{"id":109,"topic":"Strings","title":"Implement strstr"},{"id":110,"topic":"Strings","title":"First unique character"},{"id":111,"topic":"Strings","title":"Print subsequences"},{"id":112,"topic":"Strings","title":"Print permutations"},{"id":113,"topic":"Strings","title":"KMP algorithm"},{"id":114,"topic":"Strings","title":"Rabin Karp algorithm"},{"id":115,"topic":"Strings","title":"Longest repeating subsequence"},{"id":116,"topic":"Strings","title":"Minimum deletions to make palindrome"},{"id":117,"topic":"Strings","title":"Largest palindrome in a string"},{"id":118,"topic":"Strings","title":"Balanced braces"},{"id":119,"topic":"Strings","title":"Reverse words in a string"},{"id":120,"topic":"Strings","title":"Remove duplicate characters"},{"id":121,"topic":"Strings","title":"Check valid shuffle"},{"id":122,"topic":"Strings","title":"Next lexicographic permutation"},{"id":123,"topic":"Strings","title":"Longest common subsequence"},{"id":124,"topic":"Strings","title":"Palindromic partitions"},{"id":125,"topic":"Strings","title":"String to integer conversion"},{"id":126,"topic":"Strings","title":"Integer to Roman"},{"id":127,"topic":"Strings","title":"Roman to integer"},{"id":128,"topic":"Strings","title":"Unique character subsequence"},{"id":129,"topic":"Strings","title":"Check digits only"},{"id":130,"topic":"Strings","title":"Mobile keypad conversion"},{"id":131,"topic":"Strings","title":"Maximum frequency character"},{"id":132,"topic":"Strings","title":"Pattern occurrences"},{"id":133,"topic":"Strings","title":"Decode string"},{"id":134,"topic":"Strings","title":"Shortest palindrome"},{"id":135,"topic":"Strings","title":"Wildcard matching"},{"id":136,"topic":"Strings","title":"Version comparison"},{"id":137,"topic":"Strings","title":"Reverse a string — Variant 2"},{"id":138,"topic":"Strings","title":"Palindrome check — Variant 3"},{"id":139,"topic":"Strings","title":"Duplicate characters — Variant 4"},{"id":140,"topic":"Strings","title":"Anagram check — Variant 5"},{"id":141,"topic":"Strings","title":"Longest common prefix — Variant 6"},{"id":142,"topic":"Strings","title":"Longest palindromic substring — Variant 7"},{"id":143,"topic":"Strings","title":"Longest substring without repeating chars — Variant 8"},{"id":144,"topic":"Strings","title":"Group anagrams — Variant 9"},{"id":145,"topic":"Strings","title":"Isomorphic strings — Variant 10"},{"id":146,"topic":"Strings","title":"Valid parentheses — Variant 11"},{"id":147,"topic":"Strings","title":"Word break — Variant 12"},{"id":148,"topic":"Strings","title":"Minimum window substring — Variant 13"},{"id":149,"topic":"Strings","title":"Edit distance — Variant 14"},{"id":150,"topic":"Strings","title":"Regular expression matching — Variant 15"},{"id":151,"topic":"Strings","title":"Count and say — Variant 16"},{"id":152,"topic":"Strings","title":"Zigzag conversion — Variant 17"},{"id":153,"topic":"Strings","title":"String matching with wildcards — Variant 18"},{"id":154,"topic":"Strings","title":"Rotation check — Variant 19"},{"id":155,"topic":"Strings","title":"Implement strstr — Variant 20"},{"id":156,"topic":"Strings","title":"First unique character — Variant 21"},{"id":157,"topic":"Strings","title":"Print subsequences — Variant 22"},{"id":158,"topic":"Strings","title":"Print permutations — Variant 23"},{"id":159,"topic":"Strings","title":"KMP algorithm — Variant 24"},{"id":160,"topic":"Strings","title":"Rabin Karp algorithm — Variant 25"},{"id":161,"topic":"Strings","title":"Longest repeating subsequence — Variant 26"},{"id":162,"topic":"Strings","title":"Minimum deletions to make palindrome — Variant 27"},{"id":163,"topic":"Strings","title":"Largest palindrome in a string — Variant 28"},{"id":164,"topic":"Strings","title":"Balanced braces — Variant 29"},{"id":165,"topic":"Strings","title":"Reverse words in a string — Variant 30"},{"id":166,"topic":"Strings","title":"Remove duplicate characters — Variant 31"},{"id":167,"topic":"Strings","title":"Check valid shuffle — Variant 32"},{"id":168,"topic":"Strings","title":"Next lexicographic permutation — Variant 33"},{"id":169,"topic":"Strings","title":"Longest common subsequence — Variant 34"},{"id":170,"topic":"Strings","title":"Palindromic partitions — Variant 35"},{"id":171,"topic":"Linked Lists","title":"Reverse a linked list"},{"id":172,"topic":"Linked Lists","title":"Detect a cycle"},{"id":173,"topic":"Linked Lists","title":"Find middle of list"},{"id":174,"topic":"Linked Lists","title":"Remove duplicates from sorted list"},{"id":175,"topic":"Linked Lists","title":"Merge two sorted lists"},{"id":176,"topic":"Linked Lists","title":"Add two numbers represented by linked lists"},{"id":177,"topic":"Linked Lists","title":"Intersection point of two lists"},{"id":178,"topic":"Linked Lists","title":"Delete last node"},{"id":179,"topic":"Linked Lists","title":"Reverse nodes in k-groups"},{"id":180,"topic":"Linked Lists","title":"Check palindrome"},{"id":181,"topic":"Linked Lists","title":"Rotate a linked list"},{"id":182,"topic":"Linked Lists","title":"Delete node without head"},{"id":183,"topic":"Linked Lists","title":"Nth node from end"},{"id":184,"topic":"Linked Lists","title":"Intersection of sorted lists"},{"id":185,"topic":"Linked Lists","title":"Sort a linked list"},{"id":186,"topic":"Linked Lists","title":"Flatten a linked list"},{"id":187,"topic":"Linked Lists","title":"Clone list with random pointer"},{"id":188,"topic":"Linked Lists","title":"Split circular list into halves"},{"id":189,"topic":"Linked Lists","title":"Insert node in sorted order"},{"id":190,"topic":"Linked Lists","title":"Remove loop from linked list"},{"id":191,"topic":"Linked Lists","title":"First node of loop"},{"id":192,"topic":"Linked Lists","title":"Merge k sorted lists"},{"id":193,"topic":"Linked Lists","title":"Delete nodes with greater right value"},{"id":194,"topic":"Linked Lists","title":"Segregate even and odd nodes"},{"id":195,"topic":"Linked Lists","title":"Pairwise swap nodes"},{"id":196,"topic":"Linked Lists","title":"Remove duplicates from unsorted list"},{"id":197,"topic":"Linked Lists","title":"Common node in two lists"},{"id":198,"topic":"Linked Lists","title":"Add one to linked list number"},{"id":199,"topic":"Linked Lists","title":"Reverse doubly linked list"},{"id":200,"topic":"Linked Lists","title":"Pairs with given sum in DLL"},{"id":201,"topic":"Linked Lists","title":"Triplets in sorted DLL"},{"id":202,"topic":"Linked Lists","title":"Sort k-sorted DLL"},{"id":203,"topic":"Linked Lists","title":"Rotate doubly linked list"},{"id":204,"topic":"Linked Lists","title":"Check circular list"},{"id":205,"topic":"Linked Lists","title":"Remove node from circular list"},{"id":206,"topic":"Linked Lists","title":"Maximum node in list"},{"id":207,"topic":"Linked Lists","title":"Rearrange list by parity"},{"id":208,"topic":"Linked Lists","title":"Convert binary tree to doubly linked list"},{"id":209,"topic":"Linked Lists","title":"Multiply numbers represented by linked lists"},{"id":210,"topic":"Linked Lists","title":"Merge sort on linked list"},{"id":211,"topic":"Linked Lists","title":"Quick sort on linked list"},{"id":212,"topic":"Linked Lists","title":"Reverse a linked list — Variant 2"},{"id":213,"topic":"Linked Lists","title":"Detect a cycle — Variant 3"},{"id":214,"topic":"Linked Lists","title":"Find middle of list — Variant 4"},{"id":215,"topic":"Linked Lists","title":"Remove duplicates from sorted list — Variant 5"},{"id":216,"topic":"Linked Lists","title":"Merge two sorted lists — Variant 6"},{"id":217,"topic":"Linked Lists","title":"Add two numbers represented by linked lists — Variant 7"},{"id":218,"topic":"Linked Lists","title":"Intersection point of two lists — Variant 8"},{"id":219,"topic":"Linked Lists","title":"Delete last node — Variant 9"},{"id":220,"topic":"Linked Lists","title":"Reverse nodes in k-groups — Variant 10"},{"id":221,"topic":"Linked Lists","title":"Check palindrome — Variant 11"},{"id":222,"topic":"Linked Lists","title":"Rotate a linked list — Variant 12"},{"id":223,"topic":"Linked Lists","title":"Delete node without head — Variant 13"},{"id":224,"topic":"Linked Lists","title":"Nth node from end — Variant 14"},{"id":225,"topic":"Linked Lists","title":"Intersection of sorted lists — Variant 15"},{"id":226,"topic":"Linked Lists","title":"Sort a linked list — Variant 16"},{"id":227,"topic":"Linked Lists","title":"Flatten a linked list — Variant 17"},{"id":228,"topic":"Linked Lists","title":"Clone list with random pointer — Variant 18"},{"id":229,"topic":"Linked Lists","title":"Split circular list into halves — Variant 19"},{"id":230,"topic":"Linked Lists","title":"Insert node in sorted order — Variant 20"},{"id":231,"topic":"Stacks and Queues","title":"Implement stack using arrays"},{"id":232,"topic":"Stacks and Queues","title":"Implement stack using queues"},{"id":233,"topic":"Stacks and Queues","title":"Queue using stacks"},{"id":234,"topic":"Stacks and Queues","title":"Next greater element"},{"id":235,"topic":"Stacks and Queues","title":"Previous greater element"},{"id":236,"topic":"Stacks and Queues","title":"Largest rectangle in histogram (2)"},{"id":237,"topic":"Stacks and Queues","title":"Daily temperatures"},{"id":238,"topic":"Stacks and Queues","title":"Min stack"},{"id":239,"topic":"Stacks and Queues","title":"Max stack"},{"id":240,"topic":"Stacks and Queues","title":"Valid parentheses sequence"},{"id":241,"topic":"Stacks and Queues","title":"Evaluate postfix expression"},{"id":242,"topic":"Stacks and Queues","title":"Infix to postfix"},{"id":243,"topic":"Stacks and Queues","title":"Infix to prefix"},{"id":244,"topic":"Stacks and Queues","title":"Longest valid parentheses"},{"id":245,"topic":"Stacks and Queues","title":"Decode string (2)"},{"id":246,"topic":"Stacks and Queues","title":"Sliding window maximum"},{"id":247,"topic":"Stacks and Queues","title":"Circular queue"},{"id":248,"topic":"Stacks and Queues","title":"Queue reconstruction by height"},{"id":249,"topic":"Stacks and Queues","title":"Design hit counter"},{"id":250,"topic":"Stacks and Queues","title":"Sort a stack"},{"id":251,"topic":"Stacks and Queues","title":"Remove adjacent duplicates"},{"id":252,"topic":"Stacks and Queues","title":"Stack permutation"},{"id":253,"topic":"Stacks and Queues","title":"Balanced parentheses with multiple types"},{"id":254,"topic":"Stacks and Queues","title":"Largest area in binary matrix"},{"id":255,"topic":"Stacks and Queues","title":"Next smaller element"},{"id":256,"topic":"Stacks and Queues","title":"Minimum removals to make valid parentheses"},{"id":257,"topic":"Stacks and Queues","title":"LRU cache"},{"id":258,"topic":"Stacks and Queues","title":"LFU cache"},{"id":259,"topic":"Stacks and Queues","title":"Browser history design"},{"id":260,"topic":"Stacks and Queues","title":"Queue elements in order"},{"id":261,"topic":"Stacks and Queues","title":"Minimum element in stack in O(1)"},{"id":262,"topic":"Stacks and Queues","title":"Generate binary numbers"},{"id":263,"topic":"Stacks and Queues","title":"Check queue palindrome"},{"id":264,"topic":"Stacks and Queues","title":"Shortest subarray with sum at least k"},{"id":265,"topic":"Stacks and Queues","title":"Two stacks in one array"},{"id":266,"topic":"Stacks and Queues","title":"Job scheduling with queues"},{"id":267,"topic":"Stacks and Queues","title":"Reverse queue using recursion"},{"id":268,"topic":"Stacks and Queues","title":"Implement stack using arrays — Variant 2"},{"id":269,"topic":"Stacks and Queues","title":"Implement stack using queues — Variant 3"},{"id":270,"topic":"Stacks and Queues","title":"Queue using stacks — Variant 4"},{"id":271,"topic":"Stacks and Queues","title":"Next greater element — Variant 5"},{"id":272,"topic":"Stacks and Queues","title":"Previous greater element — Variant 6"},{"id":273,"topic":"Stacks and Queues","title":"Largest rectangle in histogram — Variant 7"},{"id":274,"topic":"Stacks and Queues","title":"Daily temperatures — Variant 8"},{"id":275,"topic":"Stacks and Queues","title":"Min stack — Variant 9"},{"id":276,"topic":"Stacks and Queues","title":"Max stack — Variant 10"},{"id":277,"topic":"Stacks and Queues","title":"Valid parentheses sequence — Variant 11"},{"id":278,"topic":"Stacks and Queues","title":"Evaluate postfix expression — Variant 12"},{"id":279,"topic":"Stacks and Queues","title":"Infix to postfix — Variant 13"},{"id":280,"topic":"Stacks and Queues","title":"Infix to prefix — Variant 14"},{"id":281,"topic":"Stacks and Queues","title":"Longest valid parentheses — Variant 15"},{"id":282,"topic":"Stacks and Queues","title":"Decode string — Variant 16"},{"id":283,"topic":"Stacks and Queues","title":"Sliding window maximum — Variant 17"},{"id":284,"topic":"Stacks and Queues","title":"Circular queue — Variant 18"},{"id":285,"topic":"Stacks and Queues","title":"Queue reconstruction by height — Variant 19"},{"id":286,"topic":"Stacks and Queues","title":"Design hit counter — Variant 20"},{"id":287,"topic":"Stacks and Queues","title":"Sort a stack — Variant 21"},{"id":288,"topic":"Stacks and Queues","title":"Remove adjacent duplicates — Variant 22"},{"id":289,"topic":"Stacks and Queues","title":"Stack permutation — Variant 23"},{"id":290,"topic":"Stacks and Queues","title":"Balanced parentheses with multiple types — Variant 24"},{"id":291,"topic":"Trees","title":"Preorder traversal"},{"id":292,"topic":"Trees","title":"Inorder traversal"},{"id":293,"topic":"Trees","title":"Postorder traversal"},{"id":294,"topic":"Trees","title":"Level order traversal"},{"id":295,"topic":"Trees","title":"Left view of tree"},{"id":296,"topic":"Trees","title":"Right view of tree"},{"id":297,"topic":"Trees","title":"Top view"},{"id":298,"topic":"Trees","title":"Bottom view"},{"id":299,"topic":"Trees","title":"Zigzag traversal"},{"id":300,"topic":"Trees","title":"Tree height"},{"id":301,"topic":"Trees","title":"Balanced binary tree"},{"id":302,"topic":"Trees","title":"Diameter of tree"},{"id":303,"topic":"Trees","title":"Lowest common ancestor"},{"id":304,"topic":"Trees","title":"Maximum depth"},{"id":305,"topic":"Trees","title":"Minimum depth"},{"id":306,"topic":"Trees","title":"Boundary traversal"},{"id":307,"topic":"Trees","title":"Construct tree from inorder and preorder"},{"id":308,"topic":"Trees","title":"Construct tree from inorder and postorder"},{"id":309,"topic":"Trees","title":"Serialize and deserialize tree"},{"id":310,"topic":"Trees","title":"Check if two trees are identical"},{"id":311,"topic":"Trees","title":"Check if tree is symmetric"},{"id":312,"topic":"Trees","title":"Invert a binary tree"},{"id":313,"topic":"Trees","title":"Path sum"},{"id":314,"topic":"Trees","title":"Path sum II"},{"id":315,"topic":"Trees","title":"Maximum path sum"},{"id":316,"topic":"Trees","title":"Sum of nodes at maximum depth"},{"id":317,"topic":"Trees","title":"Binary tree to doubly linked list"},{"id":318,"topic":"Trees","title":"Check subtree"},{"id":319,"topic":"Trees","title":"Find all root-to-leaf paths"},{"id":320,"topic":"Trees","title":"Count nodes in complete binary tree"},{"id":321,"topic":"Trees","title":"Convert tree to sum tree"},{"id":322,"topic":"Trees","title":"Deepest leaves sum"},{"id":323,"topic":"Trees","title":"Count pairs of nodes"},{"id":324,"topic":"Trees","title":"Leaves at same level"},{"id":325,"topic":"Trees","title":"Find deepest node"},{"id":326,"topic":"Trees","title":"Tree isomorphism"},{"id":327,"topic":"Trees","title":"Kth ancestor"},{"id":328,"topic":"Trees","title":"Tree pruning"},{"id":329,"topic":"Trees","title":"Leaf node count"},{"id":330,"topic":"Trees","title":"Maximum value node"},{"id":331,"topic":"Trees","title":"Longest path between two leaves"},{"id":332,"topic":"Trees","title":"Maximum sum of non-adjacent nodes"},{"id":333,"topic":"Trees","title":"Nodes at distance k"},{"id":334,"topic":"Trees","title":"Burning tree problem"},{"id":335,"topic":"Trees","title":"Check if binary tree is BST"},{"id":336,"topic":"Trees","title":"Closest value in BST"},{"id":337,"topic":"Trees","title":"Flatten tree to linked list"},{"id":338,"topic":"Trees","title":"Recover BST"},{"id":339,"topic":"Trees","title":"Kth smallest in BST"},{"id":340,"topic":"Trees","title":"Find median of BST"},{"id":341,"topic":"Trees","title":"Count nodes in BST range"},{"id":342,"topic":"Trees","title":"Validate preorder sequence"},{"id":343,"topic":"Trees","title":"Largest BST in binary tree"},{"id":344,"topic":"Trees","title":"Delete node from BST"},{"id":345,"topic":"Trees","title":"Construct BST from preorder"},{"id":346,"topic":"Trees","title":"Nodes with same value count"},{"id":347,"topic":"Trees","title":"Vertical order traversal"},{"id":348,"topic":"Trees","title":"Diagonal traversal"},{"id":349,"topic":"Trees","title":"Tree width"},{"id":350,"topic":"Trees","title":"Leaf count"},{"id":351,"topic":"Trees","title":"Root-to-leaf path sum"},{"id":352,"topic":"Trees","title":"Tree level order"},{"id":353,"topic":"Trees","title":"Duplicate subtree detection"},{"id":354,"topic":"Trees","title":"Maximum subtree sum"},{"id":355,"topic":"Trees","title":"Tree clone with random pointers"},{"id":356,"topic":"Trees","title":"Ancestors of node"},{"id":357,"topic":"Trees","title":"Nodes at given level"},{"id":358,"topic":"Trees","title":"Nodes in value range"},{"id":359,"topic":"Trees","title":"Check if tree is heap ordered"},{"id":360,"topic":"Trees","title":"Preorder traversal — Variant 2"},{"id":361,"topic":"Trees","title":"Inorder traversal — Variant 3"},{"id":362,"topic":"Trees","title":"Postorder traversal — Variant 4"},{"id":363,"topic":"Trees","title":"Level order traversal — Variant 5"},{"id":364,"topic":"Trees","title":"Left view of tree — Variant 6"},{"id":365,"topic":"Trees","title":"Right view of tree — Variant 7"},{"id":366,"topic":"Trees","title":"Top view — Variant 8"},{"id":367,"topic":"Trees","title":"Bottom view — Variant 9"},{"id":368,"topic":"Trees","title":"Zigzag traversal — Variant 10"},{"id":369,"topic":"Trees","title":"Tree height — Variant 11"},{"id":370,"topic":"Trees","title":"Balanced binary tree — Variant 12"},{"id":371,"topic":"Trees","title":"Diameter of tree — Variant 13"},{"id":372,"topic":"Trees","title":"Lowest common ancestor — Variant 14"},{"id":373,"topic":"Trees","title":"Maximum depth — Variant 15"},{"id":374,"topic":"Trees","title":"Minimum depth — Variant 16"},{"id":375,"topic":"Trees","title":"Boundary traversal — Variant 17"},{"id":376,"topic":"Trees","title":"Construct tree from inorder and preorder — Variant 18"},{"id":377,"topic":"Trees","title":"Construct tree from inorder and postorder — Variant 19"},{"id":378,"topic":"Trees","title":"Serialize and deserialize tree — Variant 20"},{"id":379,"topic":"Trees","title":"Check if two trees are identical — Variant 21"},{"id":380,"topic":"Trees","title":"Check if tree is symmetric — Variant 22"},{"id":381,"topic":"Trees","title":"Invert a binary tree — Variant 23"},{"id":382,"topic":"Trees","title":"Path sum — Variant 24"},{"id":383,"topic":"Trees","title":"Path sum II — Variant 25"},{"id":384,"topic":"Trees","title":"Maximum path sum — Variant 26"},{"id":385,"topic":"Trees","title":"Sum of nodes at maximum depth — Variant 27"},{"id":386,"topic":"Trees","title":"Binary tree to doubly linked list — Variant 28"},{"id":387,"topic":"Trees","title":"Check subtree — Variant 29"},{"id":388,"topic":"Trees","title":"Find all root-to-leaf paths — Variant 30"},{"id":389,"topic":"Trees","title":"Count nodes in complete binary tree — Variant 31"},{"id":390,"topic":"Trees","title":"Convert tree to sum tree — Variant 32"},{"id":391,"topic":"Trees","title":"Deepest leaves sum — Variant 33"},{"id":392,"topic":"Trees","title":"Count pairs of nodes — Variant 34"},{"id":393,"topic":"Trees","title":"Leaves at same level — Variant 35"},{"id":394,"topic":"Trees","title":"Find deepest node — Variant 36"},{"id":395,"topic":"Trees","title":"Tree isomorphism — Variant 37"},{"id":396,"topic":"Trees","title":"Kth ancestor — Variant 38"},{"id":397,"topic":"Trees","title":"Tree pruning — Variant 39"},{"id":398,"topic":"Trees","title":"Leaf node count — Variant 40"},{"id":399,"topic":"Trees","title":"Maximum value node — Variant 41"},{"id":400,"topic":"Trees","title":"Longest path between two leaves — Variant 42"},{"id":401,"topic":"Trees","title":"Maximum sum of non-adjacent nodes — Variant 43"},{"id":402,"topic":"Trees","title":"Nodes at distance k — Variant 44"},{"id":403,"topic":"Trees","title":"Burning tree problem — Variant 45"},{"id":404,"topic":"Trees","title":"Check if binary tree is BST — Variant 46"},{"id":405,"topic":"Trees","title":"Closest value in BST — Variant 47"},{"id":406,"topic":"Trees","title":"Flatten tree to linked list — Variant 48"},{"id":407,"topic":"Trees","title":"Recover BST — Variant 49"},{"id":408,"topic":"Trees","title":"Kth smallest in BST — Variant 50"},{"id":409,"topic":"Trees","title":"Find median of BST — Variant 51"},{"id":410,"topic":"Trees","title":"Count nodes in BST range — Variant 52"},{"id":411,"topic":"Binary Search Trees","title":"Search in BST"},{"id":412,"topic":"Binary Search Trees","title":"Insert in BST"},{"id":413,"topic":"Binary Search Trees","title":"Delete node from BST (2)"},{"id":414,"topic":"Binary Search Trees","title":"Find min and max in BST"},{"id":415,"topic":"Binary Search Trees","title":"Inorder successor and predecessor"},{"id":416,"topic":"Binary Search Trees","title":"Validate BST"},{"id":417,"topic":"Binary Search Trees","title":"Construct BST from preorder (2)"},{"id":418,"topic":"Binary Search Trees","title":"Convert BST to sorted DLL"},{"id":419,"topic":"Binary Search Trees","title":"Merge two BSTs"},{"id":420,"topic":"Binary Search Trees","title":"Kth smallest element (2)"},{"id":421,"topic":"Binary Search Trees","title":"Kth largest element"},{"id":422,"topic":"Binary Search Trees","title":"Count BST nodes in range"},{"id":423,"topic":"Binary Search Trees","title":"Find median of BST (2)"},{"id":424,"topic":"Binary Search Trees","title":"Check if tree is BST"},{"id":425,"topic":"Binary Search Trees","title":"Find floor and ceil in BST"},{"id":426,"topic":"Binary Search Trees","title":"Find LCA in BST"},{"id":427,"topic":"Binary Search Trees","title":"Count pairs with given sum in two BSTs"},{"id":428,"topic":"Binary Search Trees","title":"Balance an unbalanced BST"},{"id":429,"topic":"Binary Search Trees","title":"Convert binary tree to BST"},{"id":430,"topic":"Binary Search Trees","title":"Find dead end in BST"},{"id":431,"topic":"Binary Search Trees","title":"Largest BST in tree"},{"id":432,"topic":"Binary Search Trees","title":"Recover BST (2)"},{"id":433,"topic":"Binary Search Trees","title":"BST iterator"},{"id":434,"topic":"Binary Search Trees","title":"Validate preorder as BST"},{"id":435,"topic":"Binary Search Trees","title":"Nearest greater element in BST"},{"id":436,"topic":"Binary Search Trees","title":"Trim BST to range"},{"id":437,"topic":"Binary Search Trees","title":"Node with maximum path sum"},{"id":438,"topic":"Binary Search Trees","title":"Order statistic basics"},{"id":439,"topic":"Binary Search Trees","title":"Count nodes in subtree"},{"id":440,"topic":"Binary Search Trees","title":"First greater element"},{"id":441,"topic":"Binary Search Trees","title":"Element just before target"},{"id":442,"topic":"Binary Search Trees","title":"Check duplicate values in BST"},{"id":443,"topic":"Binary Search Trees","title":"Find all keys in range"},{"id":444,"topic":"Binary Search Trees","title":"Find predecessor of node"},{"id":445,"topic":"Binary Search Trees","title":"Find successor of node"},{"id":446,"topic":"Binary Search Trees","title":"Search in BST — Variant 2"},{"id":447,"topic":"Binary Search Trees","title":"Insert in BST — Variant 3"},{"id":448,"topic":"Binary Search Trees","title":"Delete node from BST — Variant 4"},{"id":449,"topic":"Binary Search Trees","title":"Find min and max in BST — Variant 5"},{"id":450,"topic":"Binary Search Trees","title":"Inorder successor and predecessor — Variant 6"},{"id":451,"topic":"Binary Search Trees","title":"Validate BST — Variant 7"},{"id":452,"topic":"Binary Search Trees","title":"Construct BST from preorder — Variant 8"},{"id":453,"topic":"Binary Search Trees","title":"Convert BST to sorted DLL — Variant 9"},{"id":454,"topic":"Binary Search Trees","title":"Merge two BSTs — Variant 10"},{"id":455,"topic":"Binary Search Trees","title":"Kth smallest element — Variant 11"},{"id":456,"topic":"Binary Search Trees","title":"Kth largest element — Variant 12"},{"id":457,"topic":"Binary Search Trees","title":"Count BST nodes in range — Variant 13"},{"id":458,"topic":"Binary Search Trees","title":"Find median of BST — Variant 14"},{"id":459,"topic":"Binary Search Trees","title":"Check if tree is BST — Variant 15"},{"id":460,"topic":"Binary Search Trees","title":"Find floor and ceil in BST — Variant 16"},{"id":461,"topic":"Graphs","title":"DFS traversal"},{"id":462,"topic":"Graphs","title":"BFS traversal"},{"id":463,"topic":"Graphs","title":"Connected components"},{"id":464,"topic":"Graphs","title":"Cycle in undirected graph"},{"id":465,"topic":"Graphs","title":"Cycle in directed graph"},{"id":466,"topic":"Graphs","title":"Topological sort"},{"id":467,"topic":"Graphs","title":"Kahn algorithm"},{"id":468,"topic":"Graphs","title":"Shortest path in unweighted graph"},{"id":469,"topic":"Graphs","title":"Shortest path in weighted graph"},{"id":470,"topic":"Graphs","title":"Dijkstra"},{"id":471,"topic":"Graphs","title":"Bellman-Ford"},{"id":472,"topic":"Graphs","title":"Floyd-Warshall"},{"id":473,"topic":"Graphs","title":"Minimum spanning tree"},{"id":474,"topic":"Graphs","title":"Prim algorithm"},{"id":475,"topic":"Graphs","title":"Kruskal algorithm"},{"id":476,"topic":"Graphs","title":"Bridge in graph"},{"id":477,"topic":"Graphs","title":"Articulation points"},{"id":478,"topic":"Graphs","title":"Strongly connected components"},{"id":479,"topic":"Graphs","title":"Kosaraju"},{"id":480,"topic":"Graphs","title":"Tarjan"},{"id":481,"topic":"Graphs","title":"Bipartite graph check"},{"id":482,"topic":"Graphs","title":"Graph coloring"},{"id":483,"topic":"Graphs","title":"Word ladder"},{"id":484,"topic":"Graphs","title":"Snake and ladder"},{"id":485,"topic":"Graphs","title":"Number of islands"},{"id":486,"topic":"Graphs","title":"Surrounded regions"},{"id":487,"topic":"Graphs","title":"Rotten oranges"},{"id":488,"topic":"Graphs","title":"Course schedule"},{"id":489,"topic":"Graphs","title":"Minimum time to complete tasks"},{"id":490,"topic":"Graphs","title":"All paths from source to target"},{"id":491,"topic":"Graphs","title":"Negative cycle detection"},{"id":492,"topic":"Graphs","title":"Hamiltonian path"},{"id":493,"topic":"Graphs","title":"Eulerian circuit"},{"id":494,"topic":"Graphs","title":"Topological ordering with prerequisites"},{"id":495,"topic":"Graphs","title":"Longest path in DAG"},{"id":496,"topic":"Graphs","title":"Clone a graph"},{"id":497,"topic":"Graphs","title":"Minimum cost to connect points"},{"id":498,"topic":"Graphs","title":"Route between nodes"},{"id":499,"topic":"Graphs","title":"Flood fill"},{"id":500,"topic":"Graphs","title":"Count connected regions"},{"id":501,"topic":"Graphs","title":"Critical connections"},{"id":502,"topic":"Graphs","title":"Alien dictionary"},{"id":503,"topic":"Graphs","title":"Shortest path tree"},{"id":504,"topic":"Graphs","title":"Shortest bridge"},{"id":505,"topic":"Graphs","title":"Adjacency list representation"},{"id":506,"topic":"Graphs","title":"Adjacency matrix representation"},{"id":507,"topic":"Graphs","title":"Disconnected graph traversal"},{"id":508,"topic":"Graphs","title":"Min vertices to cover edges"},{"id":509,"topic":"Graphs","title":"Check if graph is tree"},{"id":510,"topic":"Graphs","title":"Graph diameter"},{"id":511,"topic":"Graphs","title":"Graph cut"},{"id":512,"topic":"Graphs","title":"Longest path from source"},{"id":513,"topic":"Graphs","title":"Maximum flow basics"},{"id":514,"topic":"Graphs","title":"Disjoint set union"},{"id":515,"topic":"Graphs","title":"DFS traversal — Variant 2"},{"id":516,"topic":"Graphs","title":"BFS traversal — Variant 3"},{"id":517,"topic":"Graphs","title":"Connected components — Variant 4"},{"id":518,"topic":"Graphs","title":"Cycle in undirected graph — Variant 5"},{"id":519,"topic":"Graphs","title":"Cycle in directed graph — Variant 6"},{"id":520,"topic":"Graphs","title":"Topological sort — Variant 7"},{"id":521,"topic":"Graphs","title":"Kahn algorithm — Variant 8"},{"id":522,"topic":"Graphs","title":"Shortest path in unweighted graph — Variant 9"},{"id":523,"topic":"Graphs","title":"Shortest path in weighted graph — Variant 10"},{"id":524,"topic":"Graphs","title":"Dijkstra — Variant 11"},{"id":525,"topic":"Graphs","title":"Bellman-Ford — Variant 12"},{"id":526,"topic":"Graphs","title":"Floyd-Warshall — Variant 13"},{"id":527,"topic":"Graphs","title":"Minimum spanning tree — Variant 14"},{"id":528,"topic":"Graphs","title":"Prim algorithm — Variant 15"},{"id":529,"topic":"Graphs","title":"Kruskal algorithm — Variant 16"},{"id":530,"topic":"Graphs","title":"Bridge in graph — Variant 17"},{"id":531,"topic":"Graphs","title":"Articulation points — Variant 18"},{"id":532,"topic":"Graphs","title":"Strongly connected components — Variant 19"},{"id":533,"topic":"Graphs","title":"Kosaraju — Variant 20"},{"id":534,"topic":"Graphs","title":"Tarjan — Variant 21"},{"id":535,"topic":"Graphs","title":"Bipartite graph check — Variant 22"},{"id":536,"topic":"Graphs","title":"Graph coloring — Variant 23"},{"id":537,"topic":"Graphs","title":"Word ladder — Variant 24"},{"id":538,"topic":"Graphs","title":"Snake and ladder — Variant 25"},{"id":539,"topic":"Graphs","title":"Number of islands — Variant 26"},{"id":540,"topic":"Graphs","title":"Surrounded regions — Variant 27"},{"id":541,"topic":"Graphs","title":"Rotten oranges — Variant 28"},{"id":542,"topic":"Graphs","title":"Course schedule — Variant 29"},{"id":543,"topic":"Graphs","title":"Minimum time to complete tasks — Variant 30"},{"id":544,"topic":"Graphs","title":"All paths from source to target — Variant 31"},{"id":545,"topic":"Graphs","title":"Negative cycle detection — Variant 32"},{"id":546,"topic":"Graphs","title":"Hamiltonian path — Variant 33"},{"id":547,"topic":"Graphs","title":"Eulerian circuit — Variant 34"},{"id":548,"topic":"Graphs","title":"Topological ordering with prerequisites — Variant 35"},{"id":549,"topic":"Graphs","title":"Longest path in DAG — Variant 36"},{"id":550,"topic":"Graphs","title":"Clone a graph — Variant 37"},{"id":551,"topic":"Graphs","title":"Minimum cost to connect points — Variant 38"},{"id":552,"topic":"Graphs","title":"Route between nodes — Variant 39"},{"id":553,"topic":"Graphs","title":"Flood fill — Variant 40"},{"id":554,"topic":"Graphs","title":"Count connected regions — Variant 41"},{"id":555,"topic":"Graphs","title":"Critical connections — Variant 42"},{"id":556,"topic":"Graphs","title":"Alien dictionary — Variant 43"},{"id":557,"topic":"Graphs","title":"Shortest path tree — Variant 44"},{"id":558,"topic":"Graphs","title":"Shortest bridge — Variant 45"},{"id":559,"topic":"Graphs","title":"Adjacency list representation — Variant 46"},{"id":560,"topic":"Graphs","title":"Adjacency matrix representation — Variant 47"},{"id":561,"topic":"Greedy","title":"Activity selection"},{"id":562,"topic":"Greedy","title":"Job sequencing with deadlines"},{"id":563,"topic":"Greedy","title":"Fractional knapsack"},{"id":564,"topic":"Greedy","title":"0-1 knapsack"},{"id":565,"topic":"Greedy","title":"Minimum number of coins"},{"id":566,"topic":"Greedy","title":"Coin change II"},{"id":567,"topic":"Greedy","title":"Maximum profit with intervals"},{"id":568,"topic":"Greedy","title":"Assign cookies"},{"id":569,"topic":"Greedy","title":"Gas station"},{"id":570,"topic":"Greedy","title":"Candy distribution"},{"id":571,"topic":"Greedy","title":"Minimum platform problem"},{"id":572,"topic":"Greedy","title":"Meeting rooms II"},{"id":573,"topic":"Greedy","title":"Jump game"},{"id":574,"topic":"Greedy","title":"Jump game II"},{"id":575,"topic":"Greedy","title":"Huffman coding"},{"id":576,"topic":"Greedy","title":"Minimum spanning tree greedily"},{"id":577,"topic":"Greedy","title":"N meetings in one room"},{"id":578,"topic":"Greedy","title":"Minimize maximum difference"},{"id":579,"topic":"Greedy","title":"Expense minimization"},{"id":580,"topic":"Greedy","title":"Minimum cost to hire workers"},{"id":581,"topic":"Greedy","title":"Partition labels"},{"id":582,"topic":"Greedy","title":"Largest number"},{"id":583,"topic":"Greedy","title":"Smallest number with given digit sum"},{"id":584,"topic":"Greedy","title":"Greedy deadlines and profits"},{"id":585,"topic":"Greedy","title":"Minimum number of swaps for balancing"},{"id":586,"topic":"Greedy","title":"Earliest finishing tasks"},{"id":587,"topic":"Greedy","title":"Pick coins"},{"id":588,"topic":"Greedy","title":"Minimum absolute difference sum"},{"id":589,"topic":"Greedy","title":"Maximize total profit"},{"id":590,"topic":"Greedy","title":"Interval covering points"},{"id":591,"topic":"Greedy","title":"Queue reconstruction by height (2)"},{"id":592,"topic":"Greedy","title":"Maximize number of segments"},{"id":593,"topic":"Greedy","title":"Minimum deletion to make string good"},{"id":594,"topic":"Greedy","title":"Choose maximum sum path"},{"id":595,"topic":"Greedy","title":"Minimize maximum difference between heights"},{"id":596,"topic":"Greedy","title":"Road trip planning"},{"id":597,"topic":"Greedy","title":"Greedy set cover"},{"id":598,"topic":"Greedy","title":"Maximum number of tasks"},{"id":599,"topic":"Greedy","title":"Minimum cost to merge intervals"},{"id":600,"topic":"Greedy","title":"Largest sum of distinct numbers"},{"id":601,"topic":"Greedy","title":"Activity selection — Variant 2"},{"id":602,"topic":"Greedy","title":"Job sequencing with deadlines — Variant 3"},{"id":603,"topic":"Greedy","title":"Fractional knapsack — Variant 4"},{"id":604,"topic":"Greedy","title":"0-1 knapsack — Variant 5"},{"id":605,"topic":"Greedy","title":"Minimum number of coins — Variant 6"},{"id":606,"topic":"Greedy","title":"Coin change II — Variant 7"},{"id":607,"topic":"Greedy","title":"Maximum profit with intervals — Variant 8"},{"id":608,"topic":"Greedy","title":"Assign cookies — Variant 9"},{"id":609,"topic":"Greedy","title":"Gas station — Variant 10"},{"id":610,"topic":"Greedy","title":"Candy distribution — Variant 11"},{"id":611,"topic":"Greedy","title":"Minimum platform problem — Variant 12"},{"id":612,"topic":"Greedy","title":"Meeting rooms II — Variant 13"},{"id":613,"topic":"Greedy","title":"Jump game — Variant 14"},{"id":614,"topic":"Greedy","title":"Jump game II — Variant 15"},{"id":615,"topic":"Greedy","title":"Huffman coding — Variant 16"},{"id":616,"topic":"Greedy","title":"Minimum spanning tree greedily — Variant 17"},{"id":617,"topic":"Greedy","title":"N meetings in one room — Variant 18"},{"id":618,"topic":"Greedy","title":"Minimize maximum difference — Variant 19"},{"id":619,"topic":"Greedy","title":"Expense minimization — Variant 20"},{"id":620,"topic":"Greedy","title":"Minimum cost to hire workers — Variant 21"},{"id":621,"topic":"DynamicProgramming","title":"Fibonacci numbers"},{"id":622,"topic":"DynamicProgramming","title":"Climbing stairs"},{"id":623,"topic":"DynamicProgramming","title":"Min cost climbing stairs"},{"id":624,"topic":"DynamicProgramming","title":"House robber"},{"id":625,"topic":"DynamicProgramming","title":"House robber II"},{"id":626,"topic":"DynamicProgramming","title":"Unique paths"},{"id":627,"topic":"DynamicProgramming","title":"Unique paths II"},{"id":628,"topic":"DynamicProgramming","title":"Minimum path sum"},{"id":629,"topic":"DynamicProgramming","title":"Maximum path sum (2)"},{"id":630,"topic":"DynamicProgramming","title":"Longest increasing subsequence"},{"id":631,"topic":"DynamicProgramming","title":"Longest common subsequence (2)"},{"id":632,"topic":"DynamicProgramming","title":"Edit distance (2)"},{"id":633,"topic":"DynamicProgramming","title":"Word break (2)"},{"id":634,"topic":"DynamicProgramming","title":"Coin change"},{"id":635,"topic":"DynamicProgramming","title":"Coin change II (2)"},{"id":636,"topic":"DynamicProgramming","title":"Partition equal subset sum"},{"id":637,"topic":"DynamicProgramming","title":"Subset sum"},{"id":638,"topic":"DynamicProgramming","title":"Count subsets with sum k"},{"id":639,"topic":"DynamicProgramming","title":"0-1 knapsack (2)"},{"id":640,"topic":"DynamicProgramming","title":"Unbounded knapsack"},{"id":641,"topic":"DynamicProgramming","title":"Egg dropping problem"},{"id":642,"topic":"DynamicProgramming","title":"Cutting rod"},{"id":643,"topic":"DynamicProgramming","title":"Best time to buy and sell stock (2)"},{"id":644,"topic":"DynamicProgramming","title":"Best time to buy and sell stock II"},{"id":645,"topic":"DynamicProgramming","title":"Best time to buy and sell stock III"},{"id":646,"topic":"DynamicProgramming","title":"Burst balloons"},{"id":647,"topic":"DynamicProgramming","title":"Palindrome partitioning"},{"id":648,"topic":"DynamicProgramming","title":"Regular expression matching (2)"},{"id":649,"topic":"DynamicProgramming","title":"Wildcard matching (2)"},{"id":650,"topic":"DynamicProgramming","title":"Maximum product subarray (2)"},{"id":651,"topic":"DynamicProgramming","title":"Maximum sum circular subarray"},{"id":652,"topic":"DynamicProgramming","title":"Longest palindromic subsequence"},{"id":653,"topic":"DynamicProgramming","title":"Longest palindromic substring (2)"},{"id":654,"topic":"DynamicProgramming","title":"Minimum insertions to make palindrome"},{"id":655,"topic":"DynamicProgramming","title":"Decode ways"},{"id":656,"topic":"DynamicProgramming","title":"Distinct subsequences"},{"id":657,"topic":"DynamicProgramming","title":"Interleaving strings"},{"id":658,"topic":"DynamicProgramming","title":"Maximum length of pair chain"},{"id":659,"topic":"DynamicProgramming","title":"Maximum sum of non-adjacent elements"},{"id":660,"topic":"DynamicProgramming","title":"Minimum number of deletions"},{"id":661,"topic":"DynamicProgramming","title":"Minimum jumps"},{"id":662,"topic":"DynamicProgramming","title":"Longest bitonic subsequence"},{"id":663,"topic":"DynamicProgramming","title":"Maximum rectangle area"},{"id":664,"topic":"DynamicProgramming","title":"Minimum cost to hire workers (2)"},{"id":665,"topic":"DynamicProgramming","title":"Maximum square"},{"id":666,"topic":"DynamicProgramming","title":"Cherry pickup"},{"id":667,"topic":"DynamicProgramming","title":"Count ways to tile floor"},{"id":668,"topic":"DynamicProgramming","title":"Minimum cost to reach destination"},{"id":669,"topic":"DynamicProgramming","title":"Longest arithmetic subsequence"},{"id":670,"topic":"DynamicProgramming","title":"Maximum sum increasing subsequence"},{"id":671,"topic":"DynamicProgramming","title":"Matrix chain multiplication"},{"id":672,"topic":"DynamicProgramming","title":"Optimal BST"},{"id":673,"topic":"DynamicProgramming","title":"Weighted job scheduling"},{"id":674,"topic":"DynamicProgramming","title":"Number of ways to decode message"},{"id":675,"topic":"DynamicProgramming","title":"Maximum independent set on tree"},{"id":676,"topic":"DynamicProgramming","title":"Palindromic partition count"},{"id":677,"topic":"DynamicProgramming","title":"Count ways to form target sum"},{"id":678,"topic":"DynamicProgramming","title":"Fibonacci numbers — Variant 2"},{"id":679,"topic":"DynamicProgramming","title":"Climbing stairs — Variant 3"},{"id":680,"topic":"DynamicProgramming","title":"Min cost climbing stairs — Variant 4"},{"id":681,"topic":"DynamicProgramming","title":"House robber — Variant 5"},{"id":682,"topic":"DynamicProgramming","title":"House robber II — Variant 6"},{"id":683,"topic":"DynamicProgramming","title":"Unique paths — Variant 7"},{"id":684,"topic":"DynamicProgramming","title":"Unique paths II — Variant 8"},{"id":685,"topic":"DynamicProgramming","title":"Minimum path sum — Variant 9"},{"id":686,"topic":"DynamicProgramming","title":"Maximum path sum — Variant 10"},{"id":687,"topic":"DynamicProgramming","title":"Longest increasing subsequence — Variant 11"},{"id":688,"topic":"DynamicProgramming","title":"Longest common subsequence — Variant 12"},{"id":689,"topic":"DynamicProgramming","title":"Edit distance — Variant 13"},{"id":690,"topic":"DynamicProgramming","title":"Word break — Variant 14"},{"id":691,"topic":"DynamicProgramming","title":"Coin change — Variant 15"},{"id":692,"topic":"DynamicProgramming","title":"Coin change II — Variant 16"},{"id":693,"topic":"DynamicProgramming","title":"Partition equal subset sum — Variant 17"},{"id":694,"topic":"DynamicProgramming","title":"Subset sum — Variant 18"},{"id":695,"topic":"DynamicProgramming","title":"Count subsets with sum k — Variant 19"},{"id":696,"topic":"DynamicProgramming","title":"0-1 knapsack — Variant 20"},{"id":697,"topic":"DynamicProgramming","title":"Unbounded knapsack — Variant 21"},{"id":698,"topic":"DynamicProgramming","title":"Egg dropping problem — Variant 22"},{"id":699,"topic":"DynamicProgramming","title":"Cutting rod — Variant 23"},{"id":700,"topic":"DynamicProgramming","title":"Best time to buy and sell stock — Variant 24"},{"id":701,"topic":"DynamicProgramming","title":"Best time to buy and sell stock II — Variant 25"},{"id":702,"topic":"DynamicProgramming","title":"Best time to buy and sell stock III — Variant 26"},{"id":703,"topic":"DynamicProgramming","title":"Burst balloons — Variant 27"},{"id":704,"topic":"DynamicProgramming","title":"Palindrome partitioning — Variant 28"},{"id":705,"topic":"DynamicProgramming","title":"Regular expression matching — Variant 29"},{"id":706,"topic":"DynamicProgramming","title":"Wildcard matching — Variant 30"},{"id":707,"topic":"DynamicProgramming","title":"Maximum product subarray — Variant 31"},{"id":708,"topic":"DynamicProgramming","title":"Maximum sum circular subarray — Variant 32"},{"id":709,"topic":"DynamicProgramming","title":"Longest palindromic subsequence — Variant 33"},{"id":710,"topic":"DynamicProgramming","title":"Longest palindromic substring — Variant 34"},{"id":711,"topic":"DynamicProgramming","title":"Minimum insertions to make palindrome — Variant 35"},{"id":712,"topic":"DynamicProgramming","title":"Decode ways — Variant 36"},{"id":713,"topic":"DynamicProgramming","title":"Distinct subsequences — Variant 37"},{"id":714,"topic":"DynamicProgramming","title":"Interleaving strings — Variant 38"},{"id":715,"topic":"DynamicProgramming","title":"Maximum length of pair chain — Variant 39"},{"id":716,"topic":"DynamicProgramming","title":"Maximum sum of non-adjacent elements — Variant 40"},{"id":717,"topic":"DynamicProgramming","title":"Minimum number of deletions — Variant 41"},{"id":718,"topic":"DynamicProgramming","title":"Minimum jumps — Variant 42"},{"id":719,"topic":"DynamicProgramming","title":"Longest bitonic subsequence — Variant 43"},{"id":720,"topic":"DynamicProgramming","title":"Maximum rectangle area — Variant 44"},{"id":721,"topic":"DynamicProgramming","title":"Minimum cost to hire workers — Variant 45"},{"id":722,"topic":"DynamicProgramming","title":"Maximum square — Variant 46"},{"id":723,"topic":"DynamicProgramming","title":"Cherry pickup — Variant 47"},{"id":724,"topic":"DynamicProgramming","title":"Count ways to tile floor — Variant 48"},{"id":725,"topic":"DynamicProgramming","title":"Minimum cost to reach destination — Variant 49"},{"id":726,"topic":"DynamicProgramming","title":"Longest arithmetic subsequence — Variant 50"},{"id":727,"topic":"DynamicProgramming","title":"Maximum sum increasing subsequence — Variant 51"},{"id":728,"topic":"DynamicProgramming","title":"Matrix chain multiplication — Variant 52"},{"id":729,"topic":"DynamicProgramming","title":"Optimal BST — Variant 53"},{"id":730,"topic":"DynamicProgramming","title":"Weighted job scheduling — Variant 54"},{"id":731,"topic":"DynamicProgramming","title":"Number of ways to decode message — Variant 55"},{"id":732,"topic":"DynamicProgramming","title":"Maximum independent set on tree — Variant 56"},{"id":733,"topic":"DynamicProgramming","title":"Palindromic partition count — Variant 57"},{"id":734,"topic":"DynamicProgramming","title":"Count ways to form target sum — Variant 58"},{"id":735,"topic":"DynamicProgramming","title":"Fibonacci numbers — Variant 59"},{"id":736,"topic":"DynamicProgramming","title":"Climbing stairs — Variant 60"},{"id":737,"topic":"DynamicProgramming","title":"Min cost climbing stairs — Variant 61"},{"id":738,"topic":"DynamicProgramming","title":"House robber — Variant 62"},{"id":739,"topic":"DynamicProgramming","title":"House robber II — Variant 63"},{"id":740,"topic":"DynamicProgramming","title":"Unique paths — Variant 64"},{"id":741,"topic":"Backtracking and Recursion","title":"Generate all subsets"},{"id":742,"topic":"Backtracking and Recursion","title":"Generate all permutations"},{"id":743,"topic":"Backtracking and Recursion","title":"N-Queens problem"},{"id":744,"topic":"Backtracking and Recursion","title":"Sudoku solver"},{"id":745,"topic":"Backtracking and Recursion","title":"Rat in a maze"},{"id":746,"topic":"Backtracking and Recursion","title":"Word search"},{"id":747,"topic":"Backtracking and Recursion","title":"Combination sum"},{"id":748,"topic":"Backtracking and Recursion","title":"Combination sum II"},{"id":749,"topic":"Backtracking and Recursion","title":"Palindrome partitioning (2)"},{"id":750,"topic":"Backtracking and Recursion","title":"Letter combinations of phone number"},{"id":751,"topic":"Backtracking and Recursion","title":"Knight tour"},{"id":752,"topic":"Backtracking and Recursion","title":"Permutations with duplicates"},{"id":753,"topic":"Backtracking and Recursion","title":"Subsets with duplicates"},{"id":754,"topic":"Backtracking and Recursion","title":"All paths in a grid"},{"id":755,"topic":"Backtracking and Recursion","title":"Minesweeper recursion"},{"id":756,"topic":"Backtracking and Recursion","title":"Restore IP addresses"},{"id":757,"topic":"Backtracking and Recursion","title":"All valid parentheses"},{"id":758,"topic":"Backtracking and Recursion","title":"Gray code"},{"id":759,"topic":"Backtracking and Recursion","title":"Subset sum recursion"},{"id":760,"topic":"Backtracking and Recursion","title":"Balanced parentheses generation"},{"id":761,"topic":"Backtracking and Recursion","title":"Hamiltonian cycle"},{"id":762,"topic":"Backtracking and Recursion","title":"Unique paths with obstacles"},{"id":763,"topic":"Backtracking and Recursion","title":"Ways to climb stairs"},{"id":764,"topic":"Backtracking and Recursion","title":"K-sum problem"},{"id":765,"topic":"Backtracking and Recursion","title":"Boggle board search"},{"id":766,"topic":"Backtracking and Recursion","title":"All valid expressions"},{"id":767,"topic":"Backtracking and Recursion","title":"Power set generation"},{"id":768,"topic":"Backtracking and Recursion","title":"Crossword logic"},{"id":769,"topic":"Backtracking and Recursion","title":"Maze path counting"},{"id":770,"topic":"Backtracking and Recursion","title":"Flood fill recursion"},{"id":771,"topic":"Backtracking and Recursion","title":"Search in binary tree with backtracking"},{"id":772,"topic":"Backtracking and Recursion","title":"Tower of Hanoi"},{"id":773,"topic":"Backtracking and Recursion","title":"Josephus problem"},{"id":774,"topic":"Backtracking and Recursion","title":"Maximum independent set via recursion"},{"id":775,"topic":"Backtracking and Recursion","title":"All combinations summing to target"},{"id":776,"topic":"Backtracking and Recursion","title":"Rearrange string to palindrome"},{"id":777,"topic":"Backtracking and Recursion","title":"Construct all unique binary strings"},{"id":778,"topic":"Backtracking and Recursion","title":"All valid partitions"},{"id":779,"topic":"Backtracking and Recursion","title":"Recursively reverse a string"},{"id":780,"topic":"Backtracking and Recursion","title":"Recursively generate fibonacci"},{"id":781,"topic":"Backtracking and Recursion","title":"Tree path sum recursion"},{"id":782,"topic":"Backtracking and Recursion","title":"All leaf-to-root paths"},{"id":783,"topic":"Backtracking and Recursion","title":"Generate all subsets — Variant 2"},{"id":784,"topic":"Backtracking and Recursion","title":"Generate all permutations — Variant 3"},{"id":785,"topic":"Backtracking and Recursion","title":"N-Queens problem — Variant 4"},{"id":786,"topic":"Backtracking and Recursion","title":"Sudoku solver — Variant 5"},{"id":787,"topic":"Backtracking and Recursion","title":"Rat in a maze — Variant 6"},{"id":788,"topic":"Backtracking and Recursion","title":"Word search — Variant 7"},{"id":789,"topic":"Backtracking and Recursion","title":"Combination sum — Variant 8"},{"id":790,"topic":"Backtracking and Recursion","title":"Combination sum II — Variant 9"},{"id":791,"topic":"Backtracking and Recursion","title":"Palindrome partitioning — Variant 10"},{"id":792,"topic":"Backtracking and Recursion","title":"Letter combinations of phone number — Variant 11"},{"id":793,"topic":"Backtracking and Recursion","title":"Knight tour — Variant 12"},{"id":794,"topic":"Backtracking and Recursion","title":"Permutations with duplicates — Variant 13"},{"id":795,"topic":"Backtracking and Recursion","title":"Subsets with duplicates — Variant 14"},{"id":796,"topic":"Backtracking and Recursion","title":"All paths in a grid — Variant 15"},{"id":797,"topic":"Backtracking and Recursion","title":"Minesweeper recursion — Variant 16"},{"id":798,"topic":"Backtracking and Recursion","title":"Restore IP addresses — Variant 17"},{"id":799,"topic":"Backtracking and Recursion","title":"All valid parentheses — Variant 18"},{"id":800,"topic":"Backtracking and Recursion","title":"Gray code — Variant 19"},{"id":801,"topic":"Backtracking and Recursion","title":"Subset sum recursion — Variant 20"},{"id":802,"topic":"Backtracking and Recursion","title":"Balanced parentheses generation — Variant 21"},{"id":803,"topic":"Backtracking and Recursion","title":"Hamiltonian cycle — Variant 22"},{"id":804,"topic":"Backtracking and Recursion","title":"Unique paths with obstacles — Variant 23"},{"id":805,"topic":"Backtracking and Recursion","title":"Ways to climb stairs — Variant 24"},{"id":806,"topic":"Backtracking and Recursion","title":"K-sum problem — Variant 25"},{"id":807,"topic":"Backtracking and Recursion","title":"Boggle board search — Variant 26"},{"id":808,"topic":"Backtracking and Recursion","title":"All valid expressions — Variant 27"},{"id":809,"topic":"Backtracking and Recursion","title":"Power set generation — Variant 28"},{"id":810,"topic":"Backtracking and Recursion","title":"Crossword logic — Variant 29"},{"id":811,"topic":"Bit Manipulation","title":"Count set bits"},{"id":812,"topic":"Bit Manipulation","title":"Number of set bits in range"},{"id":813,"topic":"Bit Manipulation","title":"Only set bit"},{"id":814,"topic":"Bit Manipulation","title":"Power of two"},{"id":815,"topic":"Bit Manipulation","title":"Power of four"},{"id":816,"topic":"Bit Manipulation","title":"Power of three"},{"id":817,"topic":"Bit Manipulation","title":"Missing number"},{"id":818,"topic":"Bit Manipulation","title":"Single number"},{"id":819,"topic":"Bit Manipulation","title":"Single number II"},{"id":820,"topic":"Bit Manipulation","title":"Single number III"},{"id":821,"topic":"Bit Manipulation","title":"Reverse bits"},{"id":822,"topic":"Bit Manipulation","title":"Rotate bits"},{"id":823,"topic":"Bit Manipulation","title":"Binary to decimal conversion"},{"id":824,"topic":"Bit Manipulation","title":"Decimal to binary conversion"},{"id":825,"topic":"Bit Manipulation","title":"Check odd number"},{"id":826,"topic":"Bit Manipulation","title":"Bitwise AND of range"},{"id":827,"topic":"Bit Manipulation","title":"Bitwise OR of range"},{"id":828,"topic":"Bit Manipulation","title":"Swap without temp"},{"id":829,"topic":"Bit Manipulation","title":"Position of leftmost set bit"},{"id":830,"topic":"Bit Manipulation","title":"Highest set bit"},{"id":831,"topic":"Bit Manipulation","title":"Total set bits from 1 to n"},{"id":832,"topic":"Bit Manipulation","title":"Bit difference"},{"id":833,"topic":"Bit Manipulation","title":"Copy set bits in range"},{"id":834,"topic":"Bit Manipulation","title":"Divide integers without division"},{"id":835,"topic":"Bit Manipulation","title":"Multiply without multiplication"},{"id":836,"topic":"Bit Manipulation","title":"Parity of number"},{"id":837,"topic":"Bit Manipulation","title":"Exactly one bit set"},{"id":838,"topic":"Bit Manipulation","title":"Sparse number check"},{"id":839,"topic":"Bit Manipulation","title":"XOR of numbers from 1 to n"},{"id":840,"topic":"Bit Manipulation","title":"Bitwise operations in arrays"},{"id":841,"topic":"Bit Manipulation","title":"Circular bit rotation"},{"id":842,"topic":"Bit Manipulation","title":"Count set bits — Variant 2"},{"id":843,"topic":"Bit Manipulation","title":"Number of set bits in range — Variant 3"},{"id":844,"topic":"Bit Manipulation","title":"Only set bit — Variant 4"},{"id":845,"topic":"Bit Manipulation","title":"Power of two — Variant 5"},{"id":846,"topic":"Bit Manipulation","title":"Power of four — Variant 6"},{"id":847,"topic":"Bit Manipulation","title":"Power of three — Variant 7"},{"id":848,"topic":"Bit Manipulation","title":"Missing number — Variant 8"},{"id":849,"topic":"Bit Manipulation","title":"Single number — Variant 9"},{"id":850,"topic":"Bit Manipulation","title":"Single number II — Variant 10"},{"id":851,"topic":"Bit Manipulation","title":"Single number III — Variant 11"},{"id":852,"topic":"Bit Manipulation","title":"Reverse bits — Variant 12"},{"id":853,"topic":"Bit Manipulation","title":"Rotate bits — Variant 13"},{"id":854,"topic":"Bit Manipulation","title":"Binary to decimal conversion — Variant 14"},{"id":855,"topic":"Bit Manipulation","title":"Decimal to binary conversion — Variant 15"},{"id":856,"topic":"Bit Manipulation","title":"Check odd number — Variant 16"},{"id":857,"topic":"Bit Manipulation","title":"Bitwise AND of range — Variant 17"},{"id":858,"topic":"Bit Manipulation","title":"Bitwise OR of range — Variant 18"},{"id":859,"topic":"Bit Manipulation","title":"Swap without temp — Variant 19"},{"id":860,"topic":"Bit Manipulation","title":"Position of leftmost set bit — Variant 20"},{"id":861,"topic":"Heaps and Priority Queues","title":"Kth largest element in a stream"},{"id":862,"topic":"Heaps and Priority Queues","title":"Kth smallest in a stream"},{"id":863,"topic":"Heaps and Priority Queues","title":"Merge k sorted arrays"},{"id":864,"topic":"Heaps and Priority Queues","title":"Merge k sorted lists (2)"},{"id":865,"topic":"Heaps and Priority Queues","title":"Top k frequent elements"},{"id":866,"topic":"Heaps and Priority Queues","title":"Find median in a stream"},{"id":867,"topic":"Heaps and Priority Queues","title":"Sliding window median"},{"id":868,"topic":"Heaps and Priority Queues","title":"Design max heap"},{"id":869,"topic":"Heaps and Priority Queues","title":"Design min heap"},{"id":870,"topic":"Heaps and Priority Queues","title":"Heap sort"},{"id":871,"topic":"Heaps and Priority Queues","title":"Connect ropes with minimum cost"},{"id":872,"topic":"Heaps and Priority Queues","title":"Smallest range covering k lists"},{"id":873,"topic":"Heaps and Priority Queues","title":"Maximum sum of k smallest elements"},{"id":874,"topic":"Heaps and Priority Queues","title":"Priority queue basics"},{"id":875,"topic":"Heaps and Priority Queues","title":"Rearrange strings by frequency"},{"id":876,"topic":"Heaps and Priority Queues","title":"K closest points to origin"},{"id":877,"topic":"Heaps and Priority Queues","title":"Task scheduler"},{"id":878,"topic":"Heaps and Priority Queues","title":"Network delay time"},{"id":879,"topic":"Heaps and Priority Queues","title":"IPO problem"},{"id":880,"topic":"Heaps and Priority Queues","title":"Cheapest flight"},{"id":881,"topic":"Heaps and Priority Queues","title":"Skyline problem"},{"id":882,"topic":"Heaps and Priority Queues","title":"Smallest number in sorted matrix"},{"id":883,"topic":"Heaps and Priority Queues","title":"Max heap custom comparator"},{"id":884,"topic":"Heaps and Priority Queues","title":"Min heap custom comparator"},{"id":885,"topic":"Heaps and Priority Queues","title":"Check heap property"},{"id":886,"topic":"Heaps and Priority Queues","title":"Lazy deletion heap"},{"id":887,"topic":"Heaps and Priority Queues","title":"Kth largest element in a stream — Variant 2"},{"id":888,"topic":"Heaps and Priority Queues","title":"Kth smallest in a stream — Variant 3"},{"id":889,"topic":"Heaps and Priority Queues","title":"Merge k sorted arrays — Variant 4"},{"id":890,"topic":"Heaps and Priority Queues","title":"Merge k sorted lists — Variant 5"},{"id":891,"topic":"Heaps and Priority Queues","title":"Top k frequent elements — Variant 6"},{"id":892,"topic":"Heaps and Priority Queues","title":"Find median in a stream — Variant 7"},{"id":893,"topic":"Heaps and Priority Queues","title":"Sliding window median — Variant 8"},{"id":894,"topic":"Heaps and Priority Queues","title":"Design max heap — Variant 9"},{"id":895,"topic":"Heaps and Priority Queues","title":"Design min heap — Variant 10"},{"id":896,"topic":"Tries","title":"Insert and search in trie"},{"id":897,"topic":"Tries","title":"Trie prefix search"},{"id":898,"topic":"Tries","title":"Word break using trie"},{"id":899,"topic":"Tries","title":"Longest common prefix using trie"},{"id":900,"topic":"Tries","title":"Implement trie"},{"id":901,"topic":"Tries","title":"Shortest unique prefix"},{"id":902,"topic":"Tries","title":"Search suggestions system"},{"id":903,"topic":"Tries","title":"Word dictionary"},{"id":904,"topic":"Tries","title":"Autocomplete system"},{"id":905,"topic":"Tries","title":"Distinct substrings using trie"},{"id":906,"topic":"Tries","title":"XOR queries using trie"},{"id":907,"topic":"Tries","title":"Trie basics"},{"id":908,"topic":"Tries","title":"Wildcard trie"},{"id":909,"topic":"Tries","title":"Trie deletion operation"},{"id":910,"topic":"Tries","title":"Trie with arrays"},{"id":911,"topic":"Tries","title":"Max XOR pair"},{"id":912,"topic":"Tries","title":"Insert and search in trie — Variant 2"},{"id":913,"topic":"Tries","title":"Trie prefix search — Variant 3"},{"id":914,"topic":"Tries","title":"Word break using trie — Variant 4"},{"id":915,"topic":"Tries","title":"Longest common prefix using trie — Variant 5"},{"id":916,"topic":"Tries","title":"Implement trie — Variant 6"},{"id":917,"topic":"Tries","title":"Shortest unique prefix — Variant 7"},{"id":918,"topic":"Tries","title":"Search suggestions system — Variant 8"},{"id":919,"topic":"Tries","title":"Word dictionary — Variant 9"},{"id":920,"topic":"Tries","title":"Autocomplete system — Variant 10"},{"id":921,"topic":"Segment Trees and Fenwick Trees","title":"Range sum query"},{"id":922,"topic":"Segment Trees and Fenwick Trees","title":"Range minimum query"},{"id":923,"topic":"Segment Trees and Fenwick Trees","title":"Range maximum query"},{"id":924,"topic":"Segment Trees and Fenwick Trees","title":"Fenwick tree update and query"},{"id":925,"topic":"Segment Trees and Fenwick Trees","title":"Segment tree build"},{"id":926,"topic":"Segment Trees and Fenwick Trees","title":"Segment tree query"},{"id":927,"topic":"Segment Trees and Fenwick Trees","title":"Lazy propagation"},{"id":928,"topic":"Segment Trees and Fenwick Trees","title":"Prefix sum with Fenwick"},{"id":929,"topic":"Segment Trees and Fenwick Trees","title":"Binary indexed tree basics"},{"id":930,"topic":"Segment Trees and Fenwick Trees","title":"Range add and range sum"},{"id":931,"topic":"Segment Trees and Fenwick Trees","title":"Persistent segment tree"},{"id":932,"topic":"Segment Trees and Fenwick Trees","title":"Kth smallest in segment tree"},{"id":933,"topic":"Segment Trees and Fenwick Trees","title":"Maximum subarray sum segment tree"},{"id":934,"topic":"Segment Trees and Fenwick Trees","title":"Segment tree for min and max"},{"id":935,"topic":"Segment Trees and Fenwick Trees","title":"Fenwick inverse queries"},{"id":936,"topic":"Segment Trees and Fenwick Trees","title":"Segment tree node counting"},{"id":937,"topic":"Segment Trees and Fenwick Trees","title":"Range sum query — Variant 2"},{"id":938,"topic":"Segment Trees and Fenwick Trees","title":"Range minimum query — Variant 3"},{"id":939,"topic":"Segment Trees and Fenwick Trees","title":"Range maximum query — Variant 4"},{"id":940,"topic":"Segment Trees and Fenwick Trees","title":"Fenwick tree update and query — Variant 5"},{"id":941,"topic":"Math and Number Theory","title":"GCD of two numbers"},{"id":942,"topic":"Math and Number Theory","title":"LCM of two numbers"},{"id":943,"topic":"Math and Number Theory","title":"Prime check"},{"id":944,"topic":"Math and Number Theory","title":"Sieve of Eratosthenes"},{"id":945,"topic":"Math and Number Theory","title":"Factorial of large number"},{"id":946,"topic":"Math and Number Theory","title":"Trailing zeros in factorial"},{"id":947,"topic":"Math and Number Theory","title":"Modular arithmetic"},{"id":948,"topic":"Math and Number Theory","title":"Fast exponentiation"},{"id":949,"topic":"Math and Number Theory","title":"Matrix exponentiation basics"},{"id":950,"topic":"Math and Number Theory","title":"Perfect number"},{"id":951,"topic":"Math and Number Theory","title":"Prime number test"},{"id":952,"topic":"Math and Number Theory","title":"All divisors"},{"id":953,"topic":"Math and Number Theory","title":"nCr modulo"},{"id":954,"topic":"Math and Number Theory","title":"Euler totient"},{"id":955,"topic":"Math and Number Theory","title":"Count primes up to n"},{"id":956,"topic":"Math and Number Theory","title":"Missing number using math"},{"id":957,"topic":"Math and Number Theory","title":"Square root decomposition"},{"id":958,"topic":"Math and Number Theory","title":"Palindrome number"},{"id":959,"topic":"Math and Number Theory","title":"Armstrong number"},{"id":960,"topic":"Math and Number Theory","title":"Reverse integer"},{"id":961,"topic":"Math and Number Theory","title":"Power modulo"},{"id":962,"topic":"Math and Number Theory","title":"GCD of array"},{"id":963,"topic":"Math and Number Theory","title":"Binomial coefficient"},{"id":964,"topic":"Math and Number Theory","title":"Chinese remainder theorem basics"},{"id":965,"topic":"Math and Number Theory","title":"Count trailing zeros"},{"id":966,"topic":"Math and Number Theory","title":"Multiply large numbers"},{"id":967,"topic":"Math and Number Theory","title":"Binary representation of decimal"},{"id":968,"topic":"Math and Number Theory","title":"Mod inverse"},{"id":969,"topic":"Math and Number Theory","title":"Prime factors"},{"id":970,"topic":"Math and Number Theory","title":"Integer square root"},{"id":971,"topic":"Math and Number Theory","title":"GCD of two numbers — Variant 2"},{"id":972,"topic":"Math and Number Theory","title":"LCM of two numbers — Variant 3"},{"id":973,"topic":"Math and Number Theory","title":"Prime check — Variant 4"},{"id":974,"topic":"Math and Number Theory","title":"Sieve of Eratosthenes — Variant 5"},{"id":975,"topic":"Math and Number Theory","title":"Factorial of large number — Variant 6"},{"id":976,"topic":"Math and Number Theory","title":"Trailing zeros in factorial — Variant 7"},{"id":977,"topic":"Math and Number Theory","title":"Modular arithmetic — Variant 8"},{"id":978,"topic":"Math and Number Theory","title":"Fast exponentiation — Variant 9"},{"id":979,"topic":"Math and Number Theory","title":"Matrix exponentiation basics — Variant 10"},{"id":980,"topic":"Math and Number Theory","title":"Perfect number — Variant 11"},{"id":981,"topic":"Math and Number Theory","title":"Prime number test — Variant 12"},{"id":982,"topic":"Math and Number Theory","title":"All divisors — Variant 13"},{"id":983,"topic":"Math and Number Theory","title":"nCr modulo — Variant 14"},{"id":984,"topic":"Math and Number Theory","title":"Euler totient — Variant 15"},{"id":985,"topic":"Math and Number Theory","title":"Count primes up to n — Variant 16"},{"id":986,"topic":"Math and Number Theory","title":"Missing number using math — Variant 17"},{"id":987,"topic":"Math and Number Theory","title":"Square root decomposition — Variant 18"},{"id":988,"topic":"Math and Number Theory","title":"Palindrome number — Variant 19"},{"id":989,"topic":"Math and Number Theory","title":"Armstrong number — Variant 20"},{"id":990,"topic":"Math and Number Theory","title":"Reverse integer — Variant 21"},{"id":991,"topic":"Math and Number Theory","title":"Power modulo — Variant 22"},{"id":992,"topic":"Math and Number Theory","title":"GCD of array — Variant 23"},{"id":993,"topic":"Math and Number Theory","title":"Binomial coefficient — Variant 24"},{"id":994,"topic":"Math and Number Theory","title":"Chinese remainder theorem basics — Variant 25"},{"id":995,"topic":"Math and Number Theory","title":"Count trailing zeros — Variant 26"},{"id":996,"topic":"Math and Number Theory","title":"Multiply large numbers — Variant 27"},{"id":997,"topic":"Math and Number Theory","title":"Binary representation of decimal — Variant 28"},{"id":998,"topic":"Math and Number Theory","title":"Mod inverse — Variant 29"},{"id":999,"topic":"Math and Number Theory","title":"Prime factors — Variant 30"},{"id":1000,"topic":"Math and Number Theory","title":"Integer square root — Variant 31"}];
     const orderedTopics = ["Arrays","Strings","Linked Lists","Stacks and Queues","Trees","Binary Search Trees","Graphs","Greedy","DynamicProgramming","Backtracking and Recursion","Bit Manipulation","Heaps and Priority Queues","Tries","Segment Trees and Fenwick Trees","Math and Number Theory"];
-    const getSolvedSet = () => {
+
+    /* Display-only names; the stored topic values above are never changed. */
+    const TOPIC_LABELS = { DynamicProgramming: 'Dynamic Programming' };
+    const topicLabel = (t) => TOPIC_LABELS[t] || t;
+
+    const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const WEEKDAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const WEEKS = 53;
+
+    const root = document.documentElement;
+    const $ = (id) => document.getElementById(id);
+    const el = {
+      confettiLayer: $('confettiLayer'), tip: $('tip'),
+      saveIndicator: $('saveIndicator'), saveText: $('saveText'),
+      modeToggle: $('modeToggle'), themePicker: $('themePicker'),
+      heroTotal: $('heroTotal'), ringFill: $('ringFill'), ringWrap: $('ringWrap'),
+      percentValue: $('percentValue'), solvedCount: $('solvedCount'),
+      totalCount: $('totalCount'), solvedStat: $('solvedStat'), progressStat: $('progressStat'), topicCount: $('topicCount'),
+      aYear: $('aYear'), aDays: $('aDays'), aCurrent: $('aCurrent'), aLongest: $('aLongest'),
+      heatScroll: $('heatScroll'), heatmap: $('heatmap'), heatNote: $('heatNote'),
+      resetBtn: $('resetBtn'),
+      searchInput: $('searchInput'), statusFilter: $('statusFilter'), topicFilter: $('topicFilter'),
+      topicChips: $('topicChips'), tableBody: $('problemTableBody'),
+      emptyState: $('emptyState'), clearFilters: $('clearFilters'),
+      visibleCount: $('visibleCount'), lastUpdated: $('lastUpdated'), footerCount: $('footerCount')
+    };
+
+    /* ---------- safe storage ---------- */
+    let storageOK = true;
+    const store = {
+      get(k) { try { return localStorage.getItem(k); } catch (e) { storageOK = false; return null; } },
+      set(k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { storageOK = false; return false; } },
+      remove(k) { try { localStorage.removeItem(k); return true; } catch (e) { storageOK = false; return false; } }
+    };
+
+    /* ---------- helpers ---------- */
+    const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const pad = (n) => (n < 10 ? '0' : '') + n;
+    const fmtKey = (y, m, d) => y + '-' + pad(m) + '-' + pad(d);          // m is 1-12
+    const dateToKey = (dt) => fmtKey(dt.getFullYear(), dt.getMonth() + 1, dt.getDate());
+    const todayKey = () => dateToKey(new Date());
+    const dayNum = (key) => { const p = key.split('-').map(Number); return Math.floor(Date.UTC(p[0], p[1] - 1, p[2]) / 864e5); };
+    const keyFromDayNum = (n) => { const dt = new Date(n * 864e5); return fmtKey(dt.getUTCFullYear(), dt.getUTCMonth() + 1, dt.getUTCDate()); };
+    const isDateKey = (s) => {
+      if (typeof s !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(s)) return false;
+      return keyFromDayNum(dayNum(s)) === s;
+    };
+    const longDate = (dt) => WEEKDAYS[dt.getDay()] + ', ' + MONTHS[dt.getMonth()] + ' ' + dt.getDate() + ', ' + dt.getFullYear();
+    const plural = (n, one, many) => n + ' ' + (n === 1 ? one : many);
+
+    const validIds = new Set(problems.map((p) => p.id));
+    const topicTotals = {};
+    problems.forEach((p) => { topicTotals[p.topic] = (topicTotals[p.topic] || 0) + 1; });
+
+    /* ---------- state ---------- */
+    const loadState = () => {
+      const solved = new Set();
       try {
-        const raw = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-        return new Set((Array.isArray(raw) ? raw : []).map(Number));
-      } catch {
-        return new Set();
-      }
+        const raw = JSON.parse(store.get(STORAGE_KEY) || '[]');
+        if (Array.isArray(raw)) raw.forEach((v) => { const n = Number(v); if (validIds.has(n)) solved.add(n); });
+      } catch (e) { /* ignore corrupt data */ }
+      const dates = {};
+      try {
+        const raw = JSON.parse(store.get(DATES_KEY) || '{}');
+        if (raw && typeof raw === 'object' && !Array.isArray(raw)) {
+          Object.keys(raw).forEach((k) => { const n = Number(k); if (solved.has(n) && isDateKey(raw[k])) dates[n] = raw[k]; });
+        }
+      } catch (e) { /* ignore corrupt data */ }
+      return { solved, dates };
     };
 
-    const state = { solved: getSolvedSet(), selectedTopic: 'all', search: '', status: 'all' };
-    const elements = {
-      searchInput: document.getElementById('searchInput'),
-      statusFilter: document.getElementById('statusFilter'),
-      topicFilter: document.getElementById('topicFilter'),
-      topicChips: document.getElementById('topicChips'),
-      tableBody: document.getElementById('problemTableBody'),
-      emptyState: document.getElementById('emptyState'),
-      visibleCount: document.getElementById('visibleCount'),
-      lastUpdated: document.getElementById('lastUpdated'),
-      progressRing: document.getElementById('progressRing'),
-      percentValue: document.getElementById('percentValue'),
-      solvedCount: document.getElementById('solvedCount'),
-      totalCount: document.getElementById('totalCount'),
-      solvedStat: document.getElementById('solvedStat'),
-      progressStat: document.getElementById('progressStat'),
-      topicCount: document.getElementById('topicCount'),
-      themePicker: document.getElementById('themePicker'),
-      markAllDone: document.getElementById('markAllDone'),
-      clearAll: document.getElementById('clearAll')
+    const loaded = loadState();
+    const state = { solved: loaded.solved, dates: loaded.dates, topic: 'all', search: '', status: 'all' };
+
+    const setSaveStatus = () => {
+      el.saveIndicator.classList.toggle('warn', !storageOK);
+      el.saveText.textContent = storageOK ? 'Saved locally' : 'Not saved (storage blocked)';
     };
 
-    const persistSolved = () => {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify([...state.solved].sort((a, b) => a - b)));
-      const updated = new Date();
-      elements.lastUpdated.textContent = 'Updated ' + updated.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const persist = () => {
+      store.set(STORAGE_KEY, JSON.stringify([...state.solved].sort((a, b) => a - b)));
+      store.set(DATES_KEY, JSON.stringify(state.dates));
+      setSaveStatus();
+      el.lastUpdated.textContent = 'Updated ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    };
+
+    /* ---------- theme ---------- */
+    const hexToRgb = (hex) => {
+      let h = hex.trim().replace('#', '');
+      if (h.length === 3) h = h.split('').map((c) => c + c).join('');
+      const n = parseInt(h, 16);
+      return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+    };
+    const luminance = (rgb) => {
+      const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
+      return 0.2126 * f(rgb[0]) + 0.7152 * f(rgb[1]) + 0.0722 * f(rgb[2]);
+    };
+    const currentAccent = () => getComputedStyle(root).getPropertyValue('--accent').trim();
+    /* Pick readable text colour for anything painted with the accent. */
+    const applyOnAccent = () => {
+      const acc = currentAccent();
+      if (!/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(acc)) return;
+      const L = luminance(hexToRgb(acc));
+      const withDark = (L + 0.05) / (luminance(hexToRgb('#0d1424')) + 0.05);
+      const withWhite = 1.05 / (L + 0.05);
+      root.style.setProperty('--on-accent', withDark >= withWhite ? '#0d1424' : '#ffffff');
+    };
+    const syncPicker = () => {
+      let acc = currentAccent();
+      if (/^#[0-9a-f]{3}$/i.test(acc)) acc = '#' + acc.slice(1).split('').map((c) => c + c).join('');
+      if (/^#[0-9a-f]{6}$/i.test(acc)) el.themePicker.value = acc;
+    };
+    const setMode = (light, save) => {
+      root.classList.toggle('light', light);
+      el.modeToggle.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', light ? '#f4f6fb' : '#0b1220');
+      if (save) store.set(MODE_KEY, light ? 'light' : 'dark');
+      applyOnAccent();
+      syncPicker();
+    };
+
+    /* ---------- progress ---------- */
+    const RING_C = 2 * Math.PI * 52;
+    const pctText = (frac) => {
+      const v = frac * 100;
+      if (v <= 0) return '0%';
+      if (v >= 100) return '100%';
+      const r = Math.round(v * 10) / 10;
+      return (r % 1 === 0 ? r.toFixed(0) : r.toFixed(1)) + '%';
     };
 
     const renderProgress = () => {
       const total = problems.length;
       const solved = state.solved.size;
-      const percent = Math.round((solved / total) * 100);
-      const angle = percent * 3.6;
-      elements.progressRing.style.background = 'conic-gradient(var(--accent) ' + angle + 'deg, var(--line) ' + angle + 'deg)';
-      elements.percentValue.textContent = percent + '%';
-      elements.solvedCount.textContent = solved + ' / ' + total;
-      elements.totalCount.textContent = total;
-      elements.solvedStat.textContent = solved;
-      elements.progressStat.textContent = percent + '%';
-      elements.topicCount.textContent = orderedTopics.length;
+      const frac = total ? solved / total : 0;
+      el.ringFill.style.strokeDasharray = RING_C;
+      el.ringFill.style.strokeDashoffset = RING_C * (1 - frac);
+      const pct = pctText(frac);
+      el.percentValue.textContent = pct;
+      el.ringWrap.setAttribute('aria-label', 'Overall progress: ' + pct + ', ' + solved + ' of ' + total + ' solved');
+      el.solvedCount.textContent = solved + ' / ' + total;
+      el.totalCount.textContent = total;
+      el.solvedStat.textContent = solved;
+      el.progressStat.textContent = pct;
+      el.topicCount.textContent = orderedTopics.length;
+      el.heroTotal.textContent = total;
+      el.footerCount.textContent = total + '-question progression';
     };
 
-    const populateFilters = () => {
-      const topicOptions = ['<option value="all">All topics</option>'];
-      orderedTopics.forEach((topic) => topicOptions.push('<option value="' + topic + '">' + topic + '</option>'));
-      elements.topicFilter.innerHTML = topicOptions.join('');
-      elements.topicFilter.value = state.selectedTopic;
-    };
+    /* ---------- activity grid ---------- */
+    const levelFor = (c) => (c <= 0 ? 0 : c === 1 ? 1 : c <= 2 ? 2 : c <= 4 ? 3 : c <= 7 ? 4 : 5);
+    let renderedToday = todayKey();
+    let heatScrolled = false;
 
-    const renderTopicChips = () => {
-      elements.topicChips.innerHTML = orderedTopics.map((topic) => {
-        const active = state.selectedTopic === topic ? 'active' : '';
-        return '<button class="chip ' + active + '" data-topic="' + topic + '" type="button">' + topic + '</button>';
-      }).join('');
-
-      elements.topicChips.querySelectorAll('.chip').forEach((chip) => {
-        chip.addEventListener('click', () => {
-          state.selectedTopic = chip.dataset.topic;
-          elements.topicFilter.value = state.selectedTopic;
-          render();
-        });
+    const computeActivity = (today) => {
+      const counts = {};
+      let dated = 0;
+      state.solved.forEach((id) => {
+        const d = state.dates[id];
+        if (d && d <= today) { counts[d] = (counts[d] || 0) + 1; dated++; }
       });
+      const days = Object.keys(counts).map(dayNum).sort((a, b) => a - b);
+      let longest = 0, run = 0, prev = null;
+      days.forEach((n) => {
+        run = (prev !== null && n === prev + 1) ? run + 1 : 1;
+        if (run > longest) longest = run;
+        prev = n;
+      });
+      const tn = dayNum(today);
+      let current = 0;
+      let n = counts[today] ? tn : (counts[keyFromDayNum(tn - 1)] ? tn - 1 : null);
+      if (n !== null) { while (counts[keyFromDayNum(n)]) { current++; n--; } }
+      return { counts, dated, longest, current };
+    };
+
+    const renderActivity = () => {
+      const now = new Date();
+      const t0 = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const today = dateToKey(t0);
+      renderedToday = today;
+      const act = computeActivity(today);
+
+      /* Grid starts on the Sunday 52 weeks before the Sunday of the current week. */
+      const start = new Date(t0.getFullYear(), t0.getMonth(), t0.getDate() - t0.getDay() - (WEEKS - 1) * 7);
+
+      let cells = '';
+      let yearTotal = 0, activeDays = 0;
+      const monthCandidates = [];
+      for (let w = 0; w < WEEKS; w++) {
+        let firstOfMonth = null;
+        for (let dow = 0; dow < 7; dow++) {
+          const dt = new Date(start.getFullYear(), start.getMonth(), start.getDate() + w * 7 + dow);
+          if (dt > t0) break;
+          if (firstOfMonth === null && dt.getDate() === 1) firstOfMonth = dt.getMonth();
+          const key = dateToKey(dt);
+          const c = act.counts[key] || 0;
+          if (c) { yearTotal += c; activeDays++; }
+          const isToday = key === today && c > 0;
+          cells += '<i class="cell' + (c ? ' lvl' + levelFor(c) : '') + (isToday ? ' today' : '') +
+            '" data-date="' + key + '" data-count="' + c + '" style="grid-column:' + (w + 2) + ';grid-row:' + (dow + 2) + '"></i>';
+        }
+        if (firstOfMonth !== null) monthCandidates.push({ col: w, m: firstOfMonth });
+        else if (w === 0) monthCandidates.push({ col: 0, m: start.getMonth() });
+      }
+      /* A label needs ~3 columns of room: skip ones at the right edge, and ones that would collide with the next label. */
+      const usable = monthCandidates.filter((c) => c.col <= WEEKS - 3);
+      let labels = '';
+      usable.forEach((c, i) => {
+        const next = usable[i + 1];
+        if (next && next.col - c.col < 3) return;
+        labels += '<span class="m-label" style="grid-column:' + (c.col + 2) + '">' + MONTHS[c.m] + '</span>';
+      });
+      const dayLabels = [1, 3, 5].map((dow) => '<span class="d-label" style="grid-row:' + (dow + 2) + '">' + WEEKDAYS[dow] + '</span>').join('');
+
+      el.heatmap.innerHTML = labels + dayLabels + cells;
+      el.heatmap.setAttribute('aria-label', 'Activity over the past year: ' + plural(yearTotal, 'problem', 'problems') + ' solved on ' +
+        plural(activeDays, 'day', 'days') + '. Current streak ' + plural(act.current, 'day', 'days') + '.');
+
+      el.aYear.textContent = yearTotal;
+      el.aDays.textContent = activeDays;
+      el.aCurrent.textContent = act.current;
+      el.aLongest.textContent = act.longest;
+
+      const undated = state.solved.size - act.dated;
+      if (undated > 0) {
+        el.heatNote.textContent = plural(undated, 'earlier solve', 'earlier solves') + ' without a date ' + (undated === 1 ? 'is' : 'are') + ' not shown. New ones are dated automatically.';
+      } else if (state.solved.size === 0) {
+        el.heatNote.textContent = 'Tick a problem as solved and today\u2019s square lights up.';
+      } else {
+        el.heatNote.textContent = 'Squares are dated the day you tick a problem.';
+      }
+
+      if (!heatScrolled) { el.heatScroll.scrollLeft = el.heatScroll.scrollWidth; heatScrolled = true; }
+    };
+
+    /* tooltip */
+    const hideTip = () => { el.tip.hidden = true; };
+    const showTip = (cell) => {
+      const key = cell.dataset.date;
+      const c = Number(cell.dataset.count);
+      const p = key.split('-').map(Number);
+      const dt = new Date(p[0], p[1] - 1, p[2]);
+      el.tip.innerHTML = (c ? esc(plural(c, 'problem', 'problems') + ' solved') : 'No problems solved') + '<small>' + esc(longDate(dt)) + '</small>';
+      el.tip.hidden = false;
+      const r = cell.getBoundingClientRect();
+      const tw = el.tip.offsetWidth, th = el.tip.offsetHeight;
+      let left = r.left + r.width / 2 - tw / 2;
+      left = Math.max(8, Math.min(left, window.innerWidth - tw - 8));
+      let top = r.top - th - 8;
+      if (top < 8) top = r.bottom + 8;
+      el.tip.style.left = left + 'px';
+      el.tip.style.top = top + 'px';
+    };
+    /* Hover is mouse-only; on touch a tap shows the tip and tapping elsewhere closes it. */
+    el.heatmap.addEventListener('pointerover', (e) => { if (e.pointerType !== 'mouse') return; const c = e.target.closest('.cell[data-date]'); if (c) showTip(c); });
+    el.heatmap.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') hideTip(); });
+    el.heatmap.addEventListener('click', (e) => { const c = e.target.closest('.cell[data-date]'); if (c) showTip(c); else hideTip(); });
+    el.heatScroll.addEventListener('scroll', hideTip, { passive: true });
+    window.addEventListener('scroll', hideTip, { passive: true });
+    document.addEventListener('click', (e) => { if (!e.target.closest('.heatmap')) hideTip(); });
+
+    /* ---------- filters / chips / table ---------- */
+    const populateFilters = () => {
+      el.topicFilter.innerHTML = '<option value="all">All topics</option>' +
+        orderedTopics.map((t) => '<option value="' + esc(t) + '">' + esc(topicLabel(t)) + '</option>').join('');
+      el.topicFilter.value = state.topic;
+    };
+
+    const renderChips = () => {
+      const solvedBy = {};
+      problems.forEach((p) => { if (state.solved.has(p.id)) solvedBy[p.topic] = (solvedBy[p.topic] || 0) + 1; });
+      const chip = (value, label, solved, total) => {
+        const active = state.topic === value;
+        return '<button class="chip' + (active ? ' active' : '') + '" type="button" data-topic="' + esc(value) + '" aria-pressed="' + active + '">' +
+          esc(label) + '<span class="count">' + solved + '/' + total + '</span></button>';
+      };
+      el.topicChips.innerHTML = chip('all', 'All', state.solved.size, problems.length) +
+        orderedTopics.map((t) => chip(t, topicLabel(t), solvedBy[t] || 0, topicTotals[t] || 0)).join('');
     };
 
     const getVisibleProblems = () => {
-      const query = state.search.trim().toLowerCase();
-      return problems.filter((problem) => {
-        const matchesTopic = state.selectedTopic === 'all' || problem.topic === state.selectedTopic;
-        const matchesSearch = !query || problem.title.toLowerCase().includes(query) || problem.topic.toLowerCase().includes(query);
-        const matchesStatus = state.status === 'all' || (state.status === 'solved' ? state.solved.has(problem.id) : !state.solved.has(problem.id));
-        return matchesTopic && matchesSearch && matchesStatus;
+      const q = state.search.trim().toLowerCase();
+      const idQuery = q.replace(/^#/, '');
+      return problems.filter((p) => {
+        if (state.topic !== 'all' && p.topic !== state.topic) return false;
+        const isSolved = state.solved.has(p.id);
+        if (state.status === 'solved' && !isSolved) return false;
+        if (state.status === 'unsolved' && isSolved) return false;
+        if (!q) return true;
+        return p.title.toLowerCase().includes(q) || p.topic.toLowerCase().includes(q) ||
+          topicLabel(p.topic).toLowerCase().includes(q) || String(p.id) === idQuery;
       });
+    };
+
+    const rowHtml = (p) => {
+      const solved = state.solved.has(p.id);
+      const label = esc(topicLabel(p.topic));
+      return '<tr class="' + (solved ? 'is-solved' : '') + '" data-id="' + p.id + '">' +
+        '<td class="check-col"><label class="check-hit"><input class="problem-check" type="checkbox" data-id="' + p.id + '"' + (solved ? ' checked' : '') +
+        ' aria-label="Mark ' + esc(p.title) + ' as solved" /></label></td>' +
+        '<td class="td-number">' + p.id + '</td>' +
+        '<td class="topic-col"><span class="topic-tag">' + label + '</span></td>' +
+        '<td class="problem-title"><span class="title-text">' + esc(p.title) + '</span><span class="row-topic">' + label + '</span></td>' +
+        '</tr>';
     };
 
     const renderTable = () => {
       const visible = getVisibleProblems();
+      el.visibleCount.textContent = visible.length === problems.length ? 'Showing all ' + problems.length : 'Showing ' + visible.length + ' of ' + problems.length;
       if (!visible.length) {
-        elements.tableBody.innerHTML = '';
-        elements.emptyState.hidden = false;
-        elements.visibleCount.textContent = '0 visible';
+        el.tableBody.innerHTML = '';
+        el.emptyState.hidden = false;
         return;
       }
-
-      elements.emptyState.hidden = true;
-      elements.visibleCount.textContent = visible.length + ' visible';
-      elements.tableBody.innerHTML = visible.map((problem) => {
-        const solved = state.solved.has(problem.id);
-        return '<tr class="' + (solved ? 'is-solved' : '') + '">' +
-          '<td class="check-col"><input class="problem-check" type="checkbox" data-id="' + problem.id + '" ' + (solved ? 'checked' : '') + ' aria-label="Toggle ' + problem.title + '" /></td>' +
-          '<td class="td-number">' + problem.id + '</td>' +
-          '<td class="topic-col"><span class="topic-tag">' + problem.topic + '</span></td>' +
-          '<td class="problem-title">' + problem.title + '</td>' +
-          '</tr>';
-      }).join('');
-
-      elements.tableBody.querySelectorAll('.problem-check').forEach((check) => {
-        check.addEventListener('change', (event) => {
-          const id = Number(event.target.dataset.id);
-          if (event.target.checked) state.solved.add(id); else state.solved.delete(id);
-          persistSolved();
-          render();
-        });
-      });
+      el.emptyState.hidden = true;
+      el.tableBody.innerHTML = visible.map(rowHtml).join('');
     };
 
-    const render = () => {
+    const renderAll = () => { renderProgress(); renderChips(); renderActivity(); renderTable(); };
+
+    const selectTopic = (t) => {
+      state.topic = (t === 'all' || orderedTopics.includes(t)) ? t : 'all';
+      el.topicFilter.value = state.topic;
+      renderChips();
+      renderTable();
+      const active = el.topicChips.querySelector('.chip.active');
+      if (active) active.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    };
+
+    /* ---------- confetti ---------- */
+    const launchConfetti = (x, y) => {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const colors = ['#ff7ad9', '#ffb86b', '#79b8ff', '#55d6a3', '#f472b6', '#facc15'];
+      const N = 22;
+      for (let i = 0; i < N; i++) {
+        const piece = document.createElement('span');
+        const angle = (Math.PI * 2 * i) / N;
+        const distance = 40 + Math.random() * 90;
+        piece.className = 'confetti-piece';
+        piece.style.left = x + 'px';
+        piece.style.top = y + 'px';
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.setProperty('--dx', Math.cos(angle) * distance + 'px');
+        piece.style.setProperty('--dy', Math.sin(angle) * distance - 10 + 'px');
+        el.confettiLayer.appendChild(piece);
+        setTimeout(() => piece.remove(), 900);
+      }
+    };
+
+    /* ---------- events ---------- */
+    el.tableBody.addEventListener('change', (e) => {
+      const cb = e.target.closest('.problem-check');
+      if (!cb) return;
+      const id = Number(cb.dataset.id);
+      if (!validIds.has(id)) return;
+      if (cb.checked) {
+        state.solved.add(id);
+        state.dates[id] = todayKey();
+        const r = cb.getBoundingClientRect();
+        launchConfetti(r.left + r.width / 2, r.top + r.height / 2);
+      } else {
+        state.solved.delete(id);
+        delete state.dates[id];
+      }
+      persist();
       renderProgress();
-      renderTopicChips();
-      renderTable();
-    };
+      renderChips();
+      renderActivity();
+      if (state.status === 'all') {
+        const row = cb.closest('tr');
+        if (row) row.classList.toggle('is-solved', cb.checked);   /* in place: keeps keyboard focus */
+      } else {
+        renderTable();
+      }
+    });
 
-    const setTheme = (color) => {
-      document.documentElement.style.setProperty('--accent', color);
-      localStorage.setItem(THEME_KEY, color);
-    };
+    el.topicChips.addEventListener('click', (e) => {
+      const chip = e.target.closest('.chip');
+      if (chip) selectTopic(chip.dataset.topic);
+    });
+    el.searchInput.addEventListener('input', (e) => { state.search = e.target.value; renderTable(); });
+    el.statusFilter.addEventListener('change', (e) => { state.status = e.target.value; renderTable(); });
+    el.topicFilter.addEventListener('change', (e) => selectTopic(e.target.value));
+    el.clearFilters.addEventListener('click', () => {
+      state.search = ''; state.status = 'all'; state.topic = 'all';
+      el.searchInput.value = ''; el.statusFilter.value = 'all'; el.topicFilter.value = 'all';
+      renderChips(); renderTable();
+    });
 
-    elements.searchInput.addEventListener('input', (event) => {
-      state.search = event.target.value;
-      renderTable();
-    });
-    elements.statusFilter.addEventListener('change', (event) => {
-      state.status = event.target.value;
-      renderTable();
-    });
-    elements.topicFilter.addEventListener('change', (event) => {
-      state.selectedTopic = event.target.value;
-      render();
-    });
-    elements.markAllDone.addEventListener('click', () => {
-      for (let i = 1; i <= problems.length; i++) state.solved.add(i);
-      persistSolved();
-      render();
-    });
-    elements.clearAll.addEventListener('click', () => {
+    /* Two-step reset so progress is never wiped by a stray click. */
+    let resetTimer = null;
+    const disarmReset = () => { clearTimeout(resetTimer); el.resetBtn.classList.remove('confirming'); el.resetBtn.textContent = 'Reset progress'; };
+    el.resetBtn.addEventListener('click', () => {
+      if (!el.resetBtn.classList.contains('confirming')) {
+        el.resetBtn.classList.add('confirming');
+        el.resetBtn.textContent = 'Click again to confirm';
+        resetTimer = setTimeout(disarmReset, 4000);
+        return;
+      }
+      disarmReset();
       state.solved.clear();
-      persistSolved();
-      render();
+      state.dates = {};
+      persist();
+      renderAll();
+    });
+    el.resetBtn.addEventListener('blur', disarmReset);
+
+    el.modeToggle.addEventListener('click', () => setMode(!root.classList.contains('light'), true));
+    el.themePicker.addEventListener('input', (e) => {
+      root.style.setProperty('--accent', e.target.value);
+      store.set(THEME_KEY, e.target.value);
+      applyOnAccent();
     });
 
-    const savedTheme = localStorage.getItem(THEME_KEY) || '#a78bfa';
-    elements.themePicker.value = savedTheme;
-    setTheme(savedTheme);
-    elements.themePicker.addEventListener('input', (event) => setTheme(event.target.value));
+    /* Keep several open tabs consistent, and roll the grid over at midnight. */
+    window.addEventListener('storage', (e) => {
+      if (e.key !== STORAGE_KEY && e.key !== DATES_KEY) return;
+      const fresh = loadState();
+      state.solved = fresh.solved; state.dates = fresh.dates;
+      renderAll();
+    });
+    const refreshIfNewDay = () => { if (todayKey() !== renderedToday) renderActivity(); };
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshIfNewDay(); });
+    window.addEventListener('focus', refreshIfNewDay);
 
+    /* ---------- init ---------- */
+    const savedAccent = store.get(THEME_KEY);
+    if (savedAccent && /^#[0-9a-f]{6}$/i.test(savedAccent) && savedAccent.toLowerCase() !== DEFAULT_ACCENT) {
+      root.style.setProperty('--accent', savedAccent);
+    }
+    setMode(root.classList.contains('light'), false);
     populateFilters();
-    render();
+    renderAll();
+    setSaveStatus();
+  })();
   </script>
 </body>
 </html>
